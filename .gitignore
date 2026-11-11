@@ -10,7 +10,7 @@ venv/
 
 # 实验产物
 experiments/**/results/
-note/report/
+note/report/perf/
 *.log
 logs/
 
