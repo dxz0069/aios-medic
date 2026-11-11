@@ -1,0 +1,16 @@
+{
+  "id": "F01",
+  "name": "memory_leak_process",
+  "category": "resource/memory",
+  "component": "leaky.py",
+  "summary": "后台进程以 256MB/s 速率泄漏内存，直至触发容器 OOM 或被修复",
+  "inject": "python3 /opt/medic/injector/inject.py F01 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F01 --action clear",
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": ["VmRSS", "rss", "out of memory", "oom", "killed process", "memused"]
+  },
+  "recovery": {"probe": "memory", "expect": "normal"},
+  "container_hint": "docker run --memory 2g 时 OOM 行为可复现（内核 OOM kill 会杀掉泄漏进程）"
+}

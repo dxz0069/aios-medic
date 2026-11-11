@@ -1,0 +1,15 @@
+{
+  "id": "F04",
+  "name": "critical_service_crash_loop",
+  "category": "service/crash",
+  "component": "toy-critical-service",
+  "summary": "反复 kill -9 玩具关键服务，supervisor 不断重启形成崩溃循环",
+  "inject": "python3 /opt/medic/injector/inject.py F04 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F04 --action clear",
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": ["exited, code=-9", "status=failed", "running-restart", "connection refused", "restart"]
+  },
+  "recovery": {"probe": "service", "expect": "ok"}
+}

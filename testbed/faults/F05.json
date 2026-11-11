@@ -1,0 +1,16 @@
+{
+  "id": "F05",
+  "name": "network_packet_loss",
+  "category": "network/loss",
+  "component": "eth0",
+  "summary": "tc netem 在 eth0 上注入 30% 丢包与 100ms 延迟",
+  "inject": "python3 /opt/medic/injector/inject.py F05 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F05 --action clear",
+  "gold": {
+    "category": "network/loss",
+    "component": "eth0",
+    "evidence_keywords": ["netem", "packet loss", "30% packet loss", "timeout", "rtt"]
+  },
+  "recovery": {"probe": "network", "expect": "normal"},
+  "container_hint": "需要容器以 --cap-add NET_ADMIN 启动"
+}

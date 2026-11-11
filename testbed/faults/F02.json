@@ -1,0 +1,16 @@
+{
+  "id": "F02",
+  "name": "disk_space_exhausted",
+  "category": "resource/disk",
+  "component": "/var/scratch",
+  "summary": "向受限 tmpfs /var/scratch 写入 64MB 块直至 ENOSPC",
+  "inject": "python3 /opt/medic/injector/inject.py F02 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F02 --action clear",
+  "gold": {
+    "category": "resource/disk",
+    "component": "/var/scratch",
+    "evidence_keywords": ["No space left", "ENOSPC", "100%", "fill.chunk", "df"]
+  },
+  "recovery": {"probe": "disk", "expect": "normal"},
+  "container_hint": "沙箱以 --tmpfs /var/scratch:size=300m 挂载，写满不影响根文件系统"
+}

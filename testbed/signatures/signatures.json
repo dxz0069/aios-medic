@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "description": "确定性特征签名库：LLM 诊断单解析失败时的兜底，以及各故障类别的正确性下限。匹配为大小写不敏感子串，作用于对应采集源。",
+  "signatures": [
+    {
+      "category": "resource/memory",
+      "component_hint": "leaky.py",
+      "sources": ["log", "metric", "proc"],
+      "patterns": ["out of memory", "oom", "killed process", "vmrss", "invoked oom-killer"],
+      "min_hits": 1
+    },
+    {
+      "category": "resource/disk",
+      "component_hint": "/var/scratch",
+      "sources": ["log", "metric", "proc"],
+      "patterns": ["no space left", "enospc", "fill.chunk", "100%"],
+      "min_hits": 1
+    },
+    {
+      "category": "resource/cpu",
+      "component_hint": "busy-loop process group",
+      "sources": ["metric", "proc"],
+      "patterns": ["load average: 1", "loadavg", "100.0"],
+      "min_hits": 2
+    },
+    {
+      "category": "service/crash",
+      "component_hint": "toy-critical-service",
+      "sources": ["log", "metric"],
+      "patterns": ["exited, code=-9", "status=failed", "running-restart", "connection refused"],
+      "min_hits": 1
+    },
+    {
+      "category": "network/loss",
+      "component_hint": "eth0",
+      "sources": ["metric", "proc"],
+      "patterns": ["netem", "packet loss", "100% packet loss", "timeout"],
+      "min_hits": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "F03",
+  "name": "cpu_saturation",
+  "category": "resource/cpu",
+  "component": "busy-loop process group",
+  "summary": "2×CPU 数量的忙循环进程造成 run queue 堆积与负载飙升",
+  "inject": "python3 /opt/medic/injector/inject.py F03 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F03 --action clear",
+  "gold": {
+    "category": "resource/cpu",
+    "component": "busy-loop process group",
+    "evidence_keywords": ["loadavg", "load average", "%cpu", "runnable", "100.0"]
+  },
+  "recovery": {"probe": "cpu", "expect": "normal"}
+}

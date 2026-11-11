@@ -48,7 +48,7 @@ python experiments/spike1/run_spike1.py --base-url http://127.0.0.1:8091/v1 \
        --model Qwen/Qwen2.5-7B-Instruct-AWQ
 
 # 3) 实验床：构建沙箱镜像并注入故障
-docker build -t medic-sandbox testbed/sandbox/
+docker build -t medic-sandbox -f testbed/sandbox/Dockerfile testbed/
 bash testbed/run_sandbox.sh          # 启动一次性沙箱
 python3 testbed/injector/inject.py F01 --action inject   # 注入内存泄漏
 python3 testbed/probes/probes.py                        # 健康探针
