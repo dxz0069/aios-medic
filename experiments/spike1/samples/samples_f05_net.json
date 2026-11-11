@@ -1,0 +1,30 @@
+{
+  "meta": {"fault": "F05", "category": "network/loss", "synthetic": true,
+           "note": "合成样本：模仿真实工具输出格式，用于7B诊断单输出可靠性测试，非生产采集数据"},
+  "samples": [
+    {
+      "id": "S17", "source": "ping",
+      "snippet": "PING 172.17.0.1 (172.17.0.1) 56(84) bytes of data.\n64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=103 ms\n\n--- 172.17.0.1 ping statistics ---\n3 packets transmitted, 1 received, 67% packet loss, time 2004ms\nrtt min/avg/max/mdev = 102.8/103.1/103.5/0.3 ms",
+      "gold": {"category": "network/loss", "component": "eth0",
+               "evidence": ["67% packet loss", "103 ms"]}
+    },
+    {
+      "id": "S18", "source": "tc qdisc show",
+      "snippet": "qdisc netem 8001: root refcnt 5 limit 1000 delay 100.0ms loss 30%\nqdisc fq_codel 8002: parent 8001:5 limit 10240 flows 1024 quantum 1514 target 5ms interval 100ms",
+      "gold": {"category": "network/loss", "component": "eth0",
+               "evidence": ["netem", "loss 30%"]}
+    },
+    {
+      "id": "S19", "source": "ss -ti",
+      "snippet": "State Recv-Q Send-Q Local Address:Port Peer Address:Port\nESTAB 0      0      172.17.0.2:47822      172.17.0.1:8080\ncubic rto:1044 backoff:5 rtt:203.5/24.1 mdev:24.1 bytes_acked:1094 segs_out:12 segs_in:9 send 1.2Kbps lastsnd:2100 lastrcv:2100 lastack:2100 pacing_rate:2.4Kbps retrans:0/7 rcv_rtt:402 rcv_space:29200",
+      "gold": {"category": "network/loss", "component": "eth0",
+               "evidence": ["rto:1044", "backoff:5"]}
+    },
+    {
+      "id": "S20", "source": "service.log",
+      "snippet": "2026-11-09T09:10:01+00:00 medic-sandbox toy-critical-service[812]: upstream call to 172.17.0.1:8080 timed out after 3000ms (attempt 1/3)\n2026-11-09T09:10:07+00:00 medic-sandbox toy-critical-service[812]: upstream call to 172.17.0.1:8080 timed out after 3000ms (attempt 2/3)\n2026-11-09T09:10:13+00:00 medic-sandbox toy-critical-service[812]: upstream call to 172.17.0.1:8080 timed out after 3000ms (attempt 3/3)",
+      "gold": {"category": "network/loss", "component": "eth0",
+               "evidence": ["timed out after 3000ms", "attempt 3/3"]}
+    }
+  ]
+}

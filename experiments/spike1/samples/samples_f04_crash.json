@@ -1,0 +1,30 @@
+{
+  "meta": {"fault": "F04", "category": "service/crash", "synthetic": true,
+           "note": "合成样本：模仿真实工具输出格式，用于7B诊断单输出可靠性测试，非生产采集数据"},
+  "samples": [
+    {
+      "id": "S13", "source": "service.log",
+      "snippet": "2026-11-09T07:01:02+00:00 medic-sandbox toy-critical-service[1204]: service started (pid=1204)\n2026-11-09T07:01:04+00:00 medic-sandbox toy-critical-service[1204]: main process exited, code=-9; status=failed/running-restart\n2026-11-09T07:01:05+00:00 medic-sandbox toy-critical-service[1210]: service started (pid=1210)\n2026-11-09T07:01:07+00:00 medic-sandbox toy-critical-service[1210]: main process exited, code=-9; status=failed/running-restart\n2026-11-09T07:01:08+00:00 medic-sandbox toy-critical-service[1216]: service started (pid=1216)",
+      "gold": {"category": "service/crash", "component": "toy-critical-service",
+               "evidence": ["code=-9", "status=failed/running-restart"]}
+    },
+    {
+      "id": "S14", "source": "curl",
+      "snippet": "$ curl -sS --max-time 3 http://127.0.0.1:8080/health\ncurl: (7) Failed to connect to 127.0.0.1 port 8080: Connection refused\n$ curl -sS --max-time 3 http://127.0.0.1:8080/health\ncurl: (7) Failed to connect to 127.0.0.1 port 8080: Connection refused",
+      "gold": {"category": "service/crash", "component": "toy-critical-service",
+               "evidence": ["Connection refused", "port 8080"]}
+    },
+    {
+      "id": "S15", "source": "dmesg",
+      "snippet": "[Mon Nov  9 07:02:11 2026] traps: service.py[1216] general protection fault ip:7f3a2c0d94e1 sp:7ffd9b0e8c40 error:0 in libc.so.6[7f3a2c004000+195000]\n[Mon Nov  9 07:02:11 2026] segfault at 0 ip 00007f3a2b1f87e2 sp 00007ffd9b0e5cb0 error 4 in libpython3.10.so.1.0[7f3a2b100000+1a8000]\n[Mon Nov  9 07:02:11 2026] code: 0x0 0x0 0x0",
+      "gold": {"category": "service/crash", "component": "toy-critical-service",
+               "evidence": ["segfault", "service.py[1216]"]}
+    },
+    {
+      "id": "S16", "source": "journal",
+      "snippet": "Nov 09 07:03:01 medic-sandbox systemd[1]: toy-critical-service.service: Main process exited, code=killed, status=9/KILL\nNov 09 07:03:01 medic-sandbox systemd[1]: toy-critical-service.service: Failed with result 'signal'.\nNov 09 07:03:02 medic-sandbox systemd[1]: toy-critical-service.service: Scheduled restart job, restart counter is at 7.\nNov 09 07:03:02 medic-sandbox systemd[1]: toy-critical-service.service: Start request repeated too quickly.",
+      "gold": {"category": "service/crash", "component": "toy-critical-service",
+               "evidence": ["status=9/KILL", "restart counter is at 7"]}
+    }
+  ]
+}

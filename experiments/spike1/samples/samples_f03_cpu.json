@@ -1,0 +1,30 @@
+{
+  "meta": {"fault": "F03", "category": "resource/cpu", "synthetic": true,
+           "note": "合成样本：模仿真实工具输出格式，用于7B诊断单输出可靠性测试，非生产采集数据"},
+  "samples": [
+    {
+      "id": "S09", "source": "/proc/loadavg",
+      "snippet": "14.82 12.93 8.41 25/300 1521",
+      "gold": {"category": "resource/cpu", "component": "busy-loop process group",
+               "evidence": ["14.82", "25/300"]}
+    },
+    {
+      "id": "S10", "source": "pidstat",
+      "snippet": "Linux 5.15.0 (medic-sandbox) \t11/09/2026 \t_x86_64_\t(4 CPU)\n\n03:22:11      UID       PID    %usr %system  %guest    %CPU   CPU  Command\n03:22:11        0      1521    99.20    0.40    0.00    99.60     0  python3\n03:22:11        0      1522    99.10    0.50    0.00    99.60     1  python3\n03:22:11        0      1523    99.30    0.30    0.00    99.60     2  python3\n03:22:11        0      1524    99.00    0.40    0.00    99.40     3  python3\nAverage:        0      1521    99.15    0.40    0.00    99.55     -  python3",
+      "gold": {"category": "resource/cpu", "component": "busy-loop process group",
+               "evidence": ["99.60", "python3"]}
+    },
+    {
+      "id": "S11", "source": "vmstat",
+      "snippet": "procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----\n r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st\n25  0      0  92000   2104 1185300    0    0     0     2  1200 4200 99  0  0  0  0\n22  0      0  91000   2104 1185300    0    0     0     0  1180 4100 99  0  0  0  0\n24  0      0  93000   2104 1185300    0    0     0     0  1210 4350 99  0  0  0  0",
+      "gold": {"category": "resource/cpu", "component": "busy-loop process group",
+               "evidence": ["25", "99  0  0"]}
+    },
+    {
+      "id": "S12", "source": "top",
+      "snippet": "top - 03:24:01 up  1:29,  0 users,  load average: 15.02, 12.88, 8.10\nTasks:  30 total,  25 running,   5 sleeping\n%Cpu(s): 99.7 us,  0.3 sy,  0.0 ni,  0.0 id\n  PID USER      NI  VIRT    RES %CPU COMMAND\n 1521 root       0 16524   9212  99.7 python3 -c \n 1522 root       0 16524   9212  99.6 python3 -c \n 1523 root       0 16524   9212  99.6 python3 -c ",
+      "gold": {"category": "resource/cpu", "component": "busy-loop process group",
+               "evidence": ["load average: 15.02", "25 running"]}
+    }
+  ]
+}
