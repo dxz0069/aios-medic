@@ -30,8 +30,10 @@ ensure_stack() {
   fi
 }
 
-# 玩具服务保活（F04 修复验证依赖）
+# 玩具服务保活（F04 修复验证依赖）+ 清理可能的僵尸流水线 + 尝试装 iproute2(F05)
 MEDIC_TIMEOUT=60 $X -c "pgrep -f supervisor.py >/dev/null || setsid nohup python3 /opt/medic/service/supervisor.py >/dev/null 2>&1 & sleep 3; curl -s --max-time 3 http://127.0.0.1:8080/health | head -c 60; echo"
+MEDIC_TIMEOUT=60 $X -c "pkill -f run_pipeline; sleep 1; pgrep -af run_pipeline || echo no-zombies"
+MEDIC_TIMEOUT=90 $X -c "source /public/home/acotxxttog/.ai_user_info/ai_proxy 2>/dev/null; which tc || apt-get install -y iproute2 2>&1 | head -2; which tc || echo tc-unavailable"
 ensure_stack
 
 run_fault() {  # $1=故障id $2=注入后等待秒
@@ -47,7 +49,7 @@ run_fault() {  # $1=故障id $2=注入后等待秒
         MEDIC_TIMEOUT=60 $X -c "cd $R && python3 testbed/injector/inject.py $F --action clear >/dev/null 2>&1" || true
         continue
       fi
-      MEDIC_TIMEOUT=420 $X -c "cd $R && $V/bin/python experiments/m1_demo/run_pipeline_v2.py --collection $D/fault_$MODE.json --mode $MODE --out $D --gold $F > $D/${MODE}.log 2>&1" \
+      MEDIC_TIMEOUT=480 $X -c "cd $R && timeout 400 $V/bin/python experiments/m1_demo/run_pipeline_v2.py --collection $D/fault_$MODE.json --mode $MODE --out $D --gold $F > $D/${MODE}.log 2>&1" \
         || echo "[warn] $F r$ROUND $MODE v2流水线异常(超时?)"
       MEDIC_TIMEOUT=60 $X -c "cd $R && python3 testbed/injector/inject.py $F --action clear >/dev/null 2>&1" || true
       sleep 3

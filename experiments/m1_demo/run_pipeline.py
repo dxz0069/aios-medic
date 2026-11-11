@@ -85,7 +85,9 @@ def main() -> int:
         gold = json.loads(gf.read_text(encoding="utf-8"))["gold"]
         cat_ok = verdict.get("category") == gold["category"]
         comp = (verdict.get("component") or "").lower()
-        comp_ok = bool(comp) and gold["component"].lower() in comp
+        gold_comp = gold["component"].lower()
+        gold_stem = gold_comp.split(".")[0]  # 'leaky.py' → 'leaky'，容忍模型给出完整命令行
+        comp_ok = bool(comp) and (gold_comp in comp or gold_stem in comp)
         gold = {**gold, "category_ok": cat_ok, "component_ok": comp_ok}
 
     summary = {

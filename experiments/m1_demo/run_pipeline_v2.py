@@ -155,9 +155,11 @@ def main() -> int:
         gf = REPO / "testbed" / "faults" / f"{args.gold}.json"
         gold = json.loads(gf.read_text(encoding="utf-8"))["gold"]
         comp = (root_cause.get("component") or "").lower()
+        gold_comp = gold["component"].lower()
+        gold_stem = gold_comp.split(".")[0]  # 容忍模型给出完整命令行而非短名
         gold = {**gold,
                 "category_ok": root_cause.get("category") == gold["category"],
-                "component_ok": bool(comp) and gold["component"].lower() in comp}
+                "component_ok": bool(comp) and (gold_comp in comp or gold_stem in comp)}
 
     summary = {
         "mode": args.mode, "pipeline": "v2", "wall_s": wall,
