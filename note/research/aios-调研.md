@@ -89,15 +89,17 @@ author_name/
 - 支持的智能体框架（可 onboard 到 AIOS）：OpenAGI、AutoGen、Open-Interpreter、MetaGPT
 - 相关论文：Cerebrum (AIOS SDK)（NAACL 2025）、A-MEM: Agentic Memory（arXiv:2502.12110）、LiteCUA 计算机使用智能体（arXiv:2505.18829）
 
-## 7. 待克隆仓库后确认的点（占位，不算结论）
+## 7. 源码侦察结论（2026-11-11 克隆两仓库 main 分支浅克隆后确认）
 
-以下信息 README/文档首页未给出，须克隆两个仓库阅读源码与示例后回填，**当前不作为设计依据**：
+克隆位置：`E:\project\competition\aios-ref\`（AIOS 与 Cerebrum，均为仓库外参考目录，不入库）。原"待确认五问"逐一回答：
 
-1. `cerebrum/example/agents/` 下官方智能体的 entry.py 写法（Agent 基类、reply/执行入口、LLM 调用封装）；
-2. 智能体间双向通信的实现方式（是否支持按 agent id 互调、消息路由/总线，还是需要在应用层自建 MessageBus）；
-3. Kernel 调度器的并发模型与可观测性（请求队列、并发度参数、日志/trace 能力），影响性能对比实验的埋点方式；
-4. `run-agent` 之外是否有多智能体编排入口（Workflow 类 API）；
-5. 旧版 AIOS（v0.2 之前，`aios/hook/`、前端 WebUI）与新版 Kernel+Cerebrum 的功能对应关系，判断演示时用 Terminal UI / WebUI 还是自建 CLI 面板。
+1. **智能体写法（已确认）**：每个智能体一个目录（`agent.py + config.json`），类需实现 `run(task_input)` 返回 `{"agent_name", "result", "rounds"}`；官方示例 `cerebrum/example/agents/demo_agent/agent.py` 展示了完整模式：`AutoTool.from_batch_preloaded(config["tools"])` 加载工具、manual/automatic 两种工作流、失败重试计数。
+2. **LLM 调用 API（已确认，稳定可用）**：`from cerebrum.llm.apis import llm_chat, llm_chat_with_json_output, llm_call_tool, llm_operate_file`——所有 LLM 请求默认路由到 AIOS Kernel（`base_url=aios_kernel_url`，由 `config.get_kernel_url()` 读取），即**走内核调度与上下文管理，这正是赛题要求的"在 AIOS 框架内"**。特别注意 `llm_chat_with_json_output`：SDK 原生 JSON 输出模式，直接服务我们的诊断单结构化需求。
+3. **智能体间通信（已确认：不存在）**：全仓库检索 `call_another_agent / send_message / agent_to_agent` 等均无结果。**自建协作中间件（MessageBus + DAGScheduler）从"兜底方案"升级为"必选方案"**——这也是我们在 AIOS 之上的核心贡献点。
+4. **客户端分层架构（重构中，勿依赖）**：仓库根 `example/aios_demo.py` 引用了 `cerebrum.client.Cerebrum`（`execute()`/`poll_agent()` 异步执行）与 `OverridesLayer(max_workers)` 调度覆盖层，但当前 main 快照中 `cerebrum/client.py` 与 `overrides/layer.py` **尚不存在**——demo 领先于包代码。M1 应基于稳定的 agent 级 API（第 2 条）开发，持续关注该重构。
+5. **智能体分发（已确认）**：`cerebrum/manager/agent.py` 的 `AgentManager` 负责 `package_agent/upload_agent/download_agent`（打包上传到 Kernel 或 AgentHub）；本地运行入口为 `run-agent` CLI（`cerebrum/commands/`）。
+
+对设计的直接影响：M1 的智能体实现直接照 `demo_agent` 模板写 `run(task_input)`；LLM 调用一律走 `llm_chat_with_json_output`（经 Kernel）；MessageBus/DAGScheduler 由我们实现并作为论文/文档中的核心组件。
 
 ## 8. 对本赛题的直接启示
 
