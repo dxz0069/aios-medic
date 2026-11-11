@@ -25,8 +25,14 @@
 | `x` | **容器执行器**（登录节点用）：自动发现运行中的 Instances 作业，`srun --overlap + ai_docker exec` 进容器执行脚本。用法 `~/medic/x <脚本路径>`，超时用 `MEDIC_TIMEOUT=秒` |
 | `bootstrap.sh` | **新容器一键恢复**：解压恢复 .venv → 启动推理服务(:8091, eager) → 三项健康检查 |
 | `start_infer.sh` | 单独启动/重启推理服务 |
+| `kernel_up.sh` | 启动 AIOS Kernel(:8000，LLM 指向 :8091) 并回写 Cerebrum 的 kernel.base_url |
+| `agent_smoke.sh` | Medic 智能体端到端冒烟（run-agent → Kernel → 推理，输入 S01 样本） |
 | `gpu_diag.sh` | GPU 分层诊断（env → matmul → sdpa → transformers eager 生成） |
 | `probes/` | 历次一次性侦察/调试脚本（存档，可复用参考） |
+
+## 服务栈启动顺序（新容器/重启后）
+
+`bootstrap.sh`（恢复 venv + 推理服务）→ `kernel_up.sh`（AIOS Kernel）→ `agent_smoke.sh`（验证全链路）。三层都setsid 脱离会话，**本机断网关机不影响**。
 
 ## 已知坑（按踩中顺序）
 
@@ -37,9 +43,13 @@
 5. **`tail` 是 toybox**：不支持 `-n 2`，用 `head`/`cat`/绝对路径 `/usr/bin/tail` 也一样报 `option used in invalid context`。
 6. `python3 -m modelscope` 不可执行：新版本用 `modelscope download` CLI。
 7. 容器内访问外网需 `source ~/.ai_user_info/ai_proxy`；github.com 不通（仓库同步走本机 `git archive | ssh tar`）。
+8. **AIOS Kernel 启动**：memory provider 必须用 `in-house`（`mem0` 会连 Ollama 直接启动失败）；启动日志里 LiteLLM 抓 cost map 失败的重试属正常（有本地兜底）；Kernel 端口 8000。
+9. **带工具的官方示例智能体不可用**（工具要从 AgentHub 下载，外网不通）——Medic 全部智能体设计为**无工具**（采集/探测走确定性代码，不走 SDK 工具链）。
+10. **Spike ② 已完成**（2026-11-11）：`agents/log_analyst` 经 Kernel 调用 DCU 推理成功，S01 样本诊断单类目/组件全对。
 
 ## 待办
 
 - [ ] vLLM(DAS) wheel：`vllm-0.11.0+das.opt1.dtk2604.cp311`，来源 [光合开发者社区](https://download.sourcefind.cn:65024/4/main/)（z-file 网页前端，需浏览器下载后传至 `~/medic/wheels/`）
 - [ ] F05 网络故障注入需验证容器 NET_ADMIN 权限
+- [ ] 实验床容器内直跑改造（无 Docker）
 - [ ] 与镜像"固化"方案二选一并更新本 README

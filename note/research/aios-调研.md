@@ -101,6 +101,10 @@ author_name/
 
 对设计的直接影响：M1 的智能体实现直接照 `demo_agent` 模板写 `run(task_input)`；LLM 调用一律走 `llm_chat_with_json_output`（经 Kernel）；MessageBus/DAGScheduler 由我们实现并作为论文/文档中的核心组件。
 
+### 7.1 Spike ② 完成补充（2026-11-11，DCU 容器实测）
+
+全链路已在郑州超算 BW 卡（海光 DCU 64GB）容器内跑通并复现：`run-agent` → 自研 `log_analyst` 智能体 → `llm_chat_with_json_output` → **AIOS Kernel（:8000，vllm 后端）** → 自建 OpenAI 兼容推理服务（:8091，transformers eager，Qwen2.5-7B-Instruct BF16）。S01（dmesg OOM）样本输出：`resource/memory` + `leaky.py`（组件精确命中）+ 完整证据引用，1 轮成功，端到端 5.3s。实测踩坑两条：①Kernel 的 memory provider 必须用 `in-house`（`mem0` 启动时连 Ollama 直接失败）；②官方带工具的示例智能体（如 story_teller）需从 AgentHub 拉工具、外网不通即失败——**Medic 全部智能体按无工具设计**（采集/探测走确定性代码，见 ops/scnet/README.md 坑 8-10）。
+
 ## 8. 对本赛题的直接启示
 
 1. "AIOS-Agent SDK" = Cerebrum，智能体按 `entry.py + config.json` 规范开发，我们的 6 类智能体即 6 个符合该规范的智能体包，天然满足"在 AIOS 框架内"。
