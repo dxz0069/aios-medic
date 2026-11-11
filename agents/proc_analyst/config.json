@@ -1,0 +1,10 @@
+{
+    "name": "proc_analyst",
+    "description": [
+        "你是 Medic 多智能体系统中的进程分析智能体，",
+        "负责从进程/资源快照（ps/top）定位异常进程并输出结构化诊断单。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "ProcAnalystAgent" }
+}

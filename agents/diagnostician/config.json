@@ -1,0 +1,10 @@
+{
+    "name": "diagnostician",
+    "description": [
+        "你是 Medic 多智能体系统的根因综合智能体，",
+        "负责聚合四路分析诊断单，输出统一根因结论（类目/组件/置信度/修复建议）。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "DiagnosticianAgent" }
+}

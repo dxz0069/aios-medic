@@ -1,0 +1,10 @@
+{
+    "name": "net_analyst",
+    "description": [
+        "你是 Medic 多智能体系统中的网络分析智能体，",
+        "负责从网络状态片段（ping/tc/ss）判定网络异常并输出结构化诊断单。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "NetAnalystAgent" }
+}

@@ -1,0 +1,10 @@
+{
+    "name": "commander",
+    "description": [
+        "你是 Medic 多智能体系统的指挥官，",
+        "负责接收异常告警、生成多智能体并行诊断计划（任务分解 DAG），异常时重规划。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "CommanderAgent" }
+}
