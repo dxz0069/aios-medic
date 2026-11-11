@@ -31,6 +31,8 @@ def main() -> int:
             {"round": rnd, "wall_s": d["wall_s"],
              "category_ok": (d.get("gold") or {}).get("category_ok"),
              "component_ok": (d.get("gold") or {}).get("component_ok"),
+             "recovery_ok": d.get("recovery_ok"),
+             "repair_rounds": d.get("repair_rounds"),
              "verdict_cat": (d.get("verdict") or {}).get("category"),
              "verdict_comp": (d.get("verdict") or {}).get("component"),
              "confidence": (d.get("verdict") or {}).get("confidence")})
@@ -41,13 +43,15 @@ def main() -> int:
 
     report = {"faults": {}}
     lines = ["# M1 夜间构建汇总", "",
-             "| 故障 | 串行均值(s) | 并发均值(s) | 提速% | 类目正确 | 组件正确 | 结论(并发末轮) |",
-             "|---|---|---|---|---|---|---|"]
+             "| 故障 | 串行均值(s) | 并发均值(s) | 提速% | 类目正确 | 组件正确 | 恢复成功 | 结论(并发末轮) |",
+             "|---|---|---|---|---|---|---|---|"]
     for fault, modes in sorted(faults.items()):
         s = [r["wall_s"] for r in modes.get("serial", [])]
         c = [r["wall_s"] for r in modes.get("concurrent", [])]
-        cat_ok = [r["category_ok"] for m in ("serial", "concurrent") for r in modes.get(m, [])]
-        comp_ok = [r["component_ok"] for m in ("serial", "concurrent") for r in modes.get(m, [])]
+        all_runs = [r for m in ("serial", "concurrent") for r in modes.get(m, [])]
+        cat_ok = [r["category_ok"] for r in all_runs]
+        comp_ok = [r["component_ok"] for r in all_runs]
+        rec = [r.get("recovery_ok") for r in all_runs if r.get("recovery_ok") is not None]
         speedup = round((mean(s) - mean(c)) / mean(s) * 100, 1) if s and c and mean(s) else None
         last = modes.get("concurrent", [{}])[-1]
         report["faults"][fault] = {
@@ -55,10 +59,12 @@ def main() -> int:
             "speedup_pct": speedup, "rounds": len(s), "rounds_conc": len(c),
             "category_ok_rate": f"{sum(1 for x in cat_ok if x)}/{len(cat_ok)}",
             "component_ok_rate": f"{sum(1 for x in comp_ok if x)}/{len(comp_ok)}",
+            "recovery_ok_rate": (f"{sum(1 for x in rec if x)}/{len(rec)}" if rec else "n/a"),
             "last_verdict": {k: last.get(k) for k in ("verdict_cat", "verdict_comp", "confidence")}}
         lines.append(f"| {fault} | {mean(s)} | {mean(c)} | {speedup} "
                      f"| {report['faults'][fault]['category_ok_rate']} "
                      f"| {report['faults'][fault]['component_ok_rate']} "
+                     f"| {report['faults'][fault]['recovery_ok_rate']} "
                      f"| {last.get('verdict_cat')} / {last.get('verdict_comp')} |")
 
     ws.joinpath("night_summary.json").write_text(

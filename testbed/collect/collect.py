@@ -82,16 +82,28 @@ def collect() -> dict:
                 f"{sh('tc qdisc show 2>&1 | head -6')}\n\n== ss -s ==\n{sh('ss -s 2>&1')}"),
     }
 
+    service_ok = False
+    try:
+        from http.client import HTTPConnection
+        conn = HTTPConnection("127.0.0.1", 8080, timeout=2)
+        conn.request("GET", "/health")
+        service_ok = conn.getresponse().status == 200
+        conn.close()
+    except OSError:
+        pass
+
     alert = {
         "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "host": os.uname().nodename,
-        "cpu": load1 > 0.8 * ncpu,
+        "cpu": runnable > ncpu,
         "memory": avail < total * 0.10,
         "disk": disk_pct > 90,
         "network": loss > 10,
+        "service": not service_ok,
         "values": {"load1": load1, "runnable": runnable, "ncpu": ncpu,
                    "mem_avail_pct": round(avail / total * 100, 1),
-                   "disk_pct": disk_pct, "ping_loss_pct": loss},
+                   "disk_pct": disk_pct, "ping_loss_pct": loss,
+                   "service_ok": service_ok},
     }
     return {"ts": alert["ts"], "host": alert["host"], "alert": alert, "sources": sources}
 

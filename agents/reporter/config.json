@@ -1,0 +1,10 @@
+{
+    "name": "reporter",
+    "description": [
+        "你是 Medic 多智能体系统的报告智能体，",
+        "负责把根因、修复与验证过程整理为人话 Markdown 诊断报告。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "ReporterAgent" }
+}

@@ -1,0 +1,10 @@
+{
+    "name": "verifier",
+    "description": [
+        "你是 Medic 多智能体系统的验证智能体，",
+        "负责修复后健康探针判定，未恢复则回环 Repairer 再修（最多3轮）。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "VerifierAgent" }
+}

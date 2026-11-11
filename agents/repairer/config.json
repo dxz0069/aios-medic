@@ -1,0 +1,10 @@
+{
+    "name": "repairer",
+    "description": [
+        "你是 Medic 多智能体系统的修复智能体，",
+        "负责在白名单内决策修复动作（决策层），实际执行由确定性执行器完成。"
+    ],
+    "tools": [],
+    "meta": { "author": "medic", "version": "0.1.0", "license": "MIT" },
+    "build": { "entry": "entry.py", "module": "RepairerAgent" }
+}
