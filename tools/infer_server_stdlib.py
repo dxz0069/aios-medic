@@ -19,13 +19,21 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 class InferEngine:
-    def __init__(self, model_path: str, dtype: str):
+    def __init__(self, model_path: str, dtype: str, attn: str = "sdpa"):
         import torch
         self.torch = torch
         self.tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_path, torch_dtype=getattr(torch, dtype), trust_remote_code=True
-        ).cuda()
+        try:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_path, torch_dtype=getattr(torch, dtype),
+                attn_implementation=attn, trust_remote_code=True
+            ).cuda()
+        except Exception:  # noqa: BLE001 - DTK 上 sdpa/flash 探测可能失败，降级 eager
+            print(f"attn_implementation={attn} failed, fallback to eager", flush=True)
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_path, torch_dtype=getattr(torch, dtype),
+                attn_implementation="eager", trust_remote_code=True
+            ).cuda()
         self.model.eval()
         self.lock = threading.Lock()
 
@@ -95,13 +103,14 @@ def main() -> None:
     ap.add_argument("--model", required=True)
     ap.add_argument("--port", type=int, default=8091)
     ap.add_argument("--dtype", default="bfloat16", choices=["bfloat16", "float16", "float32"])
+    ap.add_argument("--attn", default="sdpa", choices=["sdpa", "eager", "flash_attention_2"])
     ap.add_argument("--host", default="0.0.0.0")
     args = ap.parse_args()
 
     global ENGINE
-    print(f"loading model from {args.model} ({args.dtype}) ...", flush=True)
+    print(f"loading model from {args.model} ({args.dtype}, attn={args.attn}) ...", flush=True)
     t0 = time.time()
-    ENGINE = InferEngine(args.model, args.dtype)
+    ENGINE = InferEngine(args.model, args.dtype, args.attn)
     print(f"model loaded in {time.time()-t0:.1f}s, serving on {args.host}:{args.port}", flush=True)
     ThreadingHTTPServer((args.host, args.port), Handler).serve_forever()
 
