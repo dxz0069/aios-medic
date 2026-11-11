@@ -17,7 +17,7 @@ AIOS（AI Agent Operating System，Rutgers AGI Research / Yongfeng Zhang 团队�
 ## 2. 关键事实：并发与 2.1x 性能声明的出处
 
 - AIOS 基础论文 *AIOS: LLM Agent Operating System*（arXiv:2403.16971，https://arxiv.org/abs/2403.16971）已被 COLM 2025 接收（2025-07-08 News）。
-- 赛题背景中"实测可达最高 2.1 倍性能提升"出自该论文的实验部分——通过智能体调度器对并发请求的调度与上下文切换优化获得。
+- 赛题背景中"实测可达最高 2.1 倍性能提升"出自该论文实验部分（2026-11-11 经 ar5iv 全文核实，https://ar5iv.labs.arxiv.org/html/2403.16971 ）：**并发 serving 加速**——最多 250 并发线程、默认 Round Robin 调度、单张 RTX A5000（24GB）、Llama-3.1-8B、HumanEval 基准 + Reflexion 智能体；论文中并无"串行流水线 vs 并发流水线"的端到端对比——那是本赛题定制的更宽松指标。论文评测用的基准是 HumanEval / MINT / GAIA / SWE-Bench-Lite，被测框架为 ReAct / Reflexion / Autogen / Open-Interpreter / MetaGPT。
 - AIOS 内含调度器（Scheduler）模块，处理并发智能体请求的调度与上下文切换（README："scheduling, context switch, memory management, storage management, tool management, Agent SDK management"；实验性 Rust 重写 `aios-rs/` 中也列出 scheduler trait）。
 - **这是我们"并发比串行快 ≥20%"指标的理论依托：同一套智能体流程，串行逐个执行 vs 交给 AIOS 并发调度，对比端到端墙钟时间。**
 
