@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# 实验产物
+experiments/**/results/
+note/report/
+*.log
+logs/
+
+# 模型与外部代码
+models/
+third_party/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
