@@ -13,23 +13,13 @@ import time
 from pathlib import Path
 
 
-def cpu_count_cgroup() -> int:
-    """cgroup 感知的 CPU 数：容器内 os.cpu_count() 返回宿主核数（如128），
-    而 cpu.max 配额才是实际可用核数（如16）——告警阈值与故障注入都依赖它。"""
-    try:  # cgroup v2
-        parts = Path("/sys/fs/cgroup/cpu.max").read_text().split()
-        if parts[0] != "max":
-            return max(1, int(int(parts[0]) / int(parts[1])))
-    except (OSError, ValueError, IndexError):
-        pass
-    try:  # cgroup v1
-        quota = int(Path("/sys/fs/cgroup/cpu/cpu.cfs_quota_us").read_text())
-        period = int(Path("/sys/fs/cgroup/cpu/cpu.cfs_period_us").read_text())
-        if quota > 0:
-            return max(1, quota // period)
-    except (OSError, ValueError):
-        pass
-    return os.cpu_count() or 1
+def cpu_count_effective() -> int:
+    """有效 CPU 数：容器内 os.cpu_count() 返回宿主核数（128），
+    sched_getaffinity 反映 cgroup/亲和性实际配额（16，与 nproc 一致）。"""
+    try:
+        return max(1, len(os.sched_getaffinity(0)))
+    except (AttributeError, OSError):
+        return os.cpu_count() or 1
 
 
 def sh(cmd: str, limit: int = 3000) -> str:
@@ -58,7 +48,7 @@ def collect() -> dict:
     loadavg_parts = Path("/proc/loadavg").read_text().split()
     load1 = float(loadavg_parts[0])
     runnable = int(loadavg_parts[3].split("/")[0])
-    ncpu = cpu_count_cgroup()
+    ncpu = cpu_count_effective()
 
     df_out = sh("df -h / /var/scratch 2>/dev/null")
     disk_pct = 0

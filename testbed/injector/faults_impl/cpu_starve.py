@@ -11,23 +11,19 @@ import _util
 
 NAME = "f03"
 
-# 组长进程拉起 2×CPU 配额的忙循环子进程（同进程组，clear 时 pkill -g 整组清理）
-# 注意：容器内 os.cpu_count()=宿主核数（128），必须用 cgroup 配额（16）计算，否则进程数爆炸
+# 组长进程拉起 2×有效核数的忙循环子进程（同进程组，clear 时 pkill -g 整组清理）
+# 注意：容器内 os.cpu_count()=宿主核数（128），sched_getaffinity 才是配额（16，同 nproc）
 _BUSY = r"""
-import multiprocessing as mp
+import multiprocessing as mp, os
 def _burn():
     while True: pass
 def _ncpu():
     try:
-        parts = open("/sys/fs/cgroup/cpu.max").read().split()
-        if parts[0] != "max":
-            return max(1, int(int(parts[0]) / int(parts[1])))
-    except (OSError, ValueError, IndexError):
-        pass
-    import os
-    return os.cpu_count() or 1
+        return max(1, len(os.sched_getaffinity(0)))
+    except (AttributeError, OSError):
+        return os.cpu_count() or 1
 if __name__ == "__main__":
-    n = max(2, _ncpu() * 2)
+    n = min(32, max(2, _ncpu() * 2))
     procs = [mp.Process(target=_burn) for _ in range(n)]
     for p in procs:
         p.start()
@@ -53,7 +49,11 @@ def run(action: str) -> int:
             print(f"{NAME}: already injected (pid={pid})")
             return 0
         import os
-        n = max(2, (os.cpu_count() or 2) * 2)
+        try:
+            ncpu = max(1, len(os.sched_getaffinity(0)))
+        except (AttributeError, OSError):
+            ncpu = os.cpu_count() or 2
+        n = min(32, max(2, ncpu * 2))
         pgid = _util.spawn_detached([sys.executable, "-c", _BUSY])
         _util.write_pid(NAME, pgid)
         print(f"{NAME}: injected pgid={pgid} busy_procs={n}")

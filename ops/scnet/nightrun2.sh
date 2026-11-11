@@ -32,7 +32,7 @@ ensure_stack() {
 
 # 玩具服务保活（F04 修复验证依赖）+ 清理可能的僵尸流水线 + 尝试装 iproute2(F05)
 MEDIC_TIMEOUT=60 $X -c "pgrep -f supervisor.py >/dev/null || setsid nohup python3 /opt/medic/service/supervisor.py >/dev/null 2>&1 & sleep 3; curl -s --max-time 3 http://127.0.0.1:8080/health | head -c 60; echo"
-MEDIC_TIMEOUT=60 $X -c "pkill -f run_pipeline; sleep 1; pgrep -af run_pipeline || echo no-zombies"
+MEDIC_TIMEOUT=60 $X -c "pkill -f run_pipeline; pkill -f 'import multiprocessing as mp'; pkill -f leaky; pkill -f 'signal.SIGKILL'; sleep 1; echo busy_left=\$(pgrep -fc 'import multiprocessing as mp' || echo 0) zombies=\$(pgrep -f run_pipeline | wc -l)"
 MEDIC_TIMEOUT=90 $X -c "source /public/home/acotxxttog/.ai_user_info/ai_proxy 2>/dev/null; which tc || apt-get install -y iproute2 2>&1 | head -2; which tc || echo tc-unavailable"
 ensure_stack
 
