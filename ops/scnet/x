@@ -1,0 +1,9 @@
+#!/bin/bash
+# Medic 容器执行器: ~/medic/x <脚本> [args] | ~/medic/x -c "命令"
+set -euo pipefail
+LINE=$(squeue -h -u "$USER" -o "%i|%N|%T|%j" | grep -E "^[0-9]+.[^|]+.R." | grep -i instances | head -1)
+if [ -z "$LINE" ]; then echo "ERROR: 无运行中的 Instances 作业"; exit 1; fi
+JOBID=$(echo "$LINE" | cut -d"|" -f1)
+NODE=$(echo "$LINE" | cut -d"|" -f2)
+CNAME="${JOBID}_${NODE}"
+timeout "${MEDIC_TIMEOUT:-300}" srun --jobid="$JOBID" --overlap -w "$NODE" sudo /usr/bin/ai_docker exec "$CNAME" bash "$@"
