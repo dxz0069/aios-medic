@@ -1,0 +1,2 @@
+# 本地开发/测试依赖（核心运行环境见 README：AIOS Kernel + Cerebrum SDK 于服务器端安装）
+pytest>=7.0
