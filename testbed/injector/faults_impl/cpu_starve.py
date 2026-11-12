@@ -48,7 +48,6 @@ def run(action: str) -> int:
         if _util.is_alive(pid):
             print(f"{NAME}: already injected (pid={pid})")
             return 0
-        import os
         try:
             ncpu = max(1, len(os.sched_getaffinity(0)))
         except (AttributeError, OSError):
