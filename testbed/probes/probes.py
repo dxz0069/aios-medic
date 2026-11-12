@@ -11,10 +11,14 @@ from http.client import HTTPConnection
 
 
 def probe_cpu() -> dict:
-    load1, load5, _load15, runnable, _total = open("/proc/loadavg").read().split()
-    ncpu = os.cpu_count() or 1
-    return {"value": {"load1": float(load1), "runnable": int(runnable), "ncpu": ncpu},
-            "ok": float(load1) < 0.8 * ncpu}
+    load1, load5, _load15, runnable_total, _lastpid = open("/proc/loadavg").read().split()
+    runnable = int(runnable_total.split("/")[0])
+    try:  # 容器内 affinity 才是有效核数（同 nproc）
+        ncpu = max(1, len(os.sched_getaffinity(0)))
+    except (AttributeError, OSError):
+        ncpu = os.cpu_count() or 1
+    return {"value": {"load1": float(load1), "runnable": runnable, "ncpu": ncpu},
+            "ok": runnable <= ncpu}
 
 
 def probe_memory() -> dict:
