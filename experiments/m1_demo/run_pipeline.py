@@ -38,14 +38,15 @@ def load_agent(name: str):
 
 def build_tasks(collection: dict) -> list:
     alert = collection.get("alert", {})
+    now_ts = alert.get("ts", "")
     tasks = [Task("T0", "commander",
                   lambda _up: json.dumps(alert, ensure_ascii=False),
                   meta={"stage": "plan"})]
     for i, (agent, src) in enumerate(ANALYST_SOURCE.items(), start=1):
         snippet = collection["sources"][src]
         tasks.append(Task(f"T{i}", agent,
-                          lambda _up, s=src, sn=snippet: json.dumps(
-                              {"source": s, "snippet": sn}, ensure_ascii=False),
+                          lambda _up, s=src, sn=snippet, ts=now_ts: json.dumps(
+                              {"source": s, "snippet": sn, "now_ts": ts}, ensure_ascii=False),
                           deps=("T0",), meta={"stage": "analyze", "source": src}))
 
     def diag_input(up):

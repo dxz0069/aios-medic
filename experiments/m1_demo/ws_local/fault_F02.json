@@ -1,8 +1,8 @@
 {
-  "ts": "2026-11-12T00:31:22Z",
+  "ts": "2026-11-12T03:31:16Z",
   "host": "b2765177b47f",
   "alert": {
-    "ts": "2026-11-12T00:31:22Z",
+    "ts": "2026-11-12T03:31:16Z",
     "host": "b2765177b47f",
     "cpu": false,
     "memory": false,
@@ -10,7 +10,7 @@
     "network": false,
     "service": false,
     "values": {
-      "load1": 14.55,
+      "load1": 0.0,
       "runnable": 1,
       "ncpu": 16,
       "mem_avail_pct": 92.9,
@@ -20,9 +20,9 @@
     }
   },
   "sources": {
-    "log": "== service.log (tail) ==\n2026-11-12T00:30:10+00:00 medic-sandbox toy-critical-service[7]: service started\n2026-11-12T00:30:27+00:00 medic-sandbox toy-critical-service[7]: main process exited, code=-9; status=failed/running-restart\n2026-11-12T00:30:28+00:00 medic-sandbox toy-critical-service[117]: service started\n\n== leaky.log (tail) ==\n2T00:30:26+00:00 leaky.py pid=50 VmRSS=270080kB\n2026-11-12T00:30:28+00:00 leaky.py pid=50 VmRSS=532608kB\n2026-11-12T00:30:29+00:00 leaky.py pid=50 VmRSS=794752kB\n2026-11-12T00:30:31+00:00 leaky.py pid=50 VmRSS=1056768kB\n2026-11-12T00:30:32+00:00 leaky.py pid=50 VmRSS=1319040kB\n2026-11-12T00:30:34+00:00 leaky.py pid=50 VmRSS=1581184kB\n2026-11-12T00:30:35+00:00 leaky.py pid=50 VmRSS=1843328kB\n2026-11-12T00:30:37+00:00 leaky.py pid=50 VmRSS=2030848kB\n2026-11-12T00:30:39+00:00 leaky.py pid=50 VmRSS=2075648kB\n2026-11-12T00:30:40+00:00 leaky.py pid=50 VmRSS=2082944kB\n2026-11-12T00:30:42+00:00 leaky.py pid=50 VmRSS=2082560kB\n2026-11-12T00:30:44+00:00 leaky.py pid=50 VmRSS=2059136kB\n2026-11-12T00:30:45+00:00 leaky.py pid=50 VmRSS=2059008kB\n2026-11-12T00:30:46+00:00 leaky.py pid=50 VmRSS=2058368kB\n\n== dmesg (head) ==\ndmesg: read kernel buffer failed: Operation not permitted\n",
-    "metric": "== /proc/loadavg ==\n14.55 4.48 1.60 1/465 203\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=24608948kB MemAvailable=22856192kB used_pct=7.1%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay        1007G   83G  874G   9% /\ntmpfs           300M  300M     0 100% /var/scratch\n",
-    "proc": "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       198  0.6  0.0  17028 12160 ?        Ss   00:31   0:00 python3 /opt/medic/collect/collect.py --out /tmp/fault_F02.json\nroot       117  0.1  0.0  23824  6400 ?        S    00:30   0:00 /usr/bin/python3 /opt/medic/service/service.py\nroot       216  0.0  0.0   7592  3200 ?        R    00:31   0:00 ps aux --sort=-rss\nroot       215  0.0  0.0   2892  1536 ?        S    00:31   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       217  0.0  0.0   3180  1536 ?        S    00:31   0:00 head -12\nroot         1  0.0  0.0  14916   256 ?        Ss   00:30   0:00 python3 /opt/medic/service/supervisor.py\nroot        50  7.9  0.0      0     0 ?        Zs   00:30   0:04 [python3] <defunct>\nroot        63  0.0  0.0      0     0 ?        Zs   00:30   0:00 [python3] <defunct>\nroot        64 42.3  0.0      0     0 ?        Z    00:30   0:24 [python3] <defunct>\nroot        65 42.0  0.0      0     0 ?        Z    00:30   0:23 [python3] <defunct>\nroot        66 42.0  0.0      0     0 ?        Z    00:30   0:23 [python3] <defunct>\n",
-    "net": "== ping 172.17.0.1 ==\nPING 172.17.0.1 (172.17.0.1) 56(84) bytes of data.\n64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=0.060 ms\n64 bytes from 172.17.0.1: icmp_seq=2 ttl=64 time=0.045 ms\n64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=0.049 ms\n\n--- 172.17.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2000ms\nrtt min/avg/max/mdev = 0.045/0.051/0.060/0.006 ms\n\n\n== tc qdisc ==\nqdisc noqueue 0: dev lo root refcnt 2 \nqdisc noqueue 0: dev eth0 root refcnt 2 \n\n\n== ss -s ==\nTotal: 3\nTCP:   33 (estab 0, closed 32, orphaned 0, timewait 1)\n\nTransport Total     IP        IPv6\nRAW\t  0         0         0        \nUDP\t  0         0         0        \nTCP\t  1         1         0        \nINET\t  1         1         0        \nFRAG\t  0         0         0        \n\n"
+    "log": "== dmesg (head) ==\ndmesg: read kernel buffer failed: Operation not permitted\n",
+    "metric": "== /proc/loadavg ==\n0.00 0.00 0.00 1/462 286\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=24608948kB MemAvailable=22864856kB used_pct=7.1%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay        1007G   83G  874G   9% /\ntmpfs           300M  300M     0 100% /var/scratch\n",
+    "proc": "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       281  1.5  0.0  17028 12032 ?        Ss   03:31   0:00 python3 /opt/medic/collect/collect.py --out /tmp/fault_F02.json\nroot       117  0.0  0.0  23824  6400 ?        S    00:26   0:01 /usr/bin/python3 /opt/medic/service/service.py\nroot       299  0.0  0.0   7592  3072 ?        R    03:31   0:00 ps aux --sort=-rss\nroot       298  0.0  0.0   2892  1664 ?        S    03:31   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       300  0.0  0.0   3180  1536 ?        S    03:31   0:00 head -12\nroot         1  0.0  0.0  14916   256 ?        Ss   00:25   0:00 python3 /opt/medic/service/supervisor.py\nroot        50  0.0  0.0      0     0 ?        Zs   00:26   0:04 [python3] <defunct>\nroot        63  0.0  0.0      0     0 ?        Zs   00:26   0:00 [python3] <defunct>\nroot        64  0.2  0.0      0     0 ?        Z    00:26   0:24 [python3] <defunct>\nroot        65  0.2  0.0      0     0 ?        Z    00:26   0:23 [python3] <defunct>\nroot        66  0.2  0.0      0     0 ?        Z    00:26   0:23 [python3] <defunct>\n",
+    "net": "== ping 172.17.0.1 ==\nPING 172.17.0.1 (172.17.0.1) 56(84) bytes of data.\n64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=0.666 ms\n64 bytes from 172.17.0.1: icmp_seq=2 ttl=64 time=0.045 ms\n64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=0.047 ms\n\n--- 172.17.0.1 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2014ms\nrtt min/avg/max/mdev = 0.045/0.252/0.666/0.292 ms\n\n\n== tc qdisc ==\nqdisc noqueue 0: dev lo root refcnt 2 \nqdisc noqueue 0: dev eth0 root refcnt 2 \n\n\n== ss -s ==\nTotal: 3\nTCP:   32 (estab 0, closed 31, orphaned 0, timewait 0)\n\nTransport Total     IP        IPv6\nRAW\t  0         0         0        \nUDP\t  0         0         0        \nTCP\t  1         1         0        \nINET\t  1         1         0        \nFRAG\t  0         0         0        \n\n"
   }
 }

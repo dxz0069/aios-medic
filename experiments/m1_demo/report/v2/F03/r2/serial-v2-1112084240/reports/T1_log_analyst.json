@@ -1,0 +1,20 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "lekevy.py",
+    "confidence": 0.95,
+    "anomalies": [
+      "内存使用量持续增长，从2816KB增长至13378718KB"
+    ],
+    "evidence": [
+      "2816kB",
+      "2026-11-11T13:38:57+00:00 leaky.py pid=8770 VmRSS=10495044kB",
+      "2026-11-11T13:39:19+00:11:2026 leaky.py pid=8770 VmRSS=12854304kB",
+      "2026-11-11T13:39:32+00:11:2026 leaky.py pid=8770 VmRSS=13378718kB"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

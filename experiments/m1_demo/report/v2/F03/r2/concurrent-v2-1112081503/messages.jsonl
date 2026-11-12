@@ -1,0 +1,1 @@
+{"msg_id": "ec86bb06a8ac", "ts": "2026-11-12T00:15:03.713Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "concurrent"}}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "python3 /opt/medic/service/s upervisor.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "进程长时间处于Z状态（已死亡状态），可能是崩溃进程"
+    ],
+    "evidence": [
+      "root         1  0.0  0.0  14916   256 ?        Ss   00:30   0:00  python3 /opt/medic/service/sؒuervisor.py"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

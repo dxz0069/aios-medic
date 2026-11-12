@@ -1,0 +1,17 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "tc qdisc 和 ss -s 命令不存在导致无法获取网络配置和统计信息，可能指示网络连接问题"
+    ],
+    "evidence": [
+      "== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n== ss -s ==\n/bin/sh: line 1: ss: command not found"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

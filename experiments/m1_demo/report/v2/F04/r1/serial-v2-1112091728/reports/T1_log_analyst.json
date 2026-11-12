@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service 主进程频繁退出，状态为failed/running-restart"
+    ],
+    "evidence": [
+      "2026-11-12T00:48:33+05:00 medic-sandbox toy-critical-service[11942]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T00:49:14+05:00 medic-sandbox toy-critical-service[12218]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T00:53:14+05:00 medic-sandbox toy-critical-service[12400]: main process exited, code=-15; status=failed/running-restart"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

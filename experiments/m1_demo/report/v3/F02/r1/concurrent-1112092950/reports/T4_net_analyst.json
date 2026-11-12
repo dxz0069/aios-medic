@@ -1,0 +1,17 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "3 packets transmitted, 3 received, 1% packet loss"
+    ],
+    "evidence": [
+      "64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=0.060 ms\n64 bytes from 172.17.0.1: icmp_seq=2 ttl=64 time=0.045 ms\n64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=0.049 ms\n--- 172.17.0.1 ping statistics ---\n3 packets transmitted, 3 received,  1% packet loss, time 2000ms"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

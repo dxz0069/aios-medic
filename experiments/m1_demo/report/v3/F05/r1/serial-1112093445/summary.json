@@ -1,0 +1,68 @@
+{
+  "mode": "serial",
+  "wall_s": 41.76,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service和python3进程长时间处于僵死状态，并且系统负载远超CPU核心数，表明服务崩溃导致系统资源过度占用。",
+    "evidence": [
+      "main process exited with code -9 and status failed/running-restart",
+      "进程长时间处于Z状态（僵死状态）",
+      "12.31 4.33 1.58, ncpu=16"
+    ],
+    "repair_hint": "重启toy-critical-service"
+  },
+  "gold": {
+    "category": "network/loss",
+    "component": "eth0",
+    "evidence_keywords": [
+      "netem",
+      "packet loss",
+      "30% packet loss",
+      "timeout",
+      "rtt"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.57,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 6.22,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.7,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 6.61,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 9.08,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 7.34,
+      "ok": true
+    }
+  ],
+  "messages": 12
+}

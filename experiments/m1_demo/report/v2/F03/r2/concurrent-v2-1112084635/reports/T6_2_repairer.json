@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "signal.SIGKILL",
+    "reason": "类目回退：终止崩溃循环制造者，服务由 supervisor 自愈"
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "repair_ok": true
+}

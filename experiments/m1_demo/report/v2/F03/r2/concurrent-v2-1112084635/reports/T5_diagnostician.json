@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "主进程崩溃导致服务异常，同时伴有高系统负载现象，指向服务端问题。",
+    "evidence": [
+      "main process exited with code -15; status=failed/running-restart",
+      "load_avg 27.43 243.86 777.3"
+    ],
+    "repair_hint": "重启服务toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,12 @@
+{"msg_id": "ff032d8b42d5", "ts": "2026-11-12T01:34:45.443Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "serial"}}
+{"msg_id": "d75ed27b1d56", "ts": "2026-11-12T01:34:53.230Z", "from": "commander", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T0", "dur_s": 7.57, "ok": true}}
+{"msg_id": "920f8c80409b", "ts": "2026-11-12T01:34:53.232Z", "from": "SCHEDULER", "to": "log_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T1", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "52506668e6ef", "ts": "2026-11-12T01:34:59.457Z", "from": "log_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T1", "dur_s": 6.22, "ok": true}}
+{"msg_id": "7e8084123747", "ts": "2026-11-12T01:34:59.459Z", "from": "SCHEDULER", "to": "metric_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T2", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "e49bbd2e81dc", "ts": "2026-11-12T01:35:04.157Z", "from": "metric_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T2", "dur_s": 4.7, "ok": true}}
+{"msg_id": "c48b3a28df4c", "ts": "2026-11-12T01:35:04.159Z", "from": "SCHEDULER", "to": "proc_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T3", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "7f256a518e06", "ts": "2026-11-12T01:35:10.776Z", "from": "proc_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T3", "dur_s": 6.61, "ok": true}}
+{"msg_id": "86f92e0c3e09", "ts": "2026-11-12T01:35:10.778Z", "from": "SCHEDULER", "to": "net_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T4", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "1bbbe5aae1d7", "ts": "2026-11-12T01:35:19.858Z", "from": "net_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T4", "dur_s": 9.08, "ok": true}}
+{"msg_id": "0bd6e64a87aa", "ts": "2026-11-12T01:35:19.860Z", "from": "SCHEDULER", "to": "diagnostician", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T5", "deps": ["T1", "T2", "T3", "T4"], "mode": "serial"}}
+{"msg_id": "689d51f6be98", "ts": "2026-11-12T01:35:27.199Z", "from": "diagnostician", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T5", "dur_s": 7.34, "ok": true}}

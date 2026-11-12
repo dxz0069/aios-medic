@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中load1的值为35.52，高于正常水位27.43",
+      "cpu告警仍然存在"
+    ],
+    "comment": "负载过高且cpu告警未消除"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

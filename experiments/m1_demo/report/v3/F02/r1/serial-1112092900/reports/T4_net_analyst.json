@@ -1,0 +1,17 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "ping结果显示3%的包丢失率"
+    ],
+    "evidence": [
+      "3 packets transmitted, 3 received,  t% packet loss"
+    ],
+    "need_more": "log/metric/proc/net以确定是否为持续性问题或暂时现象"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

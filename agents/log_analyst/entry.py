@@ -12,10 +12,13 @@ from cerebrum.llm.apis import llm_chat, llm_chat_with_json_output
 CATEGORIES = "resource/memory|resource/disk|resource/cpu|service/crash|network/loss|none"
 
 SYSTEM_PROMPT = (
-    "你是 Medic 多智能体系统中的日志分析智能体。给定一段来自 Linux 受控环境的"
+    "你是 Medic 多智能体系统中的系统日志分析智能体。给定一段来自 Linux 受控环境的"
     "工具输出片段（dmesg/ps/sar/df/ping/tc/服务日志等），判断是否存在异常。"
+    "**注意：日志文件包含历史事件。用户消息会给出当前时间（now），你只应把时间戳"
+    "接近 now（尤其 10 分钟内）的事件当作当前故障的证据；更早的历史事件必须忽略，"
+    "不得作为判断依据。**"
     "仅输出一个 JSON 对象，不要输出任何其他文字或代码块标记，字段如下：\n"
-    '{"category": "' + CATEGORIES + '",\n'
+    '{"category": "resource/memory|resource/disk|resource/cpu|service/crash|network/loss|none",\n'
     ' "component": "定位到的组件（进程名/目录/设备/服务名），无异常为空字符串",\n'
     ' "confidence": 0.0到1.0的数字,\n'
     ' "anomalies": ["异常现象描述"],\n'
@@ -48,17 +51,22 @@ class LogAnalystAgent:
         return None
 
     def run(self, task_input: str):
-        source, snippet = "unknown", task_input or ""
-        try:  # 允许结构化输入 {"source","snippet"}，也容忍纯文本
+        source, snippet, now_ts = "dmesg", task_input or "", ""
+        try:
             data = json.loads(task_input)
             if isinstance(data, dict):
-                source, snippet = data.get("source", "unknown"), data.get("snippet", "")
+                source = data.get("source", "dmesg")
+                snippet = data.get("snippet", "")
+                now_ts = data.get("now_ts", "")
         except (json.JSONDecodeError, TypeError):
             pass
 
+        user = f"工具输出片段（来源: {source}）:\n\n{snippet}"
+        if now_ts:
+            user = f"当前时间(now): {now_ts}\n\n{user}"
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"工具输出片段（来源: {source}）:\n\n{snippet}"},
+            {"role": "user", "content": user},
         ]
         result, last_raw = None, ""
         for _attempt in range(MAX_RETRY):

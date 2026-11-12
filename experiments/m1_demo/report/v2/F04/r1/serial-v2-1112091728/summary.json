@@ -1,0 +1,98 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 80.59,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1诊断表明toy-critical-service主进程频繁退出，且A2、A3、A4诊断中均无直接针对toy-critical-service的异常。A4中的命令不存在虽可能表示网络问题，但与toy-critical-service的服务崩溃无直接关系。",
+    "evidence": [
+      "toy-critical-service 主进程频繁退出，状态为failed/running-restart",
+      "4.01 5.58 113.23 2/4007 13581",
+      "root        6617  2.8  5.5 52121616 6374256 ?    Ssl  Nov11 20:36 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191--attn eager",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found\n== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查toy-critical-service的日志以了解退出原因并进行修复"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 17.76,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 11.39,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.68,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 9.14,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.83,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 13.5,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.64,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.26,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 10.87,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

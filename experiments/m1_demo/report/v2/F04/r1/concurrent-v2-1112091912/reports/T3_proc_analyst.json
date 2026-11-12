@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8191 --attn eager",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常高，达到6574256 KB"
+    ],
+    "evidence": [
+      "root        6617  2.9  5.5 51121616 6574256 ?    Ssl  Nov11  21:42 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

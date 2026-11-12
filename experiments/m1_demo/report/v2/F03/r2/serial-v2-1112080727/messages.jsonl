@@ -1,0 +1,1 @@
+{"msg_id": "748c7b7fb9d5", "ts": "2026-11-12T00:07:28.021Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "serial"}}

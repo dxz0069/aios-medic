@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): pass def _ncpu(): try: return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__':: n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: p.start() for p in procs: p.join()'",
+    "confidence": 0.9,
+    "anomalies": [
+      "多个进程占用极高CPU资源，且CPU使用率异常高"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): pass def _ncpu(): try: return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__':: n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: p.start() for p in procs: p.join() CPU使用率为44.6%，45.5%，44.6%和44.2%"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

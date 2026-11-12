@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-01",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1",
+        "reason": "高负载指示系统可能存在问题"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "runnable",
+        "reason": "运行中的进程数量异常低"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "ping_loss_pct",
+        "reason": "网络丢包率异常低可能是正常现象"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "log",
+        "reason": "检查系统日志寻找更多线索"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

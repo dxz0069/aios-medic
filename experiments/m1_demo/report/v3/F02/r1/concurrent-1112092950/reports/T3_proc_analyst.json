@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "python3 /opt/medic/service/supupervisor.py",
+    "confidence": 0.8,
+    "anomalies": [
+      "存在多个处于Z状态的defunct进程"
+    ],
+    "evidence": [
+      "root        64 42.3  0.0      0     0 ?        Z    00:30   0:24 (python3] <defunct>\nroot        65 42.0  0.0      0     0 ?        Z    00:30   0:23 (python3] <defunct>\nroot        66 42.0  0.0      0     0 ?        Z    00:30   0:23 (python3] <defunct>"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

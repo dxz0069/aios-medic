@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "主进程崩溃且伴有高系统负载，重启服务是有效修复方式"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

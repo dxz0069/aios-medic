@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "异常告警中大部分来源指向 service/crash 类别，并特别是 toy-critical-service 进程频繁出现 code=-15 的错误并重启。",
+    "evidence": [
+      "2026-11-12T00:53:14+00:20 medic-sandbox toy-critical-service[12218]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T00:53:25+00:20 medic-sandbox toy-critical-service[12400]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T00:53:36+00:20 medic-sandbox toy-critical-service[12430]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T1:13:19+00:20 medic-sandbox toy-critical-service[12773]: main process exited, code=-15; status=failed/running-restart",
+      "2026-11-12T1:13:20+00:20 medic-sandbox toy-critical-service[12773]: main process exited, code=-9; status=failed/running-restart"
+    ],
+    "repair_hint": "重启 toy-critical-service 进程"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位从true变false",
+      "values(load1)从32.1增加到38.14，但仍在较高水平，disk_pct未变，内存和网络状况保持稳定"
+    ],
+    "comment": "CPU负载下降且告警解除"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

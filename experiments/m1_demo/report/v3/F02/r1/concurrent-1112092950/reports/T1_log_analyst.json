@@ -1,0 +1,20 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "main process exited with code -9 and status failed/running-restart"
+    ],
+    "evidence": [
+      "2026-11-12T00:30:27+00:00: leaky.py pid=50 VmRSS=271040kB",
+      "2022-11-12T00:30:28+00:00: leaky.py pid=50 VmRSS=532608kB",
+      "2022-11-12t00:30:29+00::00 leaky.py pid=50 VmRSS=794752kB",
+      "medic-sandbox toy-critical-service[7]: main process exited, code=-9; status=failed/running-restart"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

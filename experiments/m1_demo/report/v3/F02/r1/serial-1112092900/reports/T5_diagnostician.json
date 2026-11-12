@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "多个诊断表明存在服务crash问题，具体表现为‘toy-critical-service’服务的主要进程失败，且有多个长时间占较高CPU资源的defunct进程。尽管存在高CPU负载，但核心问题指向服务crash而非CPU压力。",
+    "evidence": [
+      "main process exited with code -9 and status failed/running-restart",
+      "存在多个长时间占较高的CPU资源的defunct进程",
+      "高CPU负载，当前负载平均值超过预期"
+    ],
+    "repair_hint": "重启服务并检查配置和依赖项以确保稳定运行"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

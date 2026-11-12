@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/memory|resource/disk|resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载（当前1分钟平均负载为4.86，高于逻辑CPU数量16的两倍；磁盘空间使用率极高，根分区超过75%，存在存储压力。"
+    ],
+    "evidence": [
+      "4.21 4.86 101.58 2/421 13716",
+      "used_pct=76%",
+      "Use% 76%"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

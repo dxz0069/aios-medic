@@ -48,7 +48,7 @@ run_fault() {  # $1=故障id $2=注入后等待秒
       ensure_stack
       D=$WS/v2/$F/r$ROUND; mkdir -p $D
       echo "---- v2 $F r$ROUND $MODE $(date +%T) ----"
-      if ! MEDIC_TIMEOUT=$((WAIT+90)) $X -c "cd $R && mkdir -p /var/scratch && python3 testbed/injector/inject.py $F --action inject && sleep $WAIT && python3 testbed/collect/collect.py --out $D/fault_$MODE.json >/dev/null"; then
+      if ! MEDIC_TIMEOUT=$((WAIT+90)) $X -c "cd $R && mkdir -p /var/scratch && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py $F --action inject && sleep $WAIT && python3 testbed/collect/collect.py --out $D/fault_$MODE.json >/dev/null"; then
         echo "[skip] $F r$ROUND $MODE 注入/采集失败"
         echo "{\"fault\":\"$F\",\"round\":$ROUND,\"mode\":\"$MODE\",\"stage\":\"inject\",\"error\":\"failed\"}" > $D/inject_failed_$MODE.json
         MEDIC_TIMEOUT=60 $X -c "cd $R && python3 testbed/injector/inject.py $F --action clear >/dev/null 2>&1" || true

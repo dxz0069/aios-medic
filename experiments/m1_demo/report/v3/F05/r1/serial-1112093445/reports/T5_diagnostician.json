@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service和python3进程长时间处于僵死状态，并且系统负载远超CPU核心数，表明服务崩溃导致系统资源过度占用。",
+    "evidence": [
+      "main process exited with code -9 and status failed/running-restart",
+      "进程长时间处于Z状态（僵死状态）",
+      "12.31 4.33 1.58, ncpu=16"
+    ],
+    "repair_hint": "重启toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

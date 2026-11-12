@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "lekevy.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用量持续增长且超过正常范围，并同时有高CPU负载情况，指向内存泄漏。",
+    "evidence": [
+      "内存使用量从2816KB增长至13378718KB",
+      "多个进程持续运行大量CPU资源消耗高的无限循环程序"
+    ],
+    "repair_hint": "重启受影响进程或检查代码以修复内存泄漏"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,21 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == \"__main__\": n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: p.start() for p in procs: p.join()",
+    "confidence": 1.0,
+    "anomalies": [
+      "多个进程持续运行大量 CPU 资源消耗高的无限循环程序"
+    ],
+    "evidence": [
+      "/root       11866 53.1  1.0  18144  8912 ?        R    08:42   1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True ...",
+      "/root       11868 48.8  1.0  18144  8912 ?        R    08:42   1:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True ...",
+      "/root       11871 54.5  1.0  18144  8912 ?        R    08:42   1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True ...",
+      "/root       11872 54.4  1.0  18144  8912 ?        R    08:42   1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True ...",
+      "/root       11855 53.4  1.0  18144  8912 ?        R    08:421 1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

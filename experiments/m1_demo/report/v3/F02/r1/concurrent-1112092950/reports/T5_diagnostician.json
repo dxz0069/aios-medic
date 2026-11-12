@@ -1,0 +1,16 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "/tmp",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率过高，特别是/tmp文件系统，并并且没有指向网络损失或服务崩溃的直接证据。",
+    "evidence": [
+      "Size  Used Avail Use% Mounted on\noverlay        1007G   83G  874G   9% /\ntmpfs           314M  314M     - 100% /var/scratch"
+    ],
+    "repair_hint": "清理/tmp目录以释放磁盘空间"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

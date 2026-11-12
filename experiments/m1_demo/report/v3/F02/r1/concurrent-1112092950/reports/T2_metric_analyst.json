@@ -1,0 +1,6 @@
+{
+  "agent_name": "metric_analyst",
+  "result": "{\n  \"category\": \"resource/memory|resource/disk|resource/cpu\",\n  \"component\": \"\",\n  \"confidence\": 0.95,\n  \"anomalies\": [\"高CPU负载14.55，远超CPU核心数16；内存使用率为7.1%，但存在大量未被充分利用的内存；磁盘使用率过高，特别是/tmp文件系统\"],\n  \"evidence\": [\"14.55 4.48 1.6 1/465 203\", \"MemAvailable=22856192kB used_pct=7.1%\", \"Size  Used Avail Use% Mounted on\\noverlay        1007G   83G  874G   9%\\n\ttmpfs           314M  314M     - 100% /var/scratch\"],\n  \"need_more\": \"/proc/vmstat, logs for service crashes, network metrics\"\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

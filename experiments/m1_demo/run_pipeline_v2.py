@@ -62,12 +62,13 @@ def run_repair_exec(action: str, target: str) -> dict:
 
 def phase_a(collection: dict, sched: Scheduler, timeline: list) -> dict:
     alert = collection.get("alert", {})
+    now_ts = alert.get("ts", "")
     tasks = [Task("T0", "commander", lambda _u: json.dumps(alert, ensure_ascii=False))]
     for i, (agent, src) in enumerate(ANALYST_SOURCE.items(), start=1):
         snippet = collection["sources"][src]
         tasks.append(Task(f"T{i}", agent,
-                          lambda _u, s=src, sn=snippet: json.dumps(
-                              {"source": s, "snippet": sn}, ensure_ascii=False),
+                          lambda _u, s=src, sn=snippet, ts=now_ts: json.dumps(
+                              {"source": s, "snippet": sn, "now_ts": ts}, ensure_ascii=False),
                           deps=("T0",)))
 
     def diag_input(up):

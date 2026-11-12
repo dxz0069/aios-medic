@@ -1,0 +1,67 @@
+{
+  "mode": "concurrent",
+  "wall_s": 24.1,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1和A3均指向服务crash，且A1提供了具体进程退出代码，A3提供了进程长时间处于Z状态的信息，两者互为补充，提高了整体置信度。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[7]: main process exited, code=-9; status=failed/running-restart",
+      "root 1  t.0 t. . 14916 256 ? Ss t31 t. . python3 /opt/medic/service/sؒuervisor.py"
+    ],
+    "repair_hint": "kill and restart the toy-critical-service"
+  },
+  "gold": {
+    "category": "network/loss",
+    "component": "eth0",
+    "evidence_keywords": [
+      "netem",
+      "packet loss",
+      "30% packet loss",
+      "timeout",
+      "rtt"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.83,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 7.42,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 7.43,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 7.43,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 7.43,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 8.59,
+      "ok": true
+    }
+  ],
+  "messages": 12
+}

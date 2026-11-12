@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1和A3均指向服务crash，且A1提供了具体进程退出代码，A3提供了进程长时间处于Z状态的信息，两者互为补充，提高了整体置信度。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[7]: main process exited, code=-9; status=failed/running-restart",
+      "root 1  t.0 t. . 14916 256 ? Ss t31 t. . python3 /opt/medic/service/sؒuervisor.py"
+    ],
+    "repair_hint": "kill and restart the toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

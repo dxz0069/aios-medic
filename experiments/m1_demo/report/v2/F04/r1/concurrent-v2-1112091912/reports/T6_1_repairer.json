@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "频繁重启表明服务本身存在问题，重启是解决此类问题的有效方式"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

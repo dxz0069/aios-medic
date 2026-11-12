@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu:memory-disk-network-service 告警位均为 false",
+      "values 中 load1 和 ncpu 有轻微变化，但都在正常范围内",
+      "service_ok 保持为 true"
+    ],
+    "comment": "系统 has recovered successfully"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

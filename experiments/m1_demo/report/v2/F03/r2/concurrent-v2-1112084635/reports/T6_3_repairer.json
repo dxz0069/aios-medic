@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "主进程崩溃且伴随高系统负载，需重启服务恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

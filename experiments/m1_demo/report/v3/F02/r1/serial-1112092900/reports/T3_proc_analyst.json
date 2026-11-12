@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "python3 /opt/medic/service/s¯upervisor.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "异常现象描述：存在多个长时间占较高的CPU资源的defunct进程，且有一个服务进程长时间运行但CPU占用率异常高"
+    ],
+    "evidence": [
+      "root         1  0.0  0.0  14916   256 ?        Ss   00:30   0:t04 (python3) [opt/medic/service/s’up̂͟uervisor.py)",
+      "root        64 42.3  0.0      0     0 ?        Z    00:30   0:24 (python3) <defunct>",
+      "root        65 42.0  0.0      0     0 ?        Z    00:30   0:23 (python3) <defunct>",
+      "root        66 42.0  0.0      0     0 ?        Z    00:30   0:23 (python3) <defunct"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

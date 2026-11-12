@@ -1,0 +1,18 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "eth0",
+    "confidence": 0.9,
+    "anomalies": [
+      "存在30%的丢包率",
+      "延迟为100ms"
+    ],
+    "evidence": [
+      "64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=102 ms\n64 bytes from 172.17.0.1: icmp_seq=2 ttl=64 time=113 ms\n64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=113 ms\nqdisc netem 8201: dev eth0 root refcnt 17 limit 1000 delay 100ms loss 30%"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

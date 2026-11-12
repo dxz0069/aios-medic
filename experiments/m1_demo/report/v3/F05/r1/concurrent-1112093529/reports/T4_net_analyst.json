@@ -1,0 +1,17 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "eth0",
+    "confidence": 0.95,
+    "anomalies": [
+      "30%的数据包丢失"
+    ],
+    "evidence": [
+      "64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=113 ms\n--- 172.17.0.1 ping statistics ---\n3 packets transmitted, 3 received,  30% packet loss"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

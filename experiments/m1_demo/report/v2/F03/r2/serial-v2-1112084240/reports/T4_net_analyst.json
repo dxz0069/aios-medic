@@ -1,0 +1,6 @@
+{
+  "agent_name": "net_analyst",
+  "result": "{\"category\": \"network/loss\", \"component\": \"\", \"confidence\": 0.9, \"anomalies\": [\"无法获取 ping、tc qdisc 和 ss -s 的信息，导致无法评估网络状况\"], \"evidence\": [\"== ping  ==\"，\"[no-default-route]\"，\"== tc qdisc ==\"，\"/bin/sh line 1: tc command not found\"，\"== ss -s ==\"，\"/bin/sh line 1 ss command not found\"], \"need_more\": \"log/metric/proc/net\"}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}
