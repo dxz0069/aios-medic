@@ -53,6 +53,7 @@ class Scheduler:
         results: dict = {}
         lock = threading.Lock()
         t0 = time.time()
+        base = len(self.timeline)  # 调度器实例跨阶段复用：每次 run 只取本次新增的时间线
         if self.mode == "serial":
             for task in self._topo(tasks):
                 self._exec(task, agent_factory, results, lock)
@@ -84,7 +85,7 @@ class Scheduler:
                     while state["done"] < state["total"]:
                         cv.wait(timeout=30)
         wall = round(time.time() - t0, 2)
-        return {"results": results, "timeline": sorted(self.timeline, key=lambda x: x["start"]),
+        return {"results": results, "timeline": sorted(self.timeline[base:], key=lambda x: x["start"]),
                 "wall_s": wall, "mode": self.mode}
 
     @staticmethod

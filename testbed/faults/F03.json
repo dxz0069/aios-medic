@@ -8,7 +8,8 @@
   "clear": "python3 /opt/medic/injector/inject.py F03 --action clear",
   "gold": {
     "category": "resource/cpu",
-    "component": "busy-loop process group",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
     "evidence_keywords": ["loadavg", "load average", "%cpu", "runnable", "100.0"]
   },
   "recovery": {"probe": "cpu", "expect": "normal"}
