@@ -3,13 +3,15 @@
 # 前置：等待第一阶段 nightrun.sh 完成（NIGHTRUN_DONE），随后自动执行。
 # 产物：/public/home/acotxxttog/m1ws/v2/<Fxx>/r<N>/{serial,concurrent}-v2-*/...
 #       + night2_summary.{json,md} + NIGHTRUN2_DONE
-NIGHTRUN2_VERSION=v1
+NIGHTRUN2_VERSION=v2
+# 可用环境变量定制: NIGHTRUN2_TAG=输出目录标签(默认v2)  BATCH_WINDOW_MS=推理批窗口ms(默认500)
+TAG=${NIGHTRUN2_TAG:-v2}
 set -uo pipefail
 R=/public/home/acotxxttog/aios-medic
 V=/root/proj4-devforge/.venv
 WS=/public/home/acotxxttog/m1ws
 X=/public/home/acotxxttog/medic/x
-mkdir -p $WS/v2
+mkdir -p $WS/$TAG
 echo "===== nightrun2 $NIGHTRUN2_VERSION start $(date) ====="
 
 echo "[wait] 等待第一阶段 NIGHTRUN_DONE ..."
@@ -46,7 +48,7 @@ run_fault() {  # $1=故障id $2=注入后等待秒
   for ROUND in 1 2 3; do
     for MODE in serial concurrent; do
       ensure_stack
-      D=$WS/v2/$F/r$ROUND; mkdir -p $D
+      D=$WS/$TAG/r$ROUND; mkdir -p $D
       echo "---- v2 $F r$ROUND $MODE $(date +%T) ----"
       if ! MEDIC_TIMEOUT=$((WAIT+90)) $X -c "cd $R && mkdir -p /var/scratch && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py $F --action inject && sleep $WAIT && python3 testbed/collect/collect.py --out $D/fault_$MODE.json >/dev/null"; then
         echo "[skip] $F r$ROUND $MODE 注入/采集失败"

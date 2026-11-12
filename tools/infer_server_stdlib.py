@@ -132,7 +132,7 @@ class Handler(BaseHTTPRequestHandler):
             req = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
             content, elapsed, ntok = ENGINE.chat(
                 req.get("messages", []), req.get("temperature", 0.1),
-                req.get("max_tokens", 512))
+                req.get("max_tokens", 800))
             self._json(200, {
                 "id": f"chatcmpl-{uuid.uuid4().hex[:12]}", "object": "chat.completion",
                 "created": int(time.time()), "model": req.get("model", ENGINE_ID),

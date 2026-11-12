@@ -23,7 +23,8 @@ SYSTEM_PROMPT = (
     ' "confidence": 0.0到1.0的数字,\n'
     ' "anomalies": ["异常现象描述"],\n'
     ' "evidence": ["引用原文的关键行"],\n'
-    ' "need_more": "证据不足时指出需补充采集的源(log/metric/proc/net)，否则为空字符串"}'
+    ' "need_more": "证据不足时指出需补充采集的源(log/metric/proc/net)，否则为空字符串"}\n'
+    "输出必须精简：anomalies 与 evidence 各最多 3 条，evidence 直接引用原文行不要解释，整体不超过 250 字。"
 )
 
 MAX_RETRY = 3
