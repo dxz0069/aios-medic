@@ -17,7 +17,7 @@ import os, time
 buf = []
 with open("/var/log/medic/leaky.log", "a") as f:
     while True:
-        buf.append(bytearray(256 * 1024 * 1024))  # 每秒 +256MB
+        buf.append(bytearray(128 * 1024 * 1024))  # 每秒 +128MB（低速率：减少诊断期间对系统的连带压力）
         rss = int(next(l for l in open("/proc/self/status") if l.startswith("VmRSS")).split()[1])
         f.write(f"{time.strftime('%Y-%m-%dT%H:%M:%S+00:00', time.gmtime())} leaky.py pid={os.getpid()} VmRSS={rss}kB\n")
         f.flush()
@@ -41,7 +41,7 @@ def run(action: str) -> int:
         LOG.parent.mkdir(parents=True, exist_ok=True)
         new_pid = _util.spawn_detached([sys.executable, "-c", _LEAKY])
         _util.write_pid(NAME, new_pid)
-        print(f"{NAME}: injected pid={new_pid} (+256MB/s)")
+        print(f"{NAME}: injected pid={new_pid} (+128MB/s)")
         return 0
     print(f"unknown action: {action}")
     return 2
