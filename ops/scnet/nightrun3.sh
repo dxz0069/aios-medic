@@ -1,5 +1,5 @@
 #!/bin/bash
-# Medic 第三阶段v2：重跑外部证据诊断（配合时间窗提示词修复：F02/F05 证据包已用清洁日志重采）
+# Medic 第三阶段：外部证据(F02/F05)诊断。N3_WAIT_MARKER 可指定等待的完成标记(默认 NIGHTRUN2_DONE)。
 # F02/F05 在服务器容器不可注入（无Docker/tc），采用"本地注入采集 + 服务器诊断"模式；
 # 修复-验证阶段对这两种故障标记 N/A（闭环覆盖由 F01/F03/F04 现场验证）。
 # 前置：等待 NIGHTRUN2_DONE。产物：~/m1ws/v3/<Fxx>/r<N>/{serial,concurrent}-*/summary.json
@@ -14,10 +14,10 @@ echo "===== nightrun3 $NIGHTRUN3_VERSION start $(date) ====="
 
 echo "[wait] 等待 NIGHTRUN2_DONE ..."
 for i in $(seq 1 180); do
-  [ -f $WS/NIGHTRUN2_DONE ] && { echo "[wait] 第二阶段完成"; break; }
+  [ -f $WS/${N3_WAIT_MARKER:-NIGHTRUN2_DONE} ] && { echo "[wait] 第二阶段完成"; break; }
   sleep 60
 done
-[ -f $WS/NIGHTRUN2_DONE ] || echo "[wait] 超时（180分钟），直接开始"
+[ -f $WS/${N3_WAIT_MARKER:-NIGHTRUN2_DONE} ] || echo "[wait] 超时（180分钟），直接开始"
 
 ensure_stack() {
   if ! MEDIC_TIMEOUT=15 $X -c "curl -s --max-time 3 http://127.0.0.1:8091/health | grep -q ok" 2>/dev/null; then
