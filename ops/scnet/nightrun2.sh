@@ -72,7 +72,7 @@ run_fault F04 15
 run_fault F05 8
 
 echo "===== aggregate2 $(date +%T) ====="
-MEDIC_TIMEOUT=120 $X -c "python3 /public/home/acotxxttog/medic/aggregate_m1.py --ws $WS/v2" || echo "[warn] 汇总失败"
+MEDIC_TIMEOUT=120 $X -c "python3 /public/home/acotxxttog/medic/aggregate_m1.py --ws $WS/$TAG" || echo "[warn] 汇总失败"
 MEDIC_TIMEOUT=60 $X -c "cd $R && for f in F01 F03 F04 F05; do python3 testbed/injector/inject.py \$f --action clear >/dev/null 2>&1; done; echo cleaned"
 echo "===== nightrun2 DONE $(date) ====="
-touch $WS/NIGHTRUN2_DONE
+touch $WS/NIGHTRUN2_DONE $WS/DONE_$TAG
