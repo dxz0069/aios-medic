@@ -1,0 +1,98 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 72.09,
+  "verdict": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.98,
+    "reasoning": "根文件系统使用率已达到85%，远超过正常范围，尽管有高内存和CPU占用，但主要受限于磁盘空间。虽然存在服务异常和网络命令丢失的情况，但证据不足以否定磁盘问题作为主导因素。",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  352G   65G  85% /",
+      "toy-critical-service 主进程退出，状态为失败/重启中",
+      "tc qdisc 命令未找到",
+      "ss -s 命令未找到"
+    ],
+    "repair_hint": "清理磁盘空间或增加存储资源"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.73,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 5.62,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 5.34,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 12.81,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.53,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 9.4,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.98,
+      "ok": true
+    },
+    {
+      "id": "T8d",
+      "agent": "reporter",
+      "dur_s": 18.82,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.37,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

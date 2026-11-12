@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "高CPU占用率及接近饱和的磁盘使用率表明可能有未响应的服务或进程，重启关键服务可以尝试恢复系统稳定性"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

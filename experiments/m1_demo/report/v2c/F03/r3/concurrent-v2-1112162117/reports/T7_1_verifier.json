@@ -1,0 +1,20 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位从true变false",
+      "values中的load1从35.39降回正常水位3",
+      "runnable从34降回2",
+      "ncpu无变化，保持为16",
+      "mem_avail_pct和disk_pct保持不变，且在正常范围内",
+      "ping_loss_pct保持不变，且在正常范围内",
+      "service_ok状态为true"
+    ],
+    "comment": "所有关键指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

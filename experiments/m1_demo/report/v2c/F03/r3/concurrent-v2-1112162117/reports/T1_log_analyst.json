@@ -1,0 +1,21 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "短时间内频繁出现网络接口状态变化",
+      "多个docker网络端口进入blocking和disabled状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker* entered blocking state",
+      "[422601.538285] docker* entered disabled state",
+      "[424998.115953] docker* entered blocking state",
+      "[424998.115953] docker* entered disabled state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

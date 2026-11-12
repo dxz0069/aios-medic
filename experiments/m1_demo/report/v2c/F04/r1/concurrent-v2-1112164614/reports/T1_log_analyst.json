@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service 主进程退出，状态为失败/运行中重启"
+    ],
+    "evidence": [
+      "2026-11-12T08:45:58+00:59 medic-sandbox toy-critical-service[23975]:service started"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

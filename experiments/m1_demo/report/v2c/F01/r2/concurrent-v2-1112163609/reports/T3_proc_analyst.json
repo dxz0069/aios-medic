@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open",
+    "confidence": 0.95,
+    "anomalies": [
+      "持续增加的RSS内存占用"
+    ],
+    "evidence": [
+      "vsz=15613628, rss=15617284"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

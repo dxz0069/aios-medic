@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeaky.py",
+    "confidence": 0.98,
+    "reasoning": "多个诊断指向内存问题，尤其是两个明确提到内存使用上升的情况，且没有直接证据指向其他类别。",
+    "evidence": [
+      "内存使用持续上升",
+      "持续增加的RSS内存占用"
+    ],
+    "repair_hint": "检查并优化leeaky.py，考虑使用内存监控工具和限制其内存使用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

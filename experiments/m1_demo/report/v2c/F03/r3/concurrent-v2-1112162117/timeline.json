@@ -1,0 +1,87 @@
+[
+  {
+    "task_id": "T0",
+    "agent": "commander",
+    "start": 1794471678.06,
+    "dur_s": 28.16,
+    "ok": true,
+    "deps": []
+  },
+  {
+    "task_id": "T1",
+    "agent": "log_analyst",
+    "start": 1794471706.24,
+    "dur_s": 15.64,
+    "ok": true,
+    "deps": [
+      "T0"
+    ]
+  },
+  {
+    "task_id": "T2",
+    "agent": "metric_analyst",
+    "start": 1794471706.25,
+    "dur_s": 15.64,
+    "ok": true,
+    "deps": [
+      "T0"
+    ]
+  },
+  {
+    "task_id": "T3",
+    "agent": "proc_analyst",
+    "start": 1794471706.25,
+    "dur_s": 53.49,
+    "ok": false,
+    "deps": [
+      "T0"
+    ]
+  },
+  {
+    "task_id": "T4",
+    "agent": "net_analyst",
+    "start": 1794471706.26,
+    "dur_s": 15.63,
+    "ok": true,
+    "deps": [
+      "T0"
+    ]
+  },
+  {
+    "task_id": "T5",
+    "agent": "diagnostician",
+    "start": 1794471759.75,
+    "dur_s": 16.78,
+    "ok": true,
+    "deps": [
+      "T1",
+      "T2",
+      "T3",
+      "T4"
+    ]
+  },
+  {
+    "task_id": "T8d",
+    "agent": "reporter",
+    "start": 1794471776.58,
+    "dur_s": 31.66,
+    "ok": true,
+    "deps": []
+  },
+  {
+    "task_id": "T6_1",
+    "agent": "repairer",
+    "start": 1794471776.58,
+    "dur_s": 31.66,
+    "ok": true,
+    "deps": []
+  },
+  {
+    "task_id": "T7_1",
+    "agent": "verifier",
+    "start": 1794471808.5,
+    "dur_s": 5.56,
+    "ok": true,
+    "deps": []
+  }
+]

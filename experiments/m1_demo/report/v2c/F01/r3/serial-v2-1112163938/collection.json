@@ -1,0 +1,28 @@
+{
+  "ts": "2026-11-12T08:39:37Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-12T08:39:37Z",
+    "host": "worker-0",
+    "cpu": false,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": false,
+    "values": {
+      "load1": 3.58,
+      "runnable": 3,
+      "ncpu": 16,
+      "mem_avail_pct": 92.3,
+      "disk_pct": 85,
+      "ping_loss_pct": 0.0,
+      "service_ok": true
+    }
+  },
+  "sources": {
+    "log": "== leaky.log (tail) ==\n1-12T08:39:24+00:00 leaky.py pid=23494 VmRSS=14034168kB\n2026-11-12T08:39:25+00:00 leaky.py pid=23494 VmRSS=14165316kB\n2026-11-12T08:39:26+00:00 leaky.py pid=23494 VmRSS=14296464kB\n2026-11-12T08:39:27+00:00 leaky.py pid=23494 VmRSS=14427348kB\n2026-11-12T08:39:28+00:00 leaky.py pid=23494 VmRSS=14558496kB\n2026-11-12T08:39:30+00:00 leaky.py pid=23494 VmRSS=14689644kB\n2026-11-12T08:39:31+00:00 leaky.py pid=23494 VmRSS=14820792kB\n2026-11-12T08:39:32+00:00 leaky.py pid=23494 VmRSS=14951676kB\n2026-11-12T08:39:33+00:00 leaky.py pid=23494 VmRSS=15082824kB\n2026-11-12T08:39:34+00:00 leaky.py pid=23494 VmRSS=15213972kB\n2026-11-12T08:39:35+00:00 leaky.py pid=23494 VmRSS=15345120kB\n2026-11-12T08:39:36+00:00 leaky.py pid=23494 VmRSS=15476004kB\n2026-11-12T08:39:37+00:00 leaky.py pid=23494 VmRSS=15607152kB\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n3.58 4.68 11.12 3/4112 23496\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=975309280kB used_pct=7.7%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  350G   65G  85% /\noverlay         437G  350G   65G  85% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       23494  1.6  1.4 15613628 15607152 ?   Ss   16:37   0:02 /usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f:     while True:         buf.append(bytearray(128 * 1024 * 1024))  # 每秒 +128MB（低速率：减少诊断期间对系统的连带压力）         rss = int(next(l for l in open(\"/proc/self/status\") if l.startswith(\"VmRSS\")).split()[1])         f.write(f\"{time.strftime('%Y-%m-%dT%H:%M:%S+00:00', time.gmtime())} leaky.py pid={os.getpid()} VmRSS={rss}kB\\n\")         f.flush()         time.sleep(1) \nroot       16150 12.9  0.5 37276436 6067980 ?    Ssl  11:41  38:32 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot        4994  0.1  0.0 14776564 960316 ?     Ssl  Nov11   1:33 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       22990  0.0  0.0  28040 19124 ?        S    16:30   0:00 /usr/local/bin/python3 /opt/medic/service/service.py\nroot       23496  4.0  0.0  19664 13232 ?        S    16:39   0:00 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2c/F01/r3/fault_serial.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   08:28   0:00 python3 /opt/medic/service/supervisor.py\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       23484  0.0  0.0   7368  3612 ?        Ss   16:37   0:00 bash -c cd /public/home/acotxxttog/aios-medic && mkdir -p /var/scratch && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py F01 --action inject && sleep 120 && python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2c/F01/r3/fault_serial.json >/dev/null\nroot       23506  0.0  0.0   7368  3524 ?        S    16:39   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       23507  0.0  0.0  10116  1584 ?        R    16:39   0:00 ps aux --sort=-rss\nroot       23508  0.0  0.0   5784  1028 ?        S    16:39   0:00 head -12\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n"
+  }
+}

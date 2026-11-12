@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "目标进程频繁退出且存在服务代码相关线索"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

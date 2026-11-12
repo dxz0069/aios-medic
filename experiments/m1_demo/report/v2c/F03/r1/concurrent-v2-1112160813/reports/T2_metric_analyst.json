@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk|resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "负载过高, 超过CPU核心数多倍",
+      "磁盘使用率高, 接近饱和"
+    ],
+    "evidence": [
+      "31.33 16.62 8.65",
+      "85% /"
+    ],
+    "need_more": "/proc/vmstat"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

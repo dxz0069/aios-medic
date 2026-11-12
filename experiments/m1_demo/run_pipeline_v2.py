@@ -104,28 +104,18 @@ def main() -> int:
     for tid, res in results_a.items():
         ws.write_json(f"reports/{tid}_{res.get('agent_name', 'unknown')}.json", res)
 
-    # 阶段B：修复-验证回环（第1轮同时让 Reporter 并行起草——并发模式下缩短关键路径，
-    # 与设计方案§4"Reporter ∥ 验证链"一致；串行模式下天然顺序执行，协议同构）
+    # 阶段B：修复-验证回环
+    # 注：v2c 曾试验"Reporter 草稿与首轮修复并行"，实测报告生成长于修复验证链，
+    # 反而拉长并发关键路径（整体提速 -1.9%），已回滚——负结果记录于 docs/设计实现文档。
     repair_actions, verify_results = [], []
     recovered, last_verify = False, None
-    draft_md = None
     for k in range(1, MAX_REPAIR_ROUNDS + 1):
         r_input = json.dumps({"root_cause": root_cause, "alert": collection.get("alert", {}),
                               "last_verify": last_verify, "round": k}, ensure_ascii=False)
-        iter_tasks = [Task(f"T6_{k}", "repairer", lambda _u, ri=r_input: ri)]
-        if k == 1:  # 报告草稿与首轮修复并行
-            d_input = json.dumps({"root_cause": root_cause, "recovered": None,
-                                  "note": "修复与验证正在进行，先输出报告主体：结论/证据链/初步建议",
-                                  "mode": args.mode, "host": collection.get("host")},
-                                 ensure_ascii=False)
-            iter_tasks.append(Task("T8d", "reporter", lambda _u, di=d_input: di))
-        out_r = sched.run(iter_tasks, load_agent)
+        out_r = sched.run([Task(f"T6_{k}", "repairer", lambda _u, ri=r_input: ri)], load_agent)
         timeline.extend(out_r["timeline"])
         decision = out_r["results"][f"T6_{k}"].get("result", {})
         ws.write_json(f"reports/T6_{k}_repairer.json", out_r["results"][f"T6_{k}"])
-        if "T8d" in out_r["results"]:
-            draft_md = out_r["results"]["T8d"].get("result", "")
-            ws.write_json("reports/T8d_reporter_draft.json", out_r["results"]["T8d"])
 
         exec_res = run_repair_exec(decision.get("action", "none"),
                                    decision.get("target", ""))
@@ -146,7 +136,7 @@ def main() -> int:
         if recovered:
             break
 
-    # 阶段C：报告（草稿存在则确定性补录修复验证小节，免二次LLM；否则全量生成）
+    # 阶段C：报告
     condensed = {
         "root_cause": root_cause, "recovered": recovered,
         "repair_actions": [{"action": a["decision"].get("action"),
@@ -157,21 +147,10 @@ def main() -> int:
         "mode": args.mode, "host": collection.get("host"),
         "task_durations": {t["task_id"]: t["dur_s"] for t in timeline},
     }
-    if draft_md:
-        lines = [f"{draft_md.rstrip()}", "", "## 修复与验证（验证后补录）"]
-        for i, a in enumerate(condensed["repair_actions"], 1):
-            lines.append(f"- 第{i}轮: {a['action']} target={a['target']}"
-                         f" rc={a['exec_rc']}" + ("（白名单拒绝）" if a["refused"] else ""))
-        for i, v in enumerate(condensed["verify_results"], 1):
-            lines.append(f"- 验证{i}: recovered={v.get('recovered')} {v.get('comment', '')}")
-        lines.append(f"- 最终恢复: {'是' if recovered else '否'}")
-        final_md = "\n".join(lines) + "\n"
-    else:
-        out_p = sched.run([Task("T8", "reporter",
-                                lambda _u: json.dumps(condensed, ensure_ascii=False))], load_agent)
-        timeline.extend(out_p["timeline"])
-        final_md = out_p["results"]["T8"].get("result", "")
-    ws.write_text("report.md", final_md)
+    out_p = sched.run([Task("T8", "reporter",
+                            lambda _u: json.dumps(condensed, ensure_ascii=False))], load_agent)
+    timeline.extend(out_p["timeline"])
+    ws.write_text("report.md", out_p["results"]["T8"].get("result", ""))
 
     wall = round(time.time() - t_start, 2)
     gold = None

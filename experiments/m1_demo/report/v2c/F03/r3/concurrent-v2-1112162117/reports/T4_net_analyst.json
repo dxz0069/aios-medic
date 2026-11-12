@@ -1,0 +1,19 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "tc 和 ss 命令不可用",
+      "无法获取网络统计信息"
+    ],
+    "evidence": [
+      "== tc qdisc ==\n/bin/sh: line 1: tc: command not found",
+      "== ss -s ==\n/bin/sh: line 1: ss: command not found"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

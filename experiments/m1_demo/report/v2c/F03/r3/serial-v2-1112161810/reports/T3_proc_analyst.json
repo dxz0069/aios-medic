@@ -1,0 +1,22 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "anomalies": [
+      "内存占用异常大",
+      "CPU 占用异常高"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True; pass",
+      "48.9 %CPU, 8872 RSS",
+      "47.7 %CPU, 8872 RSS",
+      "50.1 %CPU, 8872 RSS",
+      "48.2 %CPU, 8872 RSS"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

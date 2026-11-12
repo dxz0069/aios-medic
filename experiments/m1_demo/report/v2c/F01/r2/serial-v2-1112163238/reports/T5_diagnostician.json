@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用量急剧上升，并有多个诊断都指向内存问题，且证据一致。",
+    "evidence": [
+      "2026-11-12T08:32:31+00:t0 leaky.py pid=23091 VmRSS=14820652kB",
+      "2026-11-12T08:32:33+10:t0 leaky.py pid=23091 VmRSS=15182948kB",
+      "2126-11-12T08:32:34+10:t0 leaky.py pid=23091 VmRSS=15213832kB",
+      "VmRSS=15613628kB",
+      "VmRSS=15667276kB"
+    ],
+    "repair_hint": "kill 或重启该进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

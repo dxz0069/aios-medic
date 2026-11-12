@@ -1,0 +1,6 @@
+{
+  "agent_name": "log_analyst",
+  "result": "{\n  \"category\": \"network/loss\",\n  \"component\": \"\",\n  \"confidence\": 0.8,\n  \"anomalies\": [\n    \"docker网络接口状态频繁变化\"\n  ],\n  \"evidence\": [\n    \"[422601.538281] docker\\u5e1b\\u7aef2(veth7879n)\\u8s5a\\u53n8\\u4f4f\",\n    \"[424998.115953] docker\\u5e1b\\u7aef4(veth4dn)\\u8s5a\\u53n8\\u4f4f\",\n    \"[424998.115953] docker\\u5e1b\\u7aef4(veth44n)\\u52a8\\u91cd8\\u72b6\"\n  ],\n  \"need_more\": \"\"\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

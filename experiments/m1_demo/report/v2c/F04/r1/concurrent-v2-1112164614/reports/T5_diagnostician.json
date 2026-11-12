@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.95,
+    "reasoning": "尽管有服务故障和资源使用异常的证据，但磁盘使用率已达到85%，是最直接影响性能的因素。",
+    "evidence": [
+      "根文件系统使用率达85%，接近饱和",
+      "toy-critical-service 主进程退出，状态为失败/运行中重启",
+      "内存占用异常大，CPU 占用异常高",
+      "ss 命令未找到，tc 命令未找到"
+    ],
+    "repair_hint": "清理根文件系统上的临时文件或扩展存储空间"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

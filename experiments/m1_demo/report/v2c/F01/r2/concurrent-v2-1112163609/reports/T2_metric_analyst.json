@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk|resource/cpu",
+    "component": "/",
+    "confidence": 0.95,
+    "anomalies": [
+      "磁盘使用率高85%",
+      "负载超出CPU核数*2"
+    ],
+    "evidence": [
+      "MemAvailable=975179132kB used_pct=7.7%",
+      "ncpu=16 3.04 5.74 13.22 2/4134"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

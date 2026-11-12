@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "confidence": 0.95,
+    "reasoning": "A2 和 A3 均指出高 CPU 占用情况，A3 还提供了具体进程的详细信息，支持 python3 -c 导入了多进程模块并创建了大量子进程。",
+    "evidence": [
+      "33.11 32.79 23.63, ncpu=16",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass ...",
+      "短时间频繁出现网络接口状态变化, 多个docker网络端口进入blocking and disabled状态"
+    ],
+    "repair_hint": "kill 或者重启python3 进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk|resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载",
+      "磁盘使用率过高"
+    ],
+    "evidence": [
+      "3.58 4.68 11.12",
+      "85%"
+    ],
+    "need_more": "/proc/stat以确认CPU状态，log查看磁盘使用详情"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

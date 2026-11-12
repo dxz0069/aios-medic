@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续大量写入日志导致内存占用异常"
+    ],
+    "evidence": [
+      "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       22888  1.6  1.4 15613628 15617148 ?   Ss   16:27   1:t1 /usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log",
+      "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       22890  4.0  0.0  19664 13288 ?        S    16:29   1:t1 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2c/F01/r1/fault_concurrent.json"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

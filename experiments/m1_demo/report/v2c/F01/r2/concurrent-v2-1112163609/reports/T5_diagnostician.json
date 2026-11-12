@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "l3278 leaky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用量急剧增加，并且多份诊断结果均指向内存问题。",
+    "evidence": [
+      "22661112T83558+101 leaky.py pid=23278 VmRSS=14296332kB",
+      "22661112T83604+101 leaky.py pid=23278 VmRSS=1582952kB",
+      "vsz=15613628, rss=15617284"
+    ],
+    "repair_hint": "重启进程kill -9 23278并重新启动"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

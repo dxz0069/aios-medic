@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "docker网络接口状态频繁变化"
+    ],
+    "evidence": [
+      "[422621.538281] docker...entered disabled state",
+      "[422621.538435] device veth7879dcb entered promiscuous mode",
+      "[422621.538437] eth0: renamed from vethbfbb11c"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

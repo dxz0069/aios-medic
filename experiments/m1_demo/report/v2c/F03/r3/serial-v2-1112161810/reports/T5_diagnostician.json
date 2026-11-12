@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "内存占用和CPU占用异常高，且明确指向了具体进程python3 -c _burn，其他诊断虽提到网络问题但证据不足且被更确凿的内存/CPU异常证伪",
+    "evidence": [
+      "内存占用异常大",
+      "CPU 占用异常高",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True; pass",
+      "48.9 %CPU, 8872 RSS",
+      "47.7 %CPU, 8872 RSS",
+      "51.1 %CPU, 8872 RSS",
+      "48.2 %CPU, 8872 RSS"
+    ],
+    "repair_hint": "kill python3 -c _burn 进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

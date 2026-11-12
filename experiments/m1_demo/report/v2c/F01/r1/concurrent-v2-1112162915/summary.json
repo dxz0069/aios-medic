@@ -1,0 +1,135 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 74.12,
+  "verdict": {
+    "category": "resource/memory",
+    "component": "le4ky.py",
+    "confidence": 1.0,
+    "reasoning": "多份日志显示VmRSS显著增加，且多个诊断结果指向内存使用异常。",
+    "evidence": [
+      "22888 VmRSS=15213968kB",
+      "22888 VmRSS=15182820kB",
+      "22888 VmRSS=14951172kB",
+      "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       22888  1.6  1.4 15613628 15217148 ?   Ss   16:27   1:t1 /usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log"
+    ],
+    "repair_hint": "重启进程或优化代码以减少内存使用"
+  },
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": [
+      "VmRSS",
+      "rss",
+      "out of memory",
+      "oom",
+      "killed process",
+      "memused"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "leaky",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "leaky",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.46,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 14.28,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 14.28,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 14.28,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 14.28,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 11.72,
+      "ok": true
+    },
+    {
+      "id": "T8d",
+      "agent": "reporter",
+      "dur_s": 14.97,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 18.45,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.94,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 2.6,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.19,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 7.55,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 3.03,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

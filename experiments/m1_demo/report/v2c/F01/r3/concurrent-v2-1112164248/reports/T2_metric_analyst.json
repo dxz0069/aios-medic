@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk|resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高系统负载超出CPU核心数",
+      "根分区磁盘使用率过高"
+    ],
+    "evidence": [
+      "3.58 4.13 9.7",
+      "/overlay 437G 351G 65G 85% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

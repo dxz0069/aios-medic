@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续高CPU占用率",
+      "多个同名进程占用大量资源"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): ... return max(1, len(os.sched_getaffinity(0))) ... return os.cpu_count() or 1 if __name__ == '__main__': ... n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] ... for p in procs ... p.start() ... for p in procs ... p.join() CPU占用率高达52.6%、48.2%、50.5%、50.0%",
+      "存在多个同名进程占用大量资源"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

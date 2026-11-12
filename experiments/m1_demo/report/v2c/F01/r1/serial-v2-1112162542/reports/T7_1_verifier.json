@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_before 和 alert_after 中所有告警位均为 false",
+      "alert_after 中 values 的 load1 从 6.85 降低到 4.04，mem_avail_pct 从 92.3 降低到 91.4，其他值未变化"
+    ],
+    "comment": "系统 has returned to normal operation"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

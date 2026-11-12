@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 进程频繁退出且有高负载，但无明显的内存或网络问题证据支持其他分类",
+    "evidence": [
+      "2026-11-12T8:44:13+0:54 medic-sandbox toy-critical-service[23716]: main process exited, code=-9; status=failed/running-restart",
+      "3.95 4.07 9.11 1/4155",
+      "ncpu=16",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查toy-critical-service的服务配置及资源限制，确保其运行环境正确，考虑增加资源配额或优化服务代码"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

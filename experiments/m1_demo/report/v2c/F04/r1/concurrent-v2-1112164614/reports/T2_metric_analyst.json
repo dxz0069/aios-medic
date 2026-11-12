@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "根文件系统使用率达85%，接近饱和"
+    ],
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  351G   65G  85% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

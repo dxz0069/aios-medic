@@ -1,0 +1,20 @@
+{"msg_id": "d7d70d7efa03", "ts": "2026-11-12T08:49:01.482Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "concurrent"}}
+{"msg_id": "6e524ee2a912", "ts": "2026-11-12T08:49:18.300Z", "from": "commander", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T0", "dur_s": 16.6, "ok": true}}
+{"msg_id": "6600fdfe5c3e", "ts": "2026-11-12T08:49:18.303Z", "from": "SCHEDULER", "to": "log_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T1", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "651c5134b6bf", "ts": "2026-11-12T08:49:18.303Z", "from": "SCHEDULER", "to": "metric_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T2", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "f11eb2b84ef6", "ts": "2026-11-12T08:49:18.303Z", "from": "SCHEDULER", "to": "proc_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T3", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "fc259b502ce8", "ts": "2026-11-12T08:49:18.303Z", "from": "SCHEDULER", "to": "net_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T4", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "a3b5e1abd8be", "ts": "2026-11-12T08:49:29.347Z", "from": "log_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T1", "dur_s": 11.04, "ok": true}}
+{"msg_id": "0302c00d96c7", "ts": "2026-11-12T08:49:29.348Z", "from": "proc_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T3", "dur_s": 11.04, "ok": true}}
+{"msg_id": "532e0850be4c", "ts": "2026-11-12T08:49:29.348Z", "from": "net_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T4", "dur_s": 11.04, "ok": true}}
+{"msg_id": "999540e938a2", "ts": "2026-11-12T08:49:29.348Z", "from": "metric_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T2", "dur_s": 11.04, "ok": true}}
+{"msg_id": "0168c939b64b", "ts": "2026-11-12T08:49:29.354Z", "from": "SCHEDULER", "to": "diagnostician", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T5", "deps": ["T1", "T2", "T3", "T4"], "mode": "concurrent"}}
+{"msg_id": "25d92918cbb7", "ts": "2026-11-12T08:49:53.496Z", "from": "diagnostician", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T5", "dur_s": 24.14, "ok": true}}
+{"msg_id": "63ab3fb280b8", "ts": "2026-11-12T08:49:53.537Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_1", "deps": [], "mode": "concurrent"}}
+{"msg_id": "f2a1b034ea3f", "ts": "2026-11-12T08:49:53.538Z", "from": "SCHEDULER", "to": "reporter", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T8d", "deps": [], "mode": "concurrent"}}
+{"msg_id": "f4dffd963b01", "ts": "2026-11-12T08:50:06.943Z", "from": "reporter", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T8d", "dur_s": 13.4, "ok": true}}
+{"msg_id": "1c991a481bc7", "ts": "2026-11-12T08:50:06.944Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_1", "dur_s": 13.4, "ok": true}}
+{"msg_id": "78aadb4e056d", "ts": "2026-11-12T08:50:07.006Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 1, "payload": {"action": "clear_scratch", "target": "/var/scratch", "ts": "2026-11-12T16:50:06Z", "rc": 0, "detail": "removed 0 chunks", "refused": false}}
+{"msg_id": "f9350fa747ec", "ts": "2026-11-12T08:50:07.128Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_1", "deps": [], "mode": "concurrent"}}
+{"msg_id": "7f708822211a", "ts": "2026-11-12T08:50:14.126Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_1", "dur_s": 7.0, "ok": true}}
+{"msg_id": "5b0109f1ff85", "ts": "2026-11-12T08:50:14.133Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 1, "payload": {"round": 1, "recovered": true}}

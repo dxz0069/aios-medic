@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__':n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procc: p.start() for p in procc: p.join()'",
+    "confidence": 0.95,
+    "anomalies": [
+      "占用CPU异常高",
+      "运行时间长"
+    ],
+    "evidence": [
+      "root       21838 52.7  0.0  18044  8888 ?        R    16:48   0:55 /usr/local/bin/python3 -c ...",
+      "root       21841 50.5  0.0  18124  8888 ?        R    16:48   0:55 /usr/local/bin/python3 -c ...",
+      "root       21842 49.1  0.0  18124  8888 ?        R    16:48   0:55 /usr/local/bin/python3 -c ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

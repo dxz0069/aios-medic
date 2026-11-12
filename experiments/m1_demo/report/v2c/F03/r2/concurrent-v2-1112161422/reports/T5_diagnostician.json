@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "confidence": 1.0,
+    "reasoning": "多个诊断明确指出高CPU负载，并且有具体的代码证据和持续的CPU占用情况，网络相关的诊断没有直接关联的异常现象。",
+    "evidence": [
+      "32.19 29.74 17.48",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... while True pass def _ncpu():... if __name__ == \"__main__\":... n = min(32, max(2, _ncpu() * 2)) proa = [mp.Process(target=_burn) for _ in range(n)] for p in proa... p.start() for2 in proa... p.join() cpu占用49.7%",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill 或者重启占用大量CPU资源的python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

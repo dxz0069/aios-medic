@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu|network/loss",
+    "component": "docker0|python3",
+    "confidence": 0.95,
+    "reasoning": "网络端口状态频繁变化和 tc/ss 命令找不到表明网络配置存在问题，同时CPU占用率异常高且磁盘使用率接近饱和",
+    "evidence": [
+      "[422651.538281] docker oport 2(veth7879dcb) entered blocking state\n[422651.538285] docker oport 2(veth7879n) entered disabled state",
+      "root 21838 52.7  0.0  18144  8888 ?        R    11:48  1:55 /usr/local/bin/python3 -c ",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查并和相关网络配置，清理或重启Python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

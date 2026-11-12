@@ -1,0 +1,17 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu",
+      "runnable",
+      "mem_avail_pct",
+      "service"
+    ],
+    "comment": "部分指标未恢复到正常水位"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

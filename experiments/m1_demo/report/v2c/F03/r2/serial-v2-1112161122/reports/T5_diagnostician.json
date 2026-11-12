@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+    "confidence": 0.94,
+    "reasoning": "高CPU负载主要由运行在python脚本中的大量进程引起，同时网络分析并未发现实际丢包现象。",
+    "evidence": [
+      "35.17 26.07 13.84 35/4185 22800",
+      "/root       22074 53.6  0.0  18044  8918 ?        R    16:11   1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "/bin/sh line 1: tc command not found",
+      "/bin/sh line 1: ss command not found"
+    ],
+    "repair_hint": "kill或终止导致CPU高占用的Python脚本进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.98,
+    "reasoning": "根文件系统使用率已达到85%，远超过正常范围，尽管有高内存和CPU占用，但主要受限于磁盘空间。虽然存在服务异常和网络命令丢失的情况，但证据不足以否定磁盘问题作为主导因素。",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  352G   65G  85% /",
+      "toy-critical-service 主进程退出，状态为失败/重启中",
+      "tc qdisc 命令未找到",
+      "ss -s 命令未找到"
+    ],
+    "repair_hint": "清理磁盘空间或增加存储资源"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}
