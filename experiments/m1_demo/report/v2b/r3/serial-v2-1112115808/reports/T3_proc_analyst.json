@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\n  \"category\": \"resource/memory\",\n  \"component\": \"python3 -c  import multiprocessing as mp, os def _burn():... \",\n  \"confidence\": 0.9,\n  \"anomalies\": [\n    \"持续占较高 CPU 资源\",\n    \"重复启动多个相同进程\"\n  ],\n  \"evidence\": [\n    \"/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... \",\n    \"/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... \",\n    \"/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... \"\n  ],\n  \"need_more\": \"log/metric/proc/net\"\n}\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

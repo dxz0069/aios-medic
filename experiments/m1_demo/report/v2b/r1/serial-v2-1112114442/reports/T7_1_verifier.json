@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位变为false",
+      "values中load1恢复正常值35.02",
+      "runnable恢复正常值1"
+    ],
+    "comment": "所有关键指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

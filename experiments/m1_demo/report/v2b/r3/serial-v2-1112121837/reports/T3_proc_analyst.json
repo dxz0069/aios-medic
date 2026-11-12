@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续增加的内存占用"
+    ],
+    "evidence": [
+      "VSZ   RSS TTY      STAT START   TIME COMMAND\n3一16264 3丕156196 ?   Ss   12:16   0兡5",
+      "VmRSS=3丕15504 kB"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

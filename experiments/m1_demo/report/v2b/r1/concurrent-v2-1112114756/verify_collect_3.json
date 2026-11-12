@@ -1,0 +1,28 @@
+{
+  "ts": "2026-11-12T03:50:06Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-12T03:50:06Z",
+    "host": "worker-0",
+    "cpu": false,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": false,
+    "values": {
+      "load1": 28.64,
+      "runnable": 5,
+      "ncpu": 16,
+      "mem_avail_pct": 93.1,
+      "disk_pct": 76,
+      "ping_loss_pct": 0.0,
+      "service_ok": true
+    }
+  },
+  "sources": {
+    "log": "== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n28.64 23.18 13.36 5/3993 17671\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=983251004kB used_pct=6.9%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  312G  102G  76% /\noverlay         437G  312G  102G  76% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       16150 46.7  0.5 37276436 6065020 ?    Ssl  11:41   3:48 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot        4994  0.1  0.0 14776564 1033912 ?    Ssl  Nov11   1:13 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       17552  0.2  0.0 344536 41480 ?        S    11:47   0:00 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2b/r1/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2b/r1 --gold F03\nroot       14318  0.0  0.0  28040 19124 ?        S    09:26   0:01 /usr/local/bin/python3 /opt/medic/service/service.py\nroot       17671  0.0  0.0  19668 13244 ?        S    11:50   0:00 python3 /public/home/acotxxttog/aios-medic/testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2b/r1/concurrent-v2-1112114756/verify_collect_3.json\nroot       11454  0.0  0.0  17508 10932 ?        Ss   08:28   0:00 python3 /opt/medic/service/supervisor.py\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       17545  0.0  0.0   7368  3592 ?        Ss   11:47   0:00 bash -c cd /public/home/acotxxttog/aios-medic && timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2b/r1/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2b/r1 --gold F03 > /public/home/acotxxttog/m1ws/v2b/r1/concurrent.log 2>&1\nroot       17681  0.0  0.0   7368  3476 ?        S    11:50   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       17682  0.0  0.0  10116  1580 ?        R    11:50   0:00 ps aux --sort=-rss\nroot       17551  0.0  0.0   5780  1032 ?        S    11:47   0:00 timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2b/r1/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2b/r1 --gold F03\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n"
+  }
+}

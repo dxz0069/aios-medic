@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "anomalies": [
+      "toy-critical-service进程退出，状态为失败",
+      "网络接口renamed，可能表示网络问题"
+    ],
+    "evidence": [
+      "medic-sandbox toy-critical-service[19780]: service started",
+      "eth0: renamed from vethbfbb11c"
+    ],
+    "need_more": "log/log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c import os, time buf = [] with open",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续增加的内存占用",
+      "内存占用异常大"
+    ],
+    "evidence": [
+      "37276436 6133964 ?    Ssl  11:41  14:31 python3 tools/infer_server_stdlib.py",
+      "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f:  while True:  buf.append(bytearray(256 * 1024 * 1024))  rss = int(next(l for l in open(\"/proc/self/status\") if l.startswith(\"VmRSS\")).split()[1])  f.write(f\"{time.strftime('%Y-%m-%dT%H:%M:%s+011', time.gmtime())} leaky.py pid={os.getpid()} VmRSS={rss}kB\\n\")  f.flush()  time.sleep(1)"
+    ]
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

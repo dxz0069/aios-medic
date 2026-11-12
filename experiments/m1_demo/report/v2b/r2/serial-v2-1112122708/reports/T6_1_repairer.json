@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "服务已退出且状态为失败，重启可解决当前问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

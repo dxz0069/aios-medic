@@ -1,0 +1,24 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "/usr/local/bin/python3 -c 'import multiprocessing as mp, os ...'",
+    "confidence": 1.0,
+    "reasoning": "CPU占用过高且存在大量相同命令的进程，这是导致系统负载高的主要因素，网络频繁变化和无法执行网络命令是由于网络接口状态不稳定造成的现象而非根本原因",
+    "evidence": [
+      "24.82 17.93 11.35",
+      "ncpu=16",
+      "/usr/local/bin/python3 -c '...' CPU: 45.2%",
+      "/usr/local/bin/python3 -c '...' CPU: 48.6%",
+      "/usr/local/bin/python3 -c '...' CPU: 54.5%",
+      "/usr/local/bin/python3 -c '...' CPU: 53.7%",
+      "网络接口状态频繁变化",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill或重启占用资源的python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

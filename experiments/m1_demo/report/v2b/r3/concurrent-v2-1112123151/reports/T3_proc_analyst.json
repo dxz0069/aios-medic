@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8",
+    "confidence": 1.0,
+    "anomalies": [
+      "CPU 占用率异常高",
+      "进程为僵死状态"
+    ],
+    "evidence": [
+      "root       16152 44.6  0.5 37276436 6667412 ?    Ssl  11:41  20:15 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8",
+      "root        5091  0.0  0.0      0     0 ?        Z    Nov11   0:00 [python] <defunct>"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

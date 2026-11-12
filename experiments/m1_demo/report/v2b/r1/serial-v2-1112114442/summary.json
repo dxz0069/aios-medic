@@ -1,0 +1,100 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 176.27,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 -c ... _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] ...",
+    "confidence": 0.95,
+    "reasoning": "高CPU负载为主要问题，且有多个相同异常的进程实例，网络问题证据不足以覆盖整体负载情况",
+    "evidence": [
+      "9.97 6.10 5.35",
+      "ncpu=16",
+      "root       17311 44.0  0.0  18144  8832 ?        1    11:44   0:t4 /usr/local/bin/python3 -c ...",
+      "root       17312 43.9  0.0  18144  8832 ?        r    11:44   0:t4 /usr/local/bin/python3 -c ...",
+      "root       17313 48.8  0.0  18144  8832 ?        r    11:44   0:t4 /usr/local/bin/python3 -c ..."
+    ],
+    "repair_hint": "终止异常进程并调查其原因，考虑优化或限制此类进程的数量"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 39.57,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 13.05,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 19.8,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 24.55,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 24.9,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 25.95,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 5.07,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.32,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.22,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

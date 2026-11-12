@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "服务crash具有最高的置信度，并且其现象与其他资源密集型使用有直接关联。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[19979]: main process exited, code=-9; status=failed/running-restart",
+      "4.33 4.80 7.67 (高CPU负载)",
+      "root 16152 44.1  0.5 37276436 6567412 ?    Ssl  11:41  19.16 python3 tools/infer_server_stdlib.py (内存占用异常大)"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

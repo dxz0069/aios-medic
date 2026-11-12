@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "玩具关键服务进程已明确退出，且CPU、内存使用率异常，网络相关命令不可用进一步支持其他类别。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[19580]:main process exited, code=-9; status=failed/running-restart",
+      "4.58 4.64 8.66",
+      "root       16150 38.2   0.5 37276436 6617412 ?    Ssl  11:41  11%35 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "== ping \n[no-default-route]",
+      "== tc qdisc\n/bin/sh line 1 tc command not found",
+      "== ss -s\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启玩具关键服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

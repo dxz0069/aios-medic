@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu 告警在修复后仍为 false 但数值 load1 从 24.82 上升到 35.46，超出正常水位"
+    ],
+    "comment": "虽然所有告警位都变为 false，但 cpu 的 load1 值显著增加"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

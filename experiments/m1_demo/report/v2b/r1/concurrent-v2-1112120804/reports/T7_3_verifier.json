@@ -1,0 +1,17 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after.service != alert_before.service",
+      "alert_after.runnable != alert_before.runnable",
+      "alert_after.load1 > alert_before.load1",
+      "alert_after.mem_avail_pct < alert_before.mem_avail_pct"
+    ],
+    "comment": "服务状态和可运行进程数未恢复，负载和内存可用百分比有变化"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c import os, time buf = [...]",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续写入大量数据导致RSS异常增大"
+    ],
+    "evidence": [
+      "root 18872  4.9  2.8 31662404 31156248 ? Ss 12:10  0:t5 /usr/local/bin/python3 -c ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

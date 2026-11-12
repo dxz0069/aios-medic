@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "根据告警信息和证据，玩具关键服务进程已明确退出且状态异常，需重启服务恢复。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

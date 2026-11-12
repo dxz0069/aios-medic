@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu",
+      "runnable",
+      "disk_pct"
+    ],
+    "comment": "CPU使用率增加，可运行进程减少，磁盘利用率未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

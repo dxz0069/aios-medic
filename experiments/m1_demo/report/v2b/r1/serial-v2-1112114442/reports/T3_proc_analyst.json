@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c ... _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] ...",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续占用高CPU资源",
+      "进程数量异常多"
+    ],
+    "evidence": [
+      "root       17311 44.0  0.0  18044  8832 ?        1    11:44   0:04 /usr/local/bin/python3 -c ...",
+      "root       17312 43.9  0.0  18044  8832 ?        R    11:44   0:04 /usr/local/bin/python3 -c ...",
+      "root       17313 48.8  0.0  18044  8832 ?        R    11:44   0:04 /usr/local/bin/python3 -c ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

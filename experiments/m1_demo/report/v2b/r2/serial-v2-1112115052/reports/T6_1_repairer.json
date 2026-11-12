@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "tc_clear",
+    "target": "eth0",
+    "reason": "清除网络队列规则可能解决网络丢包问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

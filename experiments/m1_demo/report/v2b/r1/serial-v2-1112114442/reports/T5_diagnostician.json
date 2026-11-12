@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c ... _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] ...",
+    "confidence": 0.95,
+    "reasoning": "高CPU负载为主要问题，且有多个相同异常的进程实例，网络问题证据不足以覆盖整体负载情况",
+    "evidence": [
+      "9.97 6.10 5.35",
+      "ncpu=16",
+      "root       17311 44.0  0.0  18144  8832 ?        1    11:44   0:t4 /usr/local/bin/python3 -c ...",
+      "root       17312 43.9  0.0  18144  8832 ?        r    11:44   0:t4 /usr/local/bin/python3 -c ...",
+      "root       17313 48.8  0.0  18144  8832 ?        r    11:44   0:t4 /usr/local/bin/python3 -c ..."
+    ],
+    "repair_hint": "终止异常进程并调查其原因，考虑优化或限制此类进程的数量"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "根据证据和服务crash的现象，重启服务是最直接有效的解决方式。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

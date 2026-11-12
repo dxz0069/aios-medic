@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警已恢复",
+      "values中的load1从27.61升至35.83，但仍在较高水平；runnable从37降至2，表明负载减少"
+    ],
+    "comment": "CPU使用率恢复正常，其余指标保持稳定"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

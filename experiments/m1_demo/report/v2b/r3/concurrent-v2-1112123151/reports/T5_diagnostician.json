@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "多条诊断记录指向服务故障，特别是 A1 记录明确指出主进程退出且重启，且 A3 记录虽然有高 CPU 占用，但进程已僵死，进一步支持服务故障假设。A4 的网络问题不影响最终结论。",
+    "evidence": [
+      "toy-critical-service 主进程退出且重启",
+      "CPU 占用率异常高，进程为僵死状态",
+      "无法执行关键网络诊断命令"
+    ],
+    "repair_hint": "检查 toy-critical-service 的配置和依赖，确保其健康运行"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

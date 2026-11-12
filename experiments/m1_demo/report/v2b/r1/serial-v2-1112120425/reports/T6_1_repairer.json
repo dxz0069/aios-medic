@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "匹配内存泄漏相关特征串"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "lekepy",
+    "confidence": 0.95,
+    "reasoning": "内存使用量持续增加且进程占用内存较高，同时CPU使用率远超核心数，表明可能存在内存泄漏问题",
+    "evidence": [
+      "内存使用持续增加",
+      "lekepy 进程内存占用高",
+      "负载远超CPU核心数"
+    ],
+    "repair_hint": "重启进程或优化代码以解决内存泄漏问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

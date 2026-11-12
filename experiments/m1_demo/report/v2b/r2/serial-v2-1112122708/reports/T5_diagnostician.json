@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service进程退出且状态为失败，这可能是导致高CPU负载和内存占用异常的原因。此外，网络相关的信息虽然不一致但都指向了潜在的网络问题，但这不是主要因素。",
+    "evidence": [
+      "toy-critical-service进程退出，状态为失败",
+      "高CPU负载",
+      "内存占用异常大",
+      "ping 无响应"
+    ],
+    "repair_hint": "重启toy-critical-service并检查相关配置"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常大"
+    ],
+    "evidence": [
+      "root   16154 37.5  0.5 37276436 66067412 ?  Ssl  11:41  15:43 python3 tools/infer_server_stdlib.py"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

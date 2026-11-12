@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "worker-0",
+        "reason": "检查最近的日志是否有CPU相关错误"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "worker-0",
+        "reason": "分析最近的性能指标，特别是负载和运行中的线程数"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker-0",
+        "reason": "检查运行中的进程，寻找可能导致高CPU使用率的问题"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-0",
+        "reason": "检查网络连接状态，确保没有网络相关的延迟或丢包"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

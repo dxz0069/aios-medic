@@ -1,0 +1,24 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.85,
+    "anomalies": [
+      "docker network interface state changes frequently",
+      "loop device module loaded"
+    ],
+    "evidence": [
+      "[422601.538281] docker...entered disabled state",
+      "[4226...entered blocking state",
+      "[4226...entered forwarding state",
+      "[4249...entered disabled state",
+      "[4249...entered blocking state",
+      "[4249...entered forwarding state",
+      "loop. module loaded"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu/load1和runnable数值变化，未恢复到正常水位"
+    ],
+    "comment": "部分指标未恢复正常"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中的cpu告警位仍为false，但load1和runnable值变化，未回到正常水位"
+    ],
+    "comment": "部分指标未恢复到正常状态"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

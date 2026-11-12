@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中的所有cpu/memory/disk/network/service告警位均为false",
+      "alert_after的values各项指标已经恢复正常水平"
+    ],
+    "comment": "所有条件均满足恢复标准"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

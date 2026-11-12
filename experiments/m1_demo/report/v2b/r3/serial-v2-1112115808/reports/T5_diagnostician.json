@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c import multiprocessing as mp, os def _burn():... ",
+    "confidence": 0.95,
+    "reasoning": "网络模块的诊断结果显示无网络连接的问题，且ping等命令不可用，可能是由于网络问题导致的间接表现，但主要问题是CPU使用率过高和存在大量重复的Python进程。",
+    "evidence": [
+      "27.61 33.79 21.29",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... ",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启受影响的Python进程和服务，检查并优化网络配置"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

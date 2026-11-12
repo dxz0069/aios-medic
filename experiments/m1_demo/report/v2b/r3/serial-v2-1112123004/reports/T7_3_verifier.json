@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中'cpu'告警位仍为false，但'runnable'值从3变为1，表明CPU使用率可能增加",
+      "alert_after的'load1'值从4.33变为4.76，也表明负载有所增加"
+    ],
+    "comment": "系统 is not fully recovered due to increased CPU usage and runnable tasks."
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

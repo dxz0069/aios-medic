@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs p.start() for p in procs p.join()",
+    "confidence": 0.9,
+    "anomalies": [
+      "多个同名进程占用大量CPU",
+      "多个同名进程持续运行"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c _burn占用45.5% CPU",
+      "/usr/local/bin/python3 -c _burn占用45.3% CPU",
+      "多个相同命令占用超过45% CPU"
+    ]
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os..._burn()...join()'",
+    "confidence": 0.95,
+    "reasoning": "虽然网络相关诊断有部分相似性，但CPU使用异常更为明显且直接，且证据充分。",
+    "evidence": [
+      "26.86 33/4152, ncpu=16",
+      "/root/python3 -c 'import multiprocessing as mp, os..._burn()...join()' CPU usage: 51.7%",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查并优化高CPU使用率的Python脚本，考虑增加资源限制或优化代码效率"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

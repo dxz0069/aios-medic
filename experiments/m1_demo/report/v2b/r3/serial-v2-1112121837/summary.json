@@ -1,0 +1,99 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 72.24,
+  "verdict": {
+    "category": "resource/memory",
+    "component": "le9145",
+    "confidence": 1.0,
+    "reasoning": "A1和A3均指出了持续增加的内存占用问题，且内存使用量明显增加，确认为内存泄漏。",
+    "evidence": [
+      "2026-11-12T04:18:23+10:11 leaky.py pid=19145 VmRSS=2710372kB",
+      "2026-11-12T04:18:33+10:11 leaky.py pid=19145 VmRSS=29319740kB",
+      "2126-1112T04:1118:34+11:11 leaky.py pid=19145 VmRSS=21198944kB",
+      "VSZ   RSS TTY? STAT START? TIME COMMAND\n316664 31155196 ? Ss 112:16 11105"
+    ],
+    "repair_hint": "kill 进程 19145 或者优化 leaky.py 程序"
+  },
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": [
+      "VmRSS",
+      "rss",
+      "out of memory",
+      "oom",
+      "killed process",
+      "memused"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "leaky",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.87,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.34,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.01,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 6.77,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.24,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 13.6,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.81,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.6,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 17.5,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 主进程已确认退出且状态为失败或重启中，比单纯的高CPU和内存问题更重要，网络问题不影响服务直接崩溃的情况",
+    "evidence": [
+      "toy-critical-service 主进程退出，状态为失败/重启中",
+      "4.73 4.73 9.1",
+      "root   16154 37.5  0.5 37276436 66167412 ?  Ssl  11:41  15% python3 tools/infer_server_stdlib.py",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

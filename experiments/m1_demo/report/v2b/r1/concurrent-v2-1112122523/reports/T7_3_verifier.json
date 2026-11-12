@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中load1增加至5.3，高于正常水位4.58",
+      "runnable减少至2，ncpu减少至16，表明可能有资源争用"
+    ],
+    "comment": "负载和可运行进程数增加，未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

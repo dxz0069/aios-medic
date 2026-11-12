@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "虽然网络检查命令无法执行，但这可能是暂时的配置问题，而非主要故障原因。toy-critical-service的异常和高CPU负载共同指向了资源竞争。",
+    "evidence": [
+      "toy-critical-service进程退出且重启",
+      "5.67 4.91 8.51 1/426 19911 负载过高"
+    ],
+    "repair_hint": "重启toy-critical-service并检查其配置"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

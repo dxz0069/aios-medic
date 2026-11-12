@@ -1,0 +1,102 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 123.31,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs t.start() for p in procs t.join()",
+    "confidence": 0.9,
+    "reasoning": "虽有网络问题迹象，但没有明确的网络丢包现象；主要问题是多个python脚本进程占用了大量CPU资源，且这些进程不断运行导致整体系统负载偏高。",
+    "evidence": [
+      "docker 网络接口状态频繁变化",
+      "负载过高，远超CPU数量",
+      "tc qdisc 命令未找到",
+      "ss -s 命令未找到",
+      "/usr/local/bin/python3 -c _burn占用45.5% CPU",
+      "/usr/local/bin/python3 -c _burn占用45.3% CPU",
+      "多个相同命令占用超过45% CPU"
+    ],
+    "repair_hint": "终止或限制这些不必要的python脚本进程，优化其代码以减少CPU占用"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 14.28,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 16.23,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 16.22,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 16.21,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 58.66,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 27.68,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 4.33,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.11,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 14.2,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

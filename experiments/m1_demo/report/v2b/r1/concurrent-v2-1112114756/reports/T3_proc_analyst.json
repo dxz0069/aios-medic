@@ -1,0 +1,21 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/cpu",
+    "component": "/usr/local/bin/python3 -c 'import multiprocessing as mp, os ...'",
+    "confidence": 0.95,
+    "anomalies": [
+      "异常高的CPU占用",
+      "大量相同命令的进程"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c '...' CPU: 45.2%",
+      "/usr/local/bin/python3 -c '...' CPU: 48.6%",
+      "/usr/local/bin/python3 -c '...' CPU: 54.5%",
+      "/usr/local/bin/python3 -c '...' CPU: 53.7%"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

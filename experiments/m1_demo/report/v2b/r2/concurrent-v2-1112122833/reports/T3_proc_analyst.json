@@ -1,0 +1,16 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8",
+    "confidence": 0.95,
+    "anomalies": [
+      "内存占用异常大，RSS占用62G"
+    ],
+    "evidence": [
+      "root   16154 39.4  0.5 37276436 6267412 ?    Ssl  11:41  18:22 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8"
+    ]
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}
