@@ -50,7 +50,8 @@ def test_serial_and_concurrent_same_results():
         return [Task("T0", "commander", lambda u: "plan"),
                 *[Task(f"T{i}", f"analyst{i}",
                        lambda u, i=i: str(i), deps=("T0",)) for i in range(1, 5)],
-                Task("T5", "diag", lambda u: sorted(u.keys()))]
+                Task("T5", "diag", lambda u: sorted(u.keys()),
+                     deps=("T1", "T2", "T3", "T4"))]
 
     for mode in ("serial", "concurrent"):
         out = Scheduler(MessageBus(), mode=mode, max_workers=4).run(build(), _fake_agent_factory())
