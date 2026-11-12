@@ -55,8 +55,8 @@ def test_serial_and_concurrent_same_results():
     for mode in ("serial", "concurrent"):
         out = Scheduler(MessageBus(), mode=mode, max_workers=4).run(build(), _fake_agent_factory())
         assert set(out["results"].keys()) == {"T0", "T1", "T2", "T3", "T4", "T5"}
-        # fake agent 将输入包装为 {"result": {"echo": 输入}} —— 断言 T5 收到全部上游
-        assert out["results"]["T5"]["result"]["echo"] == ["T0", "T1", "T2", "T3", "T4"]
+        # fake agent 将输入包装为 {"result": {"echo": 输入}} —— T5 的上游=其声明的依赖 T1..T4
+        assert out["results"]["T5"]["result"]["echo"] == ["T1", "T2", "T3", "T4"]
 
 
 def test_concurrent_faster_than_serial():
