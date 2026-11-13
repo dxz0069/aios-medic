@@ -22,7 +22,8 @@
       "100.0"
     ],
     "category_ok": false,
-    "component_ok": false
+    "component_ok": false,
+    "component_ok_strict": false
   },
   "recovery_ok": false,
   "repair_rounds": 3,

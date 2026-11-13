@@ -26,7 +26,8 @@
       "memused"
     ],
     "category_ok": true,
-    "component_ok": true
+    "component_ok": true,
+    "component_ok_strict": true
   },
   "recovery_ok": true,
   "repair_rounds": 3,

@@ -23,7 +23,8 @@
       "rtt"
     ],
     "category_ok": false,
-    "component_ok": false
+    "component_ok": false,
+    "component_ok_strict": false
   },
   "tasks": [
     {
