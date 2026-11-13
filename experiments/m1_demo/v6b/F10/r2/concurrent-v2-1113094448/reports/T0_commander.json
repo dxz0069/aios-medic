@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-0a1b2c3d",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "检查高日志占用"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "metric",
+        "reason": "分析高负载原因"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "查找僵尸进程"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "检查网络状况"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

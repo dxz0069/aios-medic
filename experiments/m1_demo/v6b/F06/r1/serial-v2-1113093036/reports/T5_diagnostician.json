@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/process",
+    "component": "python3 -c _reap_and_exit(_sig, _frm): ...",
+    "confidence": 1.0,
+    "reasoning": "异常多的僵尸进程且其他诊断指向网络问题但无具体进程信息支持。",
+    "evidence": [
+      "[422610.538281] docker...entered disabled state",
+      "147.66 122.02 66.81",
+      "ncpu=16",
+      "root 52330  0.5  0.0  15772  9568 ?        Ss  09:30  0.2% /usr/local/bin/python3 -c import os import signal... def _reap_and_exit(_sig, _frm): ... for _ in range(300): ...",
+      "== tc qdisc == /bin/sh line 1 tc command not found",
+      "== ss -s == /bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "清理僵尸进程并检查依赖项"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

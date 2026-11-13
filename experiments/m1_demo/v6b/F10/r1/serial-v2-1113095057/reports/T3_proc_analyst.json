@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n\"category\": \"resource/cpu|service/crash\",\n\"component\": \"python3 /usr/local/bin/python3 -c  # port_hog  (自标识：供修复执行器 pkill -f 匹配) import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind((\"0.0.0.0\", 8080)) s.listen(5) while True: time.sleep(3600) \",\n\"confidence\": 0.9,\n\"anomalies\": [\"CPU 占用异常高\"],\n\"evidence\": [\"root       57549  0.0  0.0  16204  9868 ?        Ss   09:49   0:00 /usr/local/bin/python3 -c  # port_hog  (自标识：供修复执行器 pkill -f 匹配) import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind(('0.0.0.0', 8080)) s.listen(5) while True: time.sleep(3600)\"],\n\"need_more\": \"\"\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

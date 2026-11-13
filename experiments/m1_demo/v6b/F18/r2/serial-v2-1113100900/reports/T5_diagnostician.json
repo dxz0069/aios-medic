@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "主要的异常来源是toy-critical-service频繁重启，且其高CPU负载为次要原因，没有直接指向具体进程的内存问题，网络无明显丢包问题。",
+    "evidence": [
+      "toy-critical-service[6257]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[6259]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[6262]: main process exited, code=1; status=failed/running-restart",
+      "749.95 89.48273.66"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

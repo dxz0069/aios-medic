@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "根据告警信息和服务频繁重启的证据，建议重启服务以解决crash问题。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

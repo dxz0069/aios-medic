@@ -1,0 +1,17 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "ping未响应"
+    ],
+    "evidence": [
+      "== ping \n[no-default-route]"
+    ],
+    "need_more": "log/metric"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

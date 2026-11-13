@@ -91,7 +91,9 @@ def collect() -> dict:
                    f"MemTotal={total}kB MemAvailable={avail}kB "
                    f"used_pct={round((total - avail) / total * 100, 1)}%\n\n== df ==\n{df_out}"),
         "proc": sh("ps aux --sort=-rss 2>/dev/null | head -12")
-        + "\n\n== 僵尸进程数 ==\n" + sh("ps aux 2>/dev/null | grep -c defunct"),
+        + "\n\n== 僵尸进程统计 ==\n数量: " + sh("ps aux 2>/dev/null | grep -c defunct").strip()
+        + "\n样例(前5行):\n" + sh("ps aux 2>/dev/null | grep defunct | head -5")
+        + "\n僵尸父进程:\n" + sh("ps -o pid,stat,cmd -p $(ps -o ppid= -C python3 2>/dev/null | sort -u | head -3 | tr '\\n' ',' | sed 's/,$//') 2>/dev/null | head -5"),
         "net": (f"== ping {gw} ==\n{ping_out}\n\n== tc qdisc ==\n"
                 f"{sh('tc qdisc show 2>&1 | head -6')}\n\n== ss -s ==\n{sh('ss -s 2>&1')}"
                 f"\n\n== 监听端口(ss -tlnp) ==\n{ss_ports}"),

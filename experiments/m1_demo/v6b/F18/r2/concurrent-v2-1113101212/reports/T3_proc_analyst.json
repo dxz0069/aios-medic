@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "长时间高CPU占用",
+      "高内存占用"
+    ],
+    "evidence": [
+      "root       42332 11.5  0.5 51032804 6140608 ?    Ssl  Nov12  73:::",
+      "3个僵尸进程"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "values",
+        "reason": "异常的load1和runnable值"
+      },
+      {
+        "id": "A2",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "网络连接问题"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "缺少进程健康检查"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "日志文件异常"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

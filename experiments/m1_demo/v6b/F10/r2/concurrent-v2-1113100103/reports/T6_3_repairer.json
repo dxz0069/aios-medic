@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "none",
+    "target": "",
+    "reason": "无故障无需修复"
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "repair_ok": true
+}

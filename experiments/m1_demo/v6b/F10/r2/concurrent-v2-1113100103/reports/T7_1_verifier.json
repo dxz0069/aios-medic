@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "logs:布尔告警位仍为true",
+      "flood_log_mb数值异常增加至103.9"
+    ],
+    "comment": "日志量激增且未恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

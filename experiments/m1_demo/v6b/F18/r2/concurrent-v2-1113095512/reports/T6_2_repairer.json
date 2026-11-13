@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "服务频繁重启且处于高负载状态，需要重启服务以恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu告警位为true，值load1为17.65，高于正常水平；logs告警位为true，值flood_log_mb为75.4，远超正常水平"
+    ],
+    "comment": "存在多个未恢复的告警项"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

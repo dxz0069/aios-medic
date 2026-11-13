@@ -1,0 +1,34 @@
+{
+  "ts": "2026-11-13T01:56:01Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-13T01:56:01Z",
+    "host": "worker-0",
+    "cpu": true,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": true,
+    "process": false,
+    "logs": false,
+    "port": false,
+    "values": {
+      "load1": 11.71,
+      "runnable": 20,
+      "ncpu": 16,
+      "zombies": 3,
+      "flood_log_mb": 2.4,
+      "port_hogged": false,
+      "mem_avail_pct": 91.4,
+      "disk_pct": 71,
+      "ping_loss_pct": 0.0,
+      "service_ok": false
+    }
+  },
+  "sources": {
+    "log": "== flood.log (tail) ==\ntrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T09:55:59+00:00 log_flood pid=58760 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n11.71 16.44 28.17 20/4058 58762\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=965597840kB used_pct=8.6%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  293G  122G  71% /\noverlay         437G  293G  122G  71% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       40232  9.6  0.5 51032804 6140604 ?    Ssl  Nov12  65:21 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       52172  0.9  0.1 11020780 1305220 ?    Ssl  09:21   0:20 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       58610  0.6  0.0 344536 41360 ?        S    09:55   0:00 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v6b/F18/r2/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v6b/F18/r2 --gold F18\nroot       58762  0.0  0.0  19712 13296 ?        S    09:55   0:00 python3 /public/home/acotxxttog/aios-medic/testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6b/F18/r2/concurrent-v2-1113095512/verify_collect_2.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   Nov12   0:00 python3 /opt/medic/service/supervisor.py\nroot       58560  0.0  0.0  16204  9888 ?        Ss   09:54   0:00 /usr/local/bin/python3 -c  # port_hog  (自标识：供修复执行器 pkill -f 匹配) import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind((\"0.0.0.0\", 8080)) s.listen(5) while True:     time.sleep(3600) \nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       58760  0.0  0.0  15684  8808 ?        Ss   09:55   0:00 /usr/local/bin/python3 -c  import os, time with open(\"/var/log/medic/flood.log\", \"a\") as f:     while True:         line = time.strftime(\"%Y-%m-%dT%H:%M:%S+00:00\") + \" log_flood pid=\" + str(os.getpid()) + \\                \" WARN connection pool exhausted, retrying upstream (attempt 1/3)\\n\"         f.write(line * 500)         f.flush()         time.sleep(0.05) \nroot       58752  0.0  0.0   7368  3588 ?        Ss   09:55   0:00 bash -c cd /public/home/acotxxttog/aios-medic && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py F10 --action inject && sleep 25 && python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6b/F10/r1/fault_concurrent.json >/dev/null\nroot       58603  0.0  0.0   7368  3564 ?        Ss   09:55   0:00 bash -c cd /public/home/acotxxttog/aios-medic && timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v6b/F18/r2/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v6b/F18/r2 --gold F18 > /public/home/acotxxttog/m1ws/v6b/F18/r2/concurrent.log 2>&1\nroot       58775  0.0  0.0   7368  3500 ?        S    09:55   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\n\n\n== 僵尸进程数 ==\n3\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n\n\n== 监听端口(ss -tlnp) ==\n"
+  }
+}

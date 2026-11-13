@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "根据告警和根因分析，toy-critical-service频繁重启，且重启次数较多，重启服务是最直接有效的解决方法。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "频繁重启和高负载同时出现，表明核心服务toy-critical-service出现问题，且无网络丢包现象",
+    "evidence": [
+      "toy-critical-service[58563]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[58565]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[58565]:main process exited, code=1;status=failed/running-restart",
+      "14.98 17.71 29.20 3/416",
+      "ncpu=16"
+    ],
+    "repair_hint": "重启服务toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

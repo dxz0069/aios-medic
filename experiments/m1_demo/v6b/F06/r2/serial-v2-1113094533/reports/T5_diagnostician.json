@@ -1,0 +1,14 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.5,
+    "reasoning": "确定性加权投票兜底",
+    "evidence": [],
+    "repair_hint": ""
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "diagnosis_ok": true
+}

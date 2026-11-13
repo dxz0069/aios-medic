@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "flood_log_mb",
+        "reason": "检查日志中是否存在大量的错误或警告记录"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "load1",
+        "reason": "分析系统负载情况"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "zombies",
+        "reason": "查找僵尸进程"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "ping_loss_pct",
+        "reason": "检查网络连接的丢失百分比"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

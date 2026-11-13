@@ -1,0 +1,133 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 119.49,
+  "verdict": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "reasoning": "ping指令未返回有效结果，并且网络端口频繁进入blocking和disabled状态表明存在网络问题。",
+    "evidence": [
+      "== ping  ==\n[no-default-route]",
+      "[422602.034037] docker5 port 2(veth78791cb) entered blocking state\n[422202.046157] docker5 port 2(veth78791cb) entered forwarding state\n[424998.115953] docker5 port 4(veth4da4f8s) entered blocking state\n[424998.116199] docker54 port 4(veth4da4f8s) entered forwarding state",
+      "root      58987  0.1  0.0  28041 19176 ?        S    09:57   1:h0 /usr/local/bin/python3 /opt/medic/service/service.py",
+      "root      59158  0.0  0.0  15684  8836 ?        Ss   09:58   1:h0 /usr/local/bin/python3 -c import os, time ...",
+      "root      59150  0.0  0.0   7368  3320 ?        Ss   09:58   1:h0 bash -c cd /public/home ..."
+    ],
+    "repair_hint": "检查默认路由配置并确保网络接口正常运行"
+  },
+  "gold": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "evidence_keywords": [
+      "flood.log",
+      "log_flood",
+      "connection pool exhausted"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 6.99,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.3,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 3.85,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 37.63,
+      "ok": false
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 4.03,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 17.91,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.1,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.58,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.12,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 5.78,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.05,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.98,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 16.27,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

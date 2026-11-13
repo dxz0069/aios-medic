@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\"category\": \"resource/cpu|resource/process|service/crash\", \"component\": \"python3 /opt/medic/service/service.py, /usr/local/bin/python3 -c, bash -c\", \"confidence\": 0.95, \"anomalies\": [\"CPU占用异常高\", \"存在僵尸进程\"], \"evidence\": [\"root       58987  0.1  0.0  28041 19076 ?        S    09:57   1:00 /usr/local/bin/python3 /opt/medic/service/service.py\",, \"root       59158  0.0  0.0  15684  8836 ?        Ss   09:58   1:00 /usr/local/bin/python3 -c  import os, time ...\", \"root       59150  0.0  0.0   7368  3620 ?        Ss   09:58   1:00 bash -c cd /public/home ...\"], \"need_more\": \"log/storm\"}\n{}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

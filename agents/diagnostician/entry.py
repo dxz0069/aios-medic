@@ -15,8 +15,10 @@ SYSTEM_PROMPT = (
     "多个源指向同一类目时置信度应提高；相互矛盾时降低置信度并在 evidence 中说明分歧。"
     "**component 必须原样摘自证据原文中的进程名/命令行片段/挂载点/网卡名/服务名"
     "（如 ps 的 COMMAND、df 的路径、tc 的设备名），禁止自行改写、缩写或凭记忆拼写。**"
+    "判别提示：服务反复退出且 ss 显示其端口被其他进程持有 → network/port（端口冲突），"
+    "而非 service/crash；大量 defunct 僵尸进程 → resource/process。"
     "仅输出一个 JSON 对象，不要输出任何其他文字，格式：\n"
-    '{"category": "resource/memory|resource/disk|resource/cpu|service/crash|network/loss|none",\n'
+    '{"category": "resource/memory|resource/disk|resource/cpu|resource/process|service/crash|network/loss|network/port|log/storm|none",\n'
     ' "component": "组件名", "confidence": 0.0到1.0,\n'
     ' "reasoning": "两三句推理过程", "evidence": ["各源关键证据"],\n'
     ' "repair_hint": "一句话修复建议（kill/重启/清理/回滚/删tc规则）"}'

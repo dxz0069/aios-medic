@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "所有告警位在修复后均为 false",
+      "process 告警从 true 变为 false",
+      "values 中大部分指标已恢复正常水平"
+    ],
+    "comment": "系统 has fully recovered"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

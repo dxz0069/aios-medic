@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "根据告警和证据，toy-critical-service频繁崩溃且高内存占用，重启服务可能是解决此问题的有效方式。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

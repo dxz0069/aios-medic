@@ -1,0 +1,131 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 102.29,
+  "verdict": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "confidence": 1.0,
+    "reasoning": "日志证据中频繁出现连接池耗尽的信息，并且并发数达到三次，确认为日志暴风雨。",
+    "evidence": [
+      "2126-11-13T9:44:47+00::5 log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)",
+      "2126-11-13T9:44:47+00::5 log log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)",
+      "2126-11-13T9:44:47+80::5 log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)"
+    ],
+    "repair_hint": "排查 log_flood 模块，检查和调整连接池配置"
+  },
+  "gold": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "evidence_keywords": [
+      "flood.log",
+      "log_flood",
+      "connection pool exhausted"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "log_flood",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "log_flood",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "log_flood",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.26,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 14.07,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 14.08,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 14.07,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 24.69,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 11.27,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.05,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 7.5,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 8.25,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 5.17,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 9.63,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 4.89,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.51,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

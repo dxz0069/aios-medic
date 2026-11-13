@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service频繁重启，且存在高CPU负载和疑似僵尸进程，表明该服务存在问题。",
+    "evidence": [
+      "toy-critical-service[57557]:main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[57558]:main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[57559]:main process exited, code=1; status=failed/running-restart",
+      "13.4 19.79 34.4 31/4678 57574",
+      "root      57567  0.7  0.0  19568 13128 ?        S    09:49   0:0 python3 /public/home/acotxxttog/aios-medic/testbed/repair/actions.py",
+      "330 僵尸进程数 =="
+    ],
+    "repair_hint": "重启 toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

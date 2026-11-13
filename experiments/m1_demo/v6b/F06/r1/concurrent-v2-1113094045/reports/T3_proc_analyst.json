@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 -c  # zombie_maker",
+    "confidence": 0.9,
+    "anomalies": [
+      "存在大量僵尸进程",
+      "持续运行异常Python脚本"
+    ],
+    "evidence": [
+      "root      11454  0.0  0.0  17508 10908 ?        Ss   Nov12   0  # zombie_maker",
+      "root       55131  0.5  0.0  15776  9596 ?        Ss   09:40   1  # zombie_maker"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

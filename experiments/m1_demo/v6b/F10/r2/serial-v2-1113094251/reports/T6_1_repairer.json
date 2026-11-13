@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "log_flood",
+    "reason": "日志显示存在日志洪泛现象"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

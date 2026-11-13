@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "高CPU负载和频繁重启的日志证据支持了服务crash的原因。",
+    "evidence": [
+      "toy-critical-service[57777]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[57778]: main process exited, code=1; status=failed/running-restart",
+      "18.41 19.77 33.32"
+    ],
+    "repair_hint": "重启并检查toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

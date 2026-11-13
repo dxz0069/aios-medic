@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 /public/home/acotxxttog/aios-medic/testbed/repair/actions.py, /usr/local/bin/python3 -c # zombie_maker, /usr/local/bin/python3 -c # port_hog",
+    "confidence": 0.95,
+    "anomalies": [
+      "存在大量疑似僵尸进程",
+      "Python 脚本长时间占用 CPU"
+    ],
+    "evidence": [
+      "root       57567  0.7  0.0  19568 13128 ?        S    09:49   0:0 python3 /public/home/acotxxttog/aios-medic/testbed/repair/actions.py --action restart_service --target toy-critical-service",
+      "root       11454  0.0  0.0  17508 10912 ?        Ss   Nov12   0:0 python3 /opt/medic/service/supervisor.py",
+      "303\n    == 僵尸进程数 =="
+    ],
+    "need_more": "log/storm"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

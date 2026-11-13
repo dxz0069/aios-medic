@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "port_hog",
+    "reason": "存在port_hog特征，且上次验证显示部分恢复但CPU告警再次出现"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

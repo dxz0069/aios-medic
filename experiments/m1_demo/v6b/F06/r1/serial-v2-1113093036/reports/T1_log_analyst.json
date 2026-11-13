@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/port",
+    "component": "docker0, veth7879dcb, veth4da4f8s",
+    "confidence": 0.95,
+    "anomalies": [
+      "频繁的网络端口状态变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker...entered disabled state\n[422602.046157] docker...entered blocking state\n[422602.046160] docker...entered forwarding state\n[424998.115953] docker...entered blocking state\n[424998.629089] docker...entered blocking state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

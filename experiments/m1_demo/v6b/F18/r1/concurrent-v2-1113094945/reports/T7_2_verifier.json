@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu 和 process 告警未恢复至 false",
+      "虽然 service_ok 保持为 false，但 cpu 已恢复"
+    ],
+    "comment": "部分恢复但不完全满足条件"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

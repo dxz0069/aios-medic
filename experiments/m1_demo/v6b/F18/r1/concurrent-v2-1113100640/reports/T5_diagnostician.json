@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 进程频繁退出是主要问题，并其他诊断项虽然有异常，但没有直接与该服务相关联的异常信息支持其为主要原因。",
+    "evidence": [
+      "220661113T220623+0201 medic-sandbox toy-critical-service[59922]: main process exited, code=1; status=failed/running-restart",
+      "194/14189 59925",
+      "ncpu=16"
+    ],
+    "repair_hint": "检查并修复 toy-critical-service 的配置或依赖项问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

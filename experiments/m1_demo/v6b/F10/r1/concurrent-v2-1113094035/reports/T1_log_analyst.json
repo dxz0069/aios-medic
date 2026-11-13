@@ -1,0 +1,13 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log",
+    "component": "",
+    "confidence": 0.0,
+    "anomalies": [],
+    "evidence": [],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

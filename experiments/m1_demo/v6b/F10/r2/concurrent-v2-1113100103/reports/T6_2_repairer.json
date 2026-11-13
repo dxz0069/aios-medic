@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "该进程占用大量CPU资源且存在长时间高CPU占用现象，符合按命令行特征终止进程的动作"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

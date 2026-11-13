@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service 主进程反复退出"
+    ],
+    "evidence": [
+      "toy-critical-service[6\\d641]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[6\\5642]: main process exited, code=1; status=failed/running-restart",
+      "toy-critical-service[6\\5644]: main process exited, code=1; status=failed/running-restart"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

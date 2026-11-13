@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "玩具关键服务频繁重启是主要问题，并其他异常虽存在但与服务状态最为相关。",
+    "evidence": [
+      "2026-11-13T01:52t29+00:t0 medic-sandbox toy-critical-service[58101]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t1:52t31+00t0 medic-sandbox toy-critical-service[58112]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t1:52t32+00t0 medic-sandbox toy-critical-service[58113]: main process exited, code=1; status=failed/running-restart",
+      "loadavg 21.19 19.65 31.73"
+    ],
+    "repair_hint": "检查并修复toy-critical-service的问题或资源限制"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

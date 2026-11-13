@@ -1,0 +1,34 @@
+{
+  "ts": "2026-11-13T02:06:33Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-13T02:06:33Z",
+    "host": "worker-0",
+    "cpu": true,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": true,
+    "process": false,
+    "logs": false,
+    "port": false,
+    "values": {
+      "load1": 1019.51,
+      "runnable": 194,
+      "ncpu": 16,
+      "zombies": 3,
+      "flood_log_mb": 0.0,
+      "port_hogged": false,
+      "mem_avail_pct": 86.4,
+      "disk_pct": 71,
+      "ping_loss_pct": 0.0,
+      "service_ok": false
+    }
+  },
+  "sources": {
+    "log": "== service.log (tail) ==\nritical-service[59905]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:23+00:00 medic-sandbox toy-critical-service[59906]: service started\n2026-11-13T02:06:23+00:00 medic-sandbox toy-critical-service[59906]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:24+00:00 medic-sandbox toy-critical-service[59907]: service started\n2026-11-13T02:06:24+00:00 medic-sandbox toy-critical-service[59907]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:25+00:00 medic-sandbox toy-critical-service[59908]: service started\n2026-11-13T02:06:25+00:00 medic-sandbox toy-critical-service[59908]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:26+00:00 medic-sandbox toy-critical-service[59909]: service started\n2026-11-13T02:06:26+00:00 medic-sandbox toy-critical-service[59909]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:27+00:00 medic-sandbox toy-critical-service[59910]: service started\n2026-11-13T02:06:27+00:00 medic-sandbox toy-critical-service[59910]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:28+00:00 medic-sandbox toy-critical-service[59911]: service started\n2026-11-13T02:06:28+00:00 medic-sandbox toy-critical-service[59911]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:29+00:00 medic-sandbox toy-critical-service[59912]: service started\n2026-11-13T02:06:29+00:00 medic-sandbox toy-critical-service[59912]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:30+00:00 medic-sandbox toy-critical-service[59914]: service started\n2026-11-13T02:06:30+00:00 medic-sandbox toy-critical-service[59914]: main process exited, code=1; status=failed/running-restart\n2026-11-13T02:06:31+00:00 medic-sandbox toy-critical-service[59915]: service started\n2026-11-13T02:06:31+00:00 medic-sandbox toy-critical-service[59915]: main process exited, code=1; status=failed/running-restart\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n1019.51 405.53 165.89 194/14189 59915\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=912421464kB used_pct=13.6%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  293G  122G  71% /\noverlay         437G  293G  122G  71% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       40232 10.3  0.5 51032804 6140608 ?    Ssl  Nov12  71:15 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       52172  0.8  0.1 11020780 1305284 ?    Ssl  09:21   0:21 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       59913  2.0  0.0  19752 13268 ?        S    10:06   0:00 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6b/F18/r1/fault_concurrent.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   Nov12   0:00 python3 /opt/medic/service/supervisor.py\nroot       59900  0.1  0.0  16204  9860 ?        Ss   10:06   0:00 /usr/local/bin/python3 -c  # port_hog  (自标识：供修复执行器 pkill -f 匹配) import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind((\"0.0.0.0\", 8080)) s.listen(5) while True:     time.sleep(3600) \nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       59928  0.0  0.0   7368  3572 ?        S    10:06   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       59891  0.0  0.0   7368  3544 ?        Ss   10:06   0:00 bash -c cd /public/home/acotxxttog/aios-medic && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py F18 --action inject && sleep 12 && python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6b/F18/r1/fault_concurrent.json >/dev/null\nroot       59929  0.0  0.0  10116  1584 ?        R    10:06   0:00 ps aux --sort=-rss\nroot       59930  0.0  0.0   5784  1032 ?        S    10:06   0:00 head -12\nroot       52259  0.0  0.0      0     0 ?        Z    09:21   0:00 [python] <defunct>\n\n\n== 僵尸进程数 ==\n3\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n\n\n== 监听端口(ss -tlnp) ==\n"
+  }
+}

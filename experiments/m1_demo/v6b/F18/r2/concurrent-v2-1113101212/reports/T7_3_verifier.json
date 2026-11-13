@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "service告警位未从true变为false",
+      "load1数值并未恢复正常"
+    ],
+    "comment": "服务仍然存在问题，且负载较高"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

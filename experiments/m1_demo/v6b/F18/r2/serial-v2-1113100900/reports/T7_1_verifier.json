@@ -1,0 +1,21 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu=True",
+      "memory=False",
+      "disk=False",
+      "network=False",
+      "service=True",
+      "process=False",
+      "logs=False",
+      "port=False"
+    ],
+    "comment": "确定性阈值判定兜底"
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

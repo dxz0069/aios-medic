@@ -1,0 +1,55 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-0a9dd93",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "cpu",
+        "reason": "高CPU负载"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "memory",
+        "reason": "内存未告警，但可能存在问题"
+      },
+      {
+        "id": "A3",
+        "agent": "metric_analyst",
+        "source": "disk",
+        "reason": "磁盘使用率为71%，接近阈值"
+      },
+      {
+        "id": "A4",
+        "agent": "metric_analyst",
+        "source": "service",
+        "reason": "服务状态不正常"
+      },
+      {
+        "id": "A5",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "无进程问题告警，但需检查"
+      },
+      {
+        "id": "A6",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "无网络问题告警，但需检查"
+      },
+      {
+        "id": "A7",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "无日志问题告警，但需检查"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

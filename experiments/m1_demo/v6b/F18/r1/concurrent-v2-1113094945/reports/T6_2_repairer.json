@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "频繁重启和服务高CPU负载及僵尸进程相关"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

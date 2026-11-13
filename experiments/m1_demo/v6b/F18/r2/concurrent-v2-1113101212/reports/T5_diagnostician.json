@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1指出了toy-critical-service频繁崩溃，且高负载（高内存占用也被归因为其运行异常，而网络问题不影响服务本身的运行状态。",
+    "evidence": [
+      "toy-critical-service主进程反复退出",
+      "1351.23 882.98 438.6",
+      "root 42332 11.5  0.5 5103284 6141608 ? Ssl Nov12  73:::",
+      "[no-default-route], /bin/sh line 1 tc command not found, /bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

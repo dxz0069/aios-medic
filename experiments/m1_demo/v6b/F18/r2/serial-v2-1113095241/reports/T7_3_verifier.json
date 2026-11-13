@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "service.service_ok仍然是false",
+      "flood_log_mb从139.7增加到254.4"
+    ],
+    "comment": "服务未恢复，日志量增加"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/process",
+    "component": "python3 -c # zombie_maker",
+    "confidence": 0.95,
+    "reasoning": "A3指出存在创建大量僵尸进程的问题，并A2和A4虽然也指出了高CPU占用和其他问题，但它们与僵尸进程直接相关性较低，且A4提到的问题不属于进程层面。因此，最终倾向于认为僵尸进程问题是根本原因。",
+    "evidence": [
+      "15.54 35.71 48.09",
+      "ncpu=16",
+      "/usr/local/bin/python3 -c # zombie_maker (自标识：供修复执行器 pkill -f 匹配) import os import signal...while True: pid = os.fork() ...",
+      "== tc qdisc == /bin/sh line 1 tc command not found",
+      "== ss -s == /bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill 或重启僵尸进程产生的Python实例"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

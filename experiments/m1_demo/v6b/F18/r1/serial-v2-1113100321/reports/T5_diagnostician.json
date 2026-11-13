@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.98,
+    "reasoning": "根据诊断结果，toy-critical-service 主进程频繁退出且重启失败，这是当前最高的置信度事件。同时存在高CPU负载和进程占用情况，但无直接证据表明这些是由于toy-critical-service崩溃引起的。网络问题并未影响诊断结果，但需注意系统可能处于隔离状态。",
+    "evidence": [
+      "2026-11-13T22:5310+00:00 medic-sandbox toy-critical-service[59519]: main process exited, code=1; status=failed/running-restart",
+      "2206611-13t22:5311+00:8: medic-sandbox toy-critical-service[59520]: main process exited, code=1; status=failed/running-restart",
+      "221611-13t22:5312+00:8: medic-sandbox toy-critical-service[59521]: main process exited, code=1; status=failed/running-restart"
+    ],
+    "repair_hint": "重启toy-critical-service并检查日志"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process|service/crash",
+    "component": "python3 -c  # zombie_maker",
+    "confidence": 0.9,
+    "anomalies": [
+      "存在大量僵尸进程",
+      "CPU 使用率异常高"
+    ],
+    "evidence": [
+      "root       54331  0.4  0.0  15776  9576 ?        Ss   09:37   0:00 /usr/local/bin/python3 -c  # zombie_maker ... while True: ... os.waitpid(-1, os.WNOHANG) ... sys.exit(0) ",
+      "303 僵尸进程数 "
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "根据告警证据和服务崩溃情况，重启服务是合理的修复措施"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

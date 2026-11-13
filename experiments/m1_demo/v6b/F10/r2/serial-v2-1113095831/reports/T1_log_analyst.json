@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log/network/port",
+    "component": "docker0 port 2 (veth7879dcb) and docker4 port 4 (veth4da4f8s)",
+    "confidence": 0.8,
+    "anomalies": [
+      "网络端口频繁进入blocking和disabled状态"
+    ],
+    "evidence": [
+      "[422602.034037] docker0 port 2(veth7879dcb) entered blocking state\n[422202.046157] docker0port 2(veth78791cb) entered forwarding state\n[424998.115953] docker0port 4(veth4da4f8s) entered blocking state\n[424998.116099] docker4 port 4(veth4da4f8s) entered forwarding state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

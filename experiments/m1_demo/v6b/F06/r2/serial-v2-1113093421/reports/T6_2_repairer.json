@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "zombie_maker",
+    "reason": "清除僵尸进程以降低CPU负载"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

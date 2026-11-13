@@ -1,0 +1,94 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 90.64,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "频繁的重启记录表明服务可能由于某种原因频繁崩溃，虽然有其他潜在问题，但服务崩溃的可能性最大。",
+    "evidence": [
+      "2026-11-13T01:56:15+00:20: medic-sandbox toy-critical-service[58821]: main process exited, code=1; status=failed/running-restart",
+      "21065-11-13t11:5621+1052:00 medic-sandbox toy-critical-service[58863]: main process exited, code=1; status=failed/running-restart"
+    ],
+    "repair_hint": "重启服务并检查配置和依赖项"
+  },
+  "gold": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "evidence_keywords": [
+      "flood.log",
+      "log_flood",
+      "connection pool exhausted"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 16.74,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 12.08,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 12.08,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 32.71,
+      "ok": false
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 12.08,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 20.57,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.01,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.74,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 11.34,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

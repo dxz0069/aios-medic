@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 1.0,
+    "reasoning": "虽然有网络问题和进程异常的诊断，但当前系统CPU使用率远超实际核心数，且存在僵尸进程，这是导致高负载的根本原因。",
+    "evidence": [
+      "36.62 82.06 63.2, ncpu=16",
+      "root 53299 0.5  0.0 15776 9568 ?        Ss   09:34   0::00 /usr/local/bin/python3 -c # zombie_maker",
+      "330"
+    ],
+    "repair_hint": "清理僵尸进程并优化资源使用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

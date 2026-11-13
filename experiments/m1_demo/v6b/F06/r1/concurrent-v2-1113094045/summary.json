@@ -1,0 +1,131 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 118.48,
+  "verdict": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 -c  # zombie_maker",
+    "confidence": 0.95,
+    "reasoning": "高CPU负载与大量僵尸进程存在显著相关性，且有异常Python脚本在持续运行。",
+    "evidence": [
+      "17.70 35.50 47.88 47/4711 55373 ncpu=16",
+      "root      11454  0.0  0.0  17508 10918 ?        Ss   Nov12   0  # zombie_maker",
+      "root       55131  0.5  0.0  15776  9596 ?        Ss   09:41   1  # zombie_maker"
+    ],
+    "repair_hint": "kill异常Python脚本并清理僵尸进程"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": false,
+    "component_ok": true
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 9.33,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 10.43,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 10.44,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.44,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 30.42,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 11.17,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.03,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.98,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.68,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.86,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.72,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 27.55,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 22.83,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

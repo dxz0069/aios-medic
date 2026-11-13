@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service频繁重启"
+    ],
+    "evidence": [
+      "2026-11-13T01:52:29+00:00 medic-sandbox toy-critical-service[58101]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13T01:52:31+00:00 medic-sandbox toy-critical-service[58102]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13T01:52:32+00:00 medic-sandbox toy-critical-service[58103]: main process exited, code=1; status=failed/running-restart"
+    ],
+    "need_more": "log/metric"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

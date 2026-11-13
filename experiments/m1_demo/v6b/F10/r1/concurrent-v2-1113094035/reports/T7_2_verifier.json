@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "process 和 logs 在修复后仍然为 true",
+      "load1、runnable 和 zombies 的值未恢复正常"
+    ],
+    "comment": "部分告警仍未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

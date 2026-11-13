@@ -1,0 +1,131 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 114.61,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 进程频繁退出是主要问题，并其他诊断项虽然有异常，但没有直接与该服务相关联的异常信息支持其为主要原因。",
+    "evidence": [
+      "220661113T220623+0201 medic-sandbox toy-critical-service[59922]: main process exited, code=1; status=failed/running-restart",
+      "194/14189 59925",
+      "ncpu=16"
+    ],
+    "repair_hint": "检查并修复 toy-critical-service 的配置或依赖项问题"
+  },
+  "gold": {
+    "category": "network/port",
+    "component": "port_hog",
+    "evidence_keywords": [
+      "8080",
+      "address already in use",
+      "port_hog"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 28,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 28,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 28,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 6.93,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 12.04,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 11.36,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 18.91,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 18.43,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 8.16,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 1.91,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.24,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 2.32,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 3.38,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 2.01,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.85,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 12.92,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

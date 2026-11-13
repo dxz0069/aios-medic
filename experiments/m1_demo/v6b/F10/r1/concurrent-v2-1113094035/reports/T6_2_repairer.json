@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "zombie_maker",
+    "reason": "针对僵尸进程问题，使用指定特征串匹配并杀相关进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

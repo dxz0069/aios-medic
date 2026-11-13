@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "clear_scratch",
+    "target": "/var/scratch",
+    "reason": "清空/var/scratch以释放空间，减轻磁盘压力"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

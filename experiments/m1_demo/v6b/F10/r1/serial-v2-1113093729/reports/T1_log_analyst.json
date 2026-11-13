@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log/network/port",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "频繁的上游连接池耗尽警告"
+    ],
+    "evidence": [
+      "connection pool exhausted, retrying upstream (attempt 1/3)"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

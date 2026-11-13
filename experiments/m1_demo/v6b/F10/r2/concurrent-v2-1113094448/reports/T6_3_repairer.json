@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "log_flood",
+    "reason": "日志证据中频繁出现连接池耗尽信息，确认为日志暴风雨，需终止 log_flood 进程以缓解症状"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

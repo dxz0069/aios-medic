@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "process和logs告警状态未恢复正常",
+      "flood_log_mb从26.3增加到115.8"
+    ],
+    "comment": "部分恢复但存在新的问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

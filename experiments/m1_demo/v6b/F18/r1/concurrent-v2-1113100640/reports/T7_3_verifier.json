@@ -1,0 +1,19 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu",
+      "runnable",
+      "ncpu",
+      "zombies",
+      "mem_avail_pct",
+      "service_ok"
+    ],
+    "comment": "部分指标未恢复到正常状态"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

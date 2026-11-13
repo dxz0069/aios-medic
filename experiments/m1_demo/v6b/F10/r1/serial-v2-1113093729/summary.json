@@ -1,0 +1,131 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 153.55,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.95,
+    "reasoning": "CPU和内存占用异常高的问题最可能是由`python3 tools/infer_server_stdlib.py`进程引起，同时日志中频繁出现连接池耗尽的情况也侧面反映出该进程对资源消耗较大。尽管有网络问题的迹象，但当前最主要的异常来源是CPU和内存占用异常高，因此优先级较高。",
+    "evidence": [
+      "16.5 51.91 54.93",
+      "root       4232  8.0  5.5 44767148 6138452 ?    Ssl  Nov12  52:59 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 82191 --attn eager --batch-window-ms 551 --max-batch 8",
+      "connection pool exhausted, retrying upstream (attempt 1/3)"
+    ],
+    "repair_hint": "优化`python3 tools/infer_server_stdlib.py`脚本以减少资源消耗，或者考虑调整资源分配策略。"
+  },
+  "gold": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "evidence_keywords": [
+      "flood.log",
+      "log_flood",
+      "connection pool exhausted"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.23,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 4.58,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.17,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 39.9,
+      "ok": false
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 8.24,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 13.22,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 14.1,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 5.0,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 14.02,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.7,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 6.76,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 7.25,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 25.38,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

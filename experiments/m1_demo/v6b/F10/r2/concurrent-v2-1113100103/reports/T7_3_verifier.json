@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "logs告警位未变，flood_log_mb从26.3变为126.5，超出正常范围"
+    ],
+    "comment": "日志大小异常增长"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

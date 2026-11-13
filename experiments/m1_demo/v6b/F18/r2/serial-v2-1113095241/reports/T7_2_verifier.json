@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "service_ok 告警位未变，still false; load1 值增加至 15.98，远离正常值20.19"
+    ],
+    "comment": "服务状态和负载未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

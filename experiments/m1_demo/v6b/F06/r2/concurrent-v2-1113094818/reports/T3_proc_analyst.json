@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 -c # zombie_maker",
+    "confidence": 0.9,
+    "anomalies": [
+      "异常多的同名进程",
+      "可疑的崩溃/僵尸进程"
+    ],
+    "evidence": [
+      "root       56903  0.5  0.0  15776  9568 ?        Ss   09:48   0:00 /usr/local/bin/python3 -c  # zombie_maker  (自标识：供修复执行器 pkill -f 匹配)",
+      "303"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

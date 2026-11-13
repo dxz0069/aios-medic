@@ -1,0 +1,95 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 57.92,
+  "verdict": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 /root/proj4-devforge/.venv/bin/python runtime/launch.py",
+    "confidence": 0.95,
+    "reasoning": "异常日志中存在多个疑似由同进程引发的问题，并且进程存在较多实例和僵尸进程。",
+    "evidence": [
+      "root       52172  2.0  0.1 11819932 1314536 ?    Ssl  09:21   0:17 /root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "313",
+      "root       53810  0.5  0.0  15776  9568 ?        Ss   09:35   1:17 /usr/local/bin/python3 -c  # zombie_maker  (自标识：供修复执行器pkill -f 匹配)"
+    ],
+    "repair_hint": "kill 或者重启异常进程"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.89,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 12.42,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 12.42,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 12.41,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 12.41,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 11.99,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.65,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 4.11,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 18.36,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

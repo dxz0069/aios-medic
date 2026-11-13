@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 /root/proj4-devforge/.venv/bin/python runtime/launch.py",
+    "confidence": 0.95,
+    "anomalies": [
+      "异常多的同名进程",
+      "可疑的崩溃/僵尸进程数量多"
+    ],
+    "evidence": [
+      "root       52172  2.0  0.1 11819932 1314536 ?    Ssl  09:21   0:17 /root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "303",
+      "root       53810  0.5  0.0  15776  9568 ?        Ss   09:35   0:17 /usr/local/bin/python3 -c  # zombie_maker  (自标识：供修复执行器 pkill -f 匹配)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

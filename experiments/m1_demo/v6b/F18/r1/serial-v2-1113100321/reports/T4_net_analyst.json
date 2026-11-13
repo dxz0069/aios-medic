@@ -1,0 +1,19 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "无法执行 ping、tc 和 ss 命令"
+    ],
+    "evidence": [
+      "== ping \n[no-default-route]\n",
+      "== tc qdisc\n/bin/sh line 1 tc command not found\n",
+      "== ss -s\n/bin/sh line 1 ss command not found\n"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

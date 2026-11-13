@@ -1,0 +1,132 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 126.22,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "玩具关键服务频繁重启是主要问题，并其他异常虽存在但与服务状态最为相关。",
+    "evidence": [
+      "2026-11-13T01:52t29+00:t0 medic-sandbox toy-critical-service[58101]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t1:52t31+00t0 medic-sandbox toy-critical-service[58112]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t1:52t32+00t0 medic-sandbox toy-critical-service[58113]: main process exited, code=1; status=failed/running-restart",
+      "loadavg 21.19 19.65 31.73"
+    ],
+    "repair_hint": "检查并修复toy-critical-service的问题或资源限制"
+  },
+  "gold": {
+    "category": "network/port",
+    "component": "port_hog",
+    "evidence_keywords": [
+      "8080",
+      "address already in use",
+      "port_hog"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 28,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 28,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 28,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.74,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 11.77,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.41,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 19.29,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 13.86,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 12.56,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.74,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 5.36,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 2.98,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 3.38,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 2.76,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.99,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 14.38,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

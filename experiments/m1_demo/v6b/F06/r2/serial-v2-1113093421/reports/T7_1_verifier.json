@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu告警仍未解除",
+      "runnable值下降但ncpu减少，不一定代表好转"
+    ],
+    "comment": "cpu和runnable状态未明显改善"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

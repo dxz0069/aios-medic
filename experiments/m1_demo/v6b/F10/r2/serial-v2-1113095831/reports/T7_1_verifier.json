@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "logs告警位仍然为true，且load1和flood_log_mb数值没有恢复正常"
+    ],
+    "comment": "日志问题未解决，负载和日志大小异常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

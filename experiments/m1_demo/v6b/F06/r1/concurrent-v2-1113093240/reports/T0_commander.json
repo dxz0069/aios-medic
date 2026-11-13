@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1, runnable, ncpu, zombies, mem_avail_pct, disk_pct, ping_loss_pct",
+        "reason": "分析当前系统 load、运行中的进程数量、僵尸进程数量、内存可用百分比、磁盘使用率和网络丢包率"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "检查进程状态，查找异常进程"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "port, ping_loss_pct",
+        "reason": "检查端口占用情况和网络丢包率"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "检查系统 日志，查找错误或异常信息"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

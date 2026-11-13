@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F06": {
+      "serial_wall_mean_s": 114.83,
+      "concurrent_wall_mean_s": 94.18,
+      "speedup_pct": 18.0,
+      "rounds": 4,
+      "rounds_conc": 4,
+      "category_ok_rate": "1/8",
+      "component_ok_rate": "2/8",
+      "recovery_ok_rate": "2/8",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 1.0
+      }
+    },
+    "F10": {
+      "serial_wall_mean_s": 129.79,
+      "concurrent_wall_mean_s": 102.89,
+      "speedup_pct": 20.7,
+      "rounds": 4,
+      "rounds_conc": 4,
+      "category_ok_rate": "1/8",
+      "component_ok_rate": "1/8",
+      "recovery_ok_rate": "1/8",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu|resource/process",
+        "verdict_comp": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5\\7B-Instruct --port 8191 --attn eager --batch-window-ms 500 --max-batch 8",
+        "confidence": 0.95
+      }
+    },
+    "F18": {
+      "serial_wall_mean_s": 143.41,
+      "concurrent_wall_mean_s": 115.46,
+      "speedup_pct": 19.5,
+      "rounds": 4,
+      "rounds_conc": 4,
+      "category_ok_rate": "0/8",
+      "component_ok_rate": "0/8",
+      "recovery_ok_rate": "0/8",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 -c  # zombie_maker",
+    "confidence": 0.95,
+    "reasoning": "高CPU负载与大量僵尸进程存在显著相关性，且有异常Python脚本在持续运行。",
+    "evidence": [
+      "17.70 35.50 47.88 47/4711 55373 ncpu=16",
+      "root      11454  0.0  0.0  17508 10918 ?        Ss   Nov12   0  # zombie_maker",
+      "root       55131  0.5  0.0  15776  9596 ?        Ss   09:41   1  # zombie_maker"
+    ],
+    "repair_hint": "kill异常Python脚本并清理僵尸进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

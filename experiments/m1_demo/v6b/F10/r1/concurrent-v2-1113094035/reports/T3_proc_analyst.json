@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\n    \"category\": \"resource/process\",\n    \"component\": \"python3 -c # zombie_maker\",\n    \"confidence\": 0.9,\n    \"anomalies\": [\n        \"创建大量僵尸进程\",\n        \"CPU 占用率异常高\"\n    ],\n    \"evidence\": [\n        \"/usr/local/bin/python3 -c  # zombie_maker  (自标识：供修复执行器 pkill -f 匹配) import os import signal...while True: pid = os.fork() ...\",\n        \"root       55331  3.0  0.0  15776  9596 ?        Ss   09:41   0:00 /usr/local/bin/python3 -c # zombie_maker\"\n    ],\n    \"need_more\": \"log\"\n}\n",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/process",
+    "component": "python3 -c _reap_and_exit(_sig, _frm): ...",
+    "confidence": 1.0,
+    "anomalies": [
+      "异常多的僵尸进程"
+    ],
+    "evidence": [
+      "root       52330  0.5  0.0  15772  9568 ?        Ss   09:30   0:00 /usr/local/bin/python3 -c  import os import signal ... def _reap_and_exit(_sig, _frm): ... for _ in range(300): ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

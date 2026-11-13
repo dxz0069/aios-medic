@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process",
+    "component": "python3 /opt/medic/service/s¥upervisor.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "异常多的同名进程"
+    ],
+    "evidence": [
+      "root       11454  0.0  0.0  17508  10908 ?        Ss   Nov12   0  # 自标识：供修复执行器 pkill -f 匹配",
+      "root       55965  0.1  0.0  15684  8808 ?        Ss   09:44   0  # 自标识：供修复执行器 pkill -f 匹配"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

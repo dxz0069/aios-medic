@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中的cpu告警仍为true",
+      "alert_after中的flood_log_mb数值增加"
+    ],
+    "comment": "部分恢复但存在新问题"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常大",
+      "CPU 占用异常高"
+    ],
+    "evidence": [
+      "root       42332 10.4  0.5 51132804 6140608 ?    Ssl  Nov12  72::4 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8",
+      "进程CPU占用率高达10.4%"
+    ],
+    "need_more": "log/storm"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

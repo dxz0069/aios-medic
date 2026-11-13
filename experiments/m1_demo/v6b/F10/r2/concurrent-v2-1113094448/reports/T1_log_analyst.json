@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "confidence": 0.9,
+    "anomalies": [
+      "连接池耗尽并持续重试"
+    ],
+    "evidence": [
+      "2026-11-13T9:44:47+00::5 log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)",
+      "2026-11-13T9:44:47+00::5 log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)",
+      "2026-11-13T9:44:47+00::5 log_flood pid=55965 WARN connection pool exhausted, retrying upstream (attempt 1/3)"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

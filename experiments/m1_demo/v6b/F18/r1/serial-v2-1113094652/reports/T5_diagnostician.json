@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 进程频繁退出，并且系统负载较高，可能是由于资源不足导致服务崩溃。",
+    "evidence": [
+      "2266-11-13T01:4639+0051 medic-sandbox toy-critical-service[55811]:service started started",
+      "2266-11-13t01:4641+0051 medic-sandbox toy-critical-service[55812]:main process exited, code=1; status=failed/running-restart",
+      "2266-11-13t01:4645+0051 medic-sandbox toy-critical-service[55816]:main process exited, code=1; status=failed/running-restart"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

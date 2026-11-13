@@ -1,0 +1,32 @@
+{"msg_id": "b1864a66ed94", "ts": "2026-11-13T01:50:58.007Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "serial"}}
+{"msg_id": "6a927da563b3", "ts": "2026-11-13T01:51:05.899Z", "from": "commander", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T0", "dur_s": 7.68, "ok": true}}
+{"msg_id": "d39f89957f95", "ts": "2026-11-13T01:51:05.901Z", "from": "SCHEDULER", "to": "log_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T1", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "96e6d3ceaf21", "ts": "2026-11-13T01:51:12.268Z", "from": "log_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T1", "dur_s": 6.36, "ok": true}}
+{"msg_id": "c2bd008c09af", "ts": "2026-11-13T01:51:12.270Z", "from": "SCHEDULER", "to": "metric_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T2", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "4908621b1515", "ts": "2026-11-13T01:51:16.357Z", "from": "metric_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T2", "dur_s": 4.08, "ok": true}}
+{"msg_id": "34d4bf89f6c8", "ts": "2026-11-13T01:51:16.359Z", "from": "SCHEDULER", "to": "proc_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T3", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "74cc9a005abe", "ts": "2026-11-13T01:52:00.306Z", "from": "proc_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T3", "dur_s": 43.95, "ok": false}}
+{"msg_id": "fcb4e89a767a", "ts": "2026-11-13T01:52:00.324Z", "from": "SCHEDULER", "to": "net_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T4", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "a980d85d7fc4", "ts": "2026-11-13T01:52:17.302Z", "from": "net_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T4", "dur_s": 16.97, "ok": true}}
+{"msg_id": "0d1fa2556c50", "ts": "2026-11-13T01:52:17.304Z", "from": "SCHEDULER", "to": "diagnostician", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T5", "deps": ["T1", "T2", "T3", "T4"], "mode": "serial"}}
+{"msg_id": "c87e701ef148", "ts": "2026-11-13T01:52:25.120Z", "from": "diagnostician", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T5", "dur_s": 7.81, "ok": true}}
+{"msg_id": "d8915cfb24e1", "ts": "2026-11-13T01:52:25.160Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_1", "deps": [], "mode": "serial"}}
+{"msg_id": "d08a9303b17d", "ts": "2026-11-13T01:52:28.144Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_1", "dur_s": 2.98, "ok": true}}
+{"msg_id": "76783388f8f3", "ts": "2026-11-13T01:52:33.217Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 1, "payload": {"action": "restart_service", "target": "", "ts": "2026-11-13T09:52:28Z", "rc": 28, "detail": "health=", "refused": false}}
+{"msg_id": "19a01bc544aa", "ts": "2026-11-13T01:52:35.361Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_1", "deps": [], "mode": "serial"}}
+{"msg_id": "e5c919dbe6a7", "ts": "2026-11-13T01:52:37.598Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_1", "dur_s": 2.23, "ok": true}}
+{"msg_id": "43c35d01e2fb", "ts": "2026-11-13T01:52:37.605Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 1, "payload": {"round": 1, "recovered": false}}
+{"msg_id": "5b7683cee8f1", "ts": "2026-11-13T01:52:37.606Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_2", "deps": [], "mode": "serial"}}
+{"msg_id": "44022bddb0ef", "ts": "2026-11-13T01:52:40.665Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_2", "dur_s": 3.06, "ok": true}}
+{"msg_id": "a877a23bb753", "ts": "2026-11-13T01:52:45.737Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 2, "payload": {"action": "restart_service", "target": "toy-critical-service", "ts": "2026-11-13T09:52:40Z", "rc": 28, "detail": "health=", "refused": false}}
+{"msg_id": "ae6429779181", "ts": "2026-11-13T01:52:47.882Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_2", "deps": [], "mode": "serial"}}
+{"msg_id": "21b66f5288bf", "ts": "2026-11-13T01:53:01.589Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_2", "dur_s": 13.71, "ok": true}}
+{"msg_id": "2453b8369dac", "ts": "2026-11-13T01:53:01.597Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 2, "payload": {"round": 2, "recovered": false}}
+{"msg_id": "430b2e462209", "ts": "2026-11-13T01:53:01.598Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_3", "deps": [], "mode": "serial"}}
+{"msg_id": "ed9babd02461", "ts": "2026-11-13T01:53:06.007Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_3", "dur_s": 4.41, "ok": true}}
+{"msg_id": "ae47a97ee5e9", "ts": "2026-11-13T01:53:11.079Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 3, "payload": {"action": "restart_service", "target": "", "ts": "2026-11-13T09:53:06Z", "rc": 28, "detail": "health=", "refused": false}}
+{"msg_id": "ceb8fbf82ee4", "ts": "2026-11-13T01:53:13.222Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_3", "deps": [], "mode": "serial"}}
+{"msg_id": "b7d63bfcac87", "ts": "2026-11-13T01:53:25.304Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_3", "dur_s": 12.08, "ok": true}}
+{"msg_id": "078d016daccb", "ts": "2026-11-13T01:53:25.310Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 3, "payload": {"round": 3, "recovered": false}}
+{"msg_id": "587ba6500db0", "ts": "2026-11-13T01:53:25.312Z", "from": "SCHEDULER", "to": "reporter", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T8", "deps": [], "mode": "serial"}}
+{"msg_id": "53057cb0d7f7", "ts": "2026-11-13T01:53:39.169Z", "from": "reporter", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T8", "dur_s": 13.86, "ok": true}}

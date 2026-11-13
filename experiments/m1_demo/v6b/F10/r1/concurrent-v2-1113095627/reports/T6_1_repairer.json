@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "根据告警信息和服务频繁崩溃的证据，重启服务是最直接的修复措施。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

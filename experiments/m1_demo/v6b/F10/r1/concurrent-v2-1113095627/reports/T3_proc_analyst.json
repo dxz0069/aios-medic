@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n  \"category\": \"resource/cpu|resource/process|service/crash\",\n  \"component\": \"python3 -c  # port_hog  (自标识：供修复执行器 pkill -f 匹配)\",\n  \"confidence\": 0.95,\n  \"anomalies\": [\n    \"持续高 CPU 占用\",\n    \"异常长时间运行\"\n  ],\n  \"evidence\": [\n    \"/usr/local/bin/python3 -c  #1_hog  (自标识：供修复执行器 pkill -f 匹配) import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind((\"0.0.0.0\", 8080)) s.listen(5) while True: time.sleep(3600) \",\n    \"进程 ID 58560 的 CPU 占用率为 0.0%\"\n  ],\n  \"need_more\": \"\"\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

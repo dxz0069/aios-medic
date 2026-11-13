@@ -1,0 +1,95 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 82.03,
+  "verdict": {
+    "category": "resource/cpu|resource/process",
+    "component": "python3 /opt/medic/service/s%7bs%7dsupervisor.py, /usr/local/bin/python3 -c  # zombie_maker",
+    "confidence": 1.0,
+    "reasoning": "僵尸进程存在且CPU占用异常高是主要问题，并进一步分析发现这些症状。",
+    "evidence": [
+      "存在大量僵尸进程：\nroot       11454  0.0  0.0  17508 10918 ?        Ss   Nov12   0 python3 /opt/medic/service/s%7bs%7dsupervisor.py\nroot       52851  0.4  0.0  15776  9568 ?        Ss   09:32   0 /usr/local/bin/python3 -c  # zombie_maker",
+      "高CPU负载：\n62.13 112.79\nncpu=16",
+      "网络接口状态频繁变化表明可能存在网络配置问题或硬件故障，但主要问题是僵尸进程造成的CPU占用过高"
+    ],
+    "repair_hint": "清理僵尸进程并优化相关服务"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": false,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 10.88,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.7,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 10.69,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 10.69,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 10.7,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 32.04,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.78,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.57,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 21.54,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}
