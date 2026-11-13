@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "服务频繁重启是主要问题，虽然有网络问题的诊断单，但其证据为命令不可用而非实际网络损失，且CPU和内存问题虽存在，但不如服务频繁重启严重。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[38334]: main process exited, code=-9; status=failed/running-restart",
+      "166.60 14.29 13.39 3/3823 38653",
+      "root       26619 39.2  0.5 38121252 6127772 ?    Ssl  17:48  71:20 python3 tools/infer_server_stdlib.py ...",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

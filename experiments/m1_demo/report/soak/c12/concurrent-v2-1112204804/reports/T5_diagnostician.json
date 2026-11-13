@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... ",
+    "confidence": 1.0,
+    "reasoning": "有具体高CPU使用率的证据且置信度最高，网络方面的问题证据不足且A1和A4有依赖性问题和命令未找到的迹象，不太可能是根本原因。",
+    "evidence": [
+      "python3 -c  import multiprocessing as mp, os def _burn():... ",
+      "8.8/ncpu=16"
+    ],
+    "repair_hint": "终止 python 脚本进程并优化其CPU使用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

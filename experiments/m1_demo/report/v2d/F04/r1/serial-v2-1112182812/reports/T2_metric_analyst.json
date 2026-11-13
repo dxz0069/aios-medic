@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 0.95,
+    "anomalies": [
+      "根分区使用率过高"
+    ],
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  317G   98G  77% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

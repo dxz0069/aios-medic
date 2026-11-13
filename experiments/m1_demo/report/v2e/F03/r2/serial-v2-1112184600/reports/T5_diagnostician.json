@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs start() for p in prota join()'",
+    "confidence": 0.95,
+    "reasoning": "网络丢包的证据不足以支撑其为根本原因，且网络丢包相关操作无法执行。 而CPU使用率高，并且有多个Python脚本在占用大量CPU资源，这更有可能是导致系统负载高的直接原因。",
+    "evidence": [
+      "docker网络接口频繁状态变化",
+      "CPU负载过高",
+      "多个Python进程持续高CPU占用，长时间运行的CPU密集型进程",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查并优化Python脚本的工作负载，考虑限制其并发数量或优化代码逻辑"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

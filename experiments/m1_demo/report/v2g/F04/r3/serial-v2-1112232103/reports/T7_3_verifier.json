@@ -1,0 +1,22 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu",
+      "memory",
+      "disk",
+      "network",
+      "service",
+      "process",
+      "logs",
+      "port 告警位均为 false",
+      "values 中各项指标未发生变化"
+    ],
+    "comment": "所有告警均已恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

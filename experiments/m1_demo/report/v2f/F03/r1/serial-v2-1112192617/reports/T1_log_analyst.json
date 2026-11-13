@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "网络接口频繁变化状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker0: port 2(veth7879dcb) entered blocking state",
+      "[422601.538285] docker: port 2(veth7879dcb) entered disabled state",
+      "[422602.034037] eth0: renamed from vethbfbb11c"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

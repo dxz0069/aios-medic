@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... (重复多次)",
+    "confidence": 1.0,
+    "reasoning": "证据显示存在大量相同的Python脚本进程，并并且CPU负载已经超过了系统的核心数，这与A2诊断结果一致。",
+    "evidence": [
+      "/root/.../python3 -c  import multiprocessing as mp, os def _burn():... (重复多次)",
+      "root       41974 44.1  0.0  18112  8912 ?        r    22:47   0::04 ..._burn())",
+      "root       41975 44.9  0.0  18112  8912 ?        r    22:47   0::4 ..._burn())",
+      "root       41976 44.5  0.0  18112  8912 ?        r    22:47   0::4 ..._burn())"
+    ],
+    "repair_hint": "kill 或者重启相关Python脚本进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n  \"category\": \"resource/memory\",\n  \"component\": \"/usr/local/bin/python3 -c  import os, time buf = [] with open\",\n  \"confidence\": 1.0,\n  \"anomalies\": [\"持续大量写入日志，消耗内存\"],\n  \"evidence\": [\"rss =int(next(l for f in open(\\\"/proc/self/status\\\") if\", \"buf.append(bytearray(128 * 1024 * 1024))\"], \"/var/log/medic/\"],\n  \"need_more\": \"\"\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

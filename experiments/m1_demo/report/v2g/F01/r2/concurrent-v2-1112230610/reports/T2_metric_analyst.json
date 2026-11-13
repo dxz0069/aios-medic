@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu|resource/disk",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载",
+      "磁盘空间利用率高"
+    ],
+    "evidence": [
+      "4.06 5.62 1.95",
+      "/ 88G  79%"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

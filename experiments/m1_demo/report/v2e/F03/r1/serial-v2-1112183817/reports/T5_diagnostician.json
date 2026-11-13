@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "多个诊断智能体均指向 python3 -c _burn 脚本消耗大量内存，且该脚本的异常情况与其他资源使用异常无直接关联，可以确认为根因",
+    "evidence": [
+      "存在多个运行相同的内存消耗密集型脚本",
+      "CPU 使用率异常高",
+      "root       30673 45.2  0.0  18112  8912 ?        r    18:38   0::4",
+      "root       30674 45.8  0.0  18112  8912 ?        r    18:38   0::55",
+      "root       30675 42.0  0.0  18112  8912 ?        r    18:38   0::54"
+    ],
+    "repair_hint": "kill 或者清理该脚本实例"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

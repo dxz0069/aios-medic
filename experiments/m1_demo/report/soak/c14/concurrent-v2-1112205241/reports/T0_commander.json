@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "worker-o",
+        "reason": "检查相关错误日志"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "worker-o",
+        "reason": "分析指标load1和ncpu"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker-o",
+        "reason": "检查运行中的进程情况"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-o",
+        "reason": "检查网络延迟和丢包情况"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

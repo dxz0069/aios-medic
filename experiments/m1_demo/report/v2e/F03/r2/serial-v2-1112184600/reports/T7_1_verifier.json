@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警从true变为false",
+      "values中runnable从34变为1"
+    ],
+    "comment": "所有告警均解除，且部分数值恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

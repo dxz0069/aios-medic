@@ -1,0 +1,16 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "/dev/sda1",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率77%，远高于其他资源问题，并且其他资源问题证据存在不确定性",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       437G   317G   98G  77% /"
+    ],
+    "repair_hint": "清理或扩展根文件系统"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

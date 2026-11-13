@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeeaky.py pid=28920",
+    "confidence": 0.97,
+    "reasoning": "两份诊断单都指向了内存使用急剧增加的问题，并且其中一份诊断的置信度更高，同时没有直接发现CPU和网络问题的明显证据。",
+    "evidence": [
+      "21626-11-12T11:16:05+08:00 leaky.py pid=28920 VmRSS=15345148kB",
+      "2126-11-12T11:16:57+08:20 leaky.py pid=28920 VmRSS=15476032kB",
+      "rss =int(next(l for l in open(/proc/self.status if f.startswith(VmRSS)).split()[1])",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found"
+    ],
+    "repair_hint": "杀掉泄露进程：kill -9 28920"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

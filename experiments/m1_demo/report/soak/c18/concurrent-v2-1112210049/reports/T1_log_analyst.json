@@ -1,0 +1,18 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "接口veth7879dcb频繁切换状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker0: port 2(veth7879dcb) entered blocking state",
+      "[422652.046160] docker*4: port 2(veth7879dcb) entered blocking state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

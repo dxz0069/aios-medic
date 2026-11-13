@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "服务已退出且状态为失败/重启中，需要重启服务以恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

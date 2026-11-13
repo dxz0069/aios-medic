@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "worker-0",
+        "reason": "检查最近的日志以查找错误和警告"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "worker-0",
+        "reason": "分析指标以确定是否有异常负载或资源使用情况"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker--o",
+        "reason": "检查运行中的进程是否有异常行为"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-0",
+        "reason": "检查网络连接状态，以确定是否存在网络问题"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

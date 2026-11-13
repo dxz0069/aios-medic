@@ -1,0 +1,96 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 52.92,
+  "verdict": {
+    "category": "resource/disk",
+    "component": "/dev/sda1",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率77%，远高于其他资源问题，并且其他资源问题证据存在不确定性",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       437G   317G   98G  77% /"
+    ],
+    "repair_hint": "清理或扩展根文件系统"
+  },
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": [
+      "VmRSS",
+      "rss",
+      "out of memory",
+      "oom",
+      "killed process",
+      "memused"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.71,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 10.31,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.32,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 10.31,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 15.74,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 6.15,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.81,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.31,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 16.73,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

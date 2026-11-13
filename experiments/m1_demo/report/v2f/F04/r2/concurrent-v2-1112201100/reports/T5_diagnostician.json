@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service 主进程已经退出，并且有高负载存在，但主要问题源于 service-critical-service 的失败退出。网络问题不影响最终判断。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[36151]: main process exited, code=-9; status=failed/running-restart",
+      "3.43 3.74 7.18 1/3834 36225",
+      "root 26405 38.6  0.5 36179748 6127244 ?    Ssl  17:48  55:t5 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

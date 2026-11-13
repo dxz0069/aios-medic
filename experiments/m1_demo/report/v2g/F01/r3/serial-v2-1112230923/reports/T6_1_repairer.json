@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "clear_scratch",
+    "target": "/var/scratch",
+    "reason": "清空根分区上的非必要文件"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

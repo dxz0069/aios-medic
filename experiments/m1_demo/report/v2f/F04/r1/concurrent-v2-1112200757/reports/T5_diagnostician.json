@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "主进程异常退出是服务崩溃的主要原因，并且高负载和内存使用异常均未指向具体问题，网络命令未找到也不影响此结论",
+    "evidence": [
+      "toy-critical-service 主进程退出，状态为失败/运行中重启",
+      "网络命令未找到导致无法检测"
+    ],
+    "repair_hint": "检查toy-critical-service服务的日志并进行必要的代码调试"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n) for p in procs: p.start() for p in proct: p.join() ",
+    "confidence": 1.0,
+    "anomalies": [
+      "CPU 占用异常高",
+      "存在大量相同命令的进程"
+    ],
+    "evidence": [
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n) for p in proct: p.start() for p in proct: p.join() 52.1 % CPU",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) proct = [mp.Process(target=_burn) for _ in range(n) for p in proct: p.start() for p in proct: p.join() 49.6 % CPU"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

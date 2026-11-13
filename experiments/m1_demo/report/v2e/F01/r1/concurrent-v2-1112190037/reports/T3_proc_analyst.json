@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续大量写入日志导致内存占用急剧增加"
+    ],
+    "evidence": [
+      "USER root PID 31897 %CPU 1.7 %MEM 1.4 VSZ 15613628 RSS 15617292 ? Ss 18:58 12:32 /usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

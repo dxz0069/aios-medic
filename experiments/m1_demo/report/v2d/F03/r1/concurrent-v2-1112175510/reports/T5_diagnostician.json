@@ -1,0 +1,14 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os ... _ncpu() ... _burn()'",
+    "confidence": 0.99,
+    "reasoning": "确定性加权投票兜底",
+    "evidence": [],
+    "repair_hint": ""
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "diagnosis_ok": true
+}

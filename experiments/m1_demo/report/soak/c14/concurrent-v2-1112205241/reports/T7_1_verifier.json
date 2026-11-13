@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_before 和 alert_after 中所有布尔告警位均为 false",
+      "alert_after 中 load1 和 mem_avail_pct 值有轻微变化，但未超出正常范围"
+    ],
+    "comment": "系统 has recovered successfully"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

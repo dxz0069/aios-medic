@@ -1,0 +1,96 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 71.6,
+  "verdict": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率已经达到77%，是最高置信度的异常，且无其他高置信度的资源或服务异常，网络命令缺失可能是环境配置问题而非直接原因。",
+    "evidence": [
+      "devtmpfs  437G  314G   99G  77% /",
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs      437G  314G   99G  77% /"
+    ],
+    "repair_hint": "清理磁盘空间或增加存储容量"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 8.55,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 6.93,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 13.0,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 7.47,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.13,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 8.38,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.84,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.05,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 15.75,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

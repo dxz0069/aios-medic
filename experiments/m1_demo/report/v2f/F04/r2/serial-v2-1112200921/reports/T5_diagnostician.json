@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "多个来源均指明当前主要问题是服务crash，且其他来源如网络分析并未发现网络丢包问题，且CPU和内存使用情况未显示异常高峰，因此可以确认服务crash为根本原因。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[36111]: main process exited, code=-9; status=failed/running-restart",
+      "3.68 3.88 7.61"
+    ],
+    "repair_hint": "重启toy-critical-service服务以恢复其正常运行"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... (38913, 38914, 38915)",
+    "confidence": 1.0,
+    "reasoning": "多个诊断都指向了资源竞争问题，特别是Python脚本进程占用了大量CPU，这是核心问题，而频繁的网络接口状态变化可能是由于资源争用导致的副作用。",
+    "evidence": [
+      "/root/.local/bin/python3 -c ... (PID 38913, CPU 53.6%)",
+      "/root/.local/bin/python3 -c ... (PID 38914, CPU 53.9%)",
+      "/root/.local/bin/python3 -c ... (PID 38915, CPU 51.4%)",
+      "Docker network interface state changes frequently."
+    ],
+    "repair_hint": "kill相关进程并清理"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

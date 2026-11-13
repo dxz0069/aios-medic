@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "worker-0",
+        "reason": "检查日志以寻找CPU高负载的原因"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "worker-0",
+        "reason": "分析性能指标，确认CPU高负载是否正常"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker-0",
+        "reason": "检查运行进程，找出占用CPU高的进程"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-0",
+        "reason": "检查网络状态，排除网络问题导致的高负载"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

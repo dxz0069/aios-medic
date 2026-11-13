@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu runnable 值从3变为1，load1微增"
+    ],
+    "comment": "运行中进程数增加且负载略有上升"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

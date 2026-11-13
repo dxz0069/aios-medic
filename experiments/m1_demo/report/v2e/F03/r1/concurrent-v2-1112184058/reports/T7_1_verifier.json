@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu告警仍为true",
+      "load1数值从25.61上升到36.94"
+    ],
+    "comment": "CPU利用率未恢复正常，且略有上升"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

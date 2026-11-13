@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn(): pass ...",
+    "confidence": 1.0,
+    "reasoning": "虽然有网络相关的异常告警，但没有足够的证据支持网络问题导致了当前的高CPU占用，相反，异常多的同名进程和高负载是直接的原因。",
+    "evidence": [
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (55.1%)",
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (52.4%)",
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (48.1%)",
+      "9.23 4.75 3.88"
+    ],
+    "repair_hint": "kill 异常进程并 重启相关服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

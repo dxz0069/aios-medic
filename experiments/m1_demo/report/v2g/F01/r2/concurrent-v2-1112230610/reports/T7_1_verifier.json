@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有布尔告警位均为false",
+      "alert_after的values中的数值均在正常范围内"
+    ],
+    "comment": "所有指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

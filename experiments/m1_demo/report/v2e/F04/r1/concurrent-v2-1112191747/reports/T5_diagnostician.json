@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "多个智能体均指向服务故障，其中 A1 提供了进程异常退出的确凿证据，且 A2、A3、A4 的高负载和网络异常均在一定程度上影响了此服务的稳定运行。",
+    "evidence": [
+      "toy-critical-service 进程退出且重启",
+      "高负载(3.9)远超CPU核数(16)",
+      "内存占用异常大，持续增长",
+      "网络工具未安装或不可用，网络状态检查失败"
+    ],
+    "repair_hint": "重启并检查 toy-critical-service 并确保网络工具安装正确"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

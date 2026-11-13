@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常高"
+    ],
+    "evidence": [
+      "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5\\7B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8  38.2  0.5 36179748 6126676"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

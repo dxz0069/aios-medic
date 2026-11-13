@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "anomalies": [
+      "toy-critical-service 进程退出且重启"
+    ],
+    "evidence": [
+      "26612612T11:17:31+1:1:538281] dockermedic-sandbox toy-critical-service[32711]: main process exited, code=-9; status=failed/running-restart"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

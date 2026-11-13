@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "多个docker网络接口频繁进入disabled状态以及网络命令不可用可能是由于系统资源紧张导致的，特别是高CPU占用是主要原因。",
+    "evidence": [
+      "[422221.538285] docker4 port 2(veth7879dcb) entered disabled state",
+      "[424998.115953] docker4pe 4(veth4da4f8s) entered disabled state",
+      "24.96 29.57 21.77 ncpu=16",
+      "/root/.../python3 -c import multiprocessing as mp, os def _burn(): while True pass",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill或重启占用大量CPU的python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeaky.py",
+    "confidence": 0.95,
+    "reasoning": "内存使用持续增加是主要问题，并多个证据支持且内存和CPU的高负载是由于leeaky.py引起。",
+    "evidence": [
+      "内存使用持续增加",
+      "leeaky.py pid=31763 VmRSS数据持续上升",
+      "高负载超过ncpu数量",
+      "异常高的CPU占用",
+      "无法执行tc和ss命令"
+    ],
+    "repair_hint": "重启leeaky.py服务或排查代码逻辑错误"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

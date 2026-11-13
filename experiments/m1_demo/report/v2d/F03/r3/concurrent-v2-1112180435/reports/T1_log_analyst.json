@@ -1,0 +1,23 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.85,
+    "anomalies": [
+      "频繁的网络端口状态变化",
+      "docker 网络接口频繁进入阻塞和禁用状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker...entered disabled state",
+      "[422602.034037] eth...renamed from vethbfbb11c",
+      "[422602.046157] docker...entered blocking state",
+      "[422602.046160] docker...entered forwarding state",
+      "[424998.115953] docker...entered disabled state",
+      "[424998.628971] IPv6...addrconf(Netdev_change): veth4da4f8s: link becomes ready"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

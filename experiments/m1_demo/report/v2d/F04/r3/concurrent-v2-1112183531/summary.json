@@ -1,0 +1,97 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 50.86,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+    "confidence": 1.0,
+    "reasoning": "高负载与CPU占用异常高是主要问题，内存问题与当前分析智能体证据无关，网络问题命令未找到不影响当前运行的组件",
+    "evidence": [
+      "loadavg 4.3 4.38 6.78",
+      "ncpu=16",
+      "root 26219 37.8  0.5 36179748 6125828 ?  Ssl  17:48  17:53 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 51 --max-batch 8"
+    ],
+    "repair_hint": "优化或减少该脚本的资源使用，考虑限制其CPU和内存占用"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.52,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.82,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 10.82,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 10.81,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 10.81,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 13.07,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.58,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.24,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 12.15,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

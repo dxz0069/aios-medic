@@ -1,0 +1,28 @@
+{
+  "ts": "2026-11-12T14:41:34Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-12T14:41:34Z",
+    "host": "worker-0",
+    "cpu": true,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": false,
+    "values": {
+      "load1": 22.35,
+      "runnable": 35,
+      "ncpu": 16,
+      "mem_avail_pct": 94.0,
+      "disk_pct": 79,
+      "ping_loss_pct": 0.0,
+      "service_ok": true
+    }
+  },
+  "sources": {
+    "log": "== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n22.35 15.95 8.77 35/4045 41582\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=992552032kB used_pct=6.0%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  327G   88G  79% /\noverlay         437G  327G   88G  79% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       40232 47.8  0.5 36158124 6094996 ?    Ssl  22:36   2:13 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       26275  0.2  0.0 10882528 1021388 ?    Ssl  17:49   0:40 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       39079  0.0  0.0  28040 19160 ?        S    20:56   0:00 /usr/local/bin/python3 /opt/medic/service/service.py\nroot       41582  4.0  0.0  19664 13260 ?        S    22:41   0:00 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2g/F03/r2/fault_serial.json\nroot       41548  0.3  0.0  18100 12616 ?        Ss   22:41   0:00 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():     while True: pass def _ncpu():     try:         return max(1, len(os.sched_getaffinity(0)))     except (AttributeError, OSError):         return os.cpu_count() or 1 if __name__ == \"__main__\":     n = min(32, max(2, _ncpu() * 2))     procs = [mp.Process(target=_burn) for _ in range(n)]     for p in procs:         p.start()     for p in procs:         p.join() \nroot       11454  0.0  0.0  17508 10908 ?        Ss   08:28   0:00 python3 /opt/medic/service/supervisor.py\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       41572 45.0  0.0  18100  8892 ?        R    22:41   0:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():     while True: pass def _ncpu():     try:         return max(1, len(os.sched_getaffinity(0)))     except (AttributeError, OSError):         return os.cpu_count() or 1 if __name__ == \"__main__\":     n = min(32, max(2, _ncpu() * 2))     procs = [mp.Process(target=_burn) for _ in range(n)]     for p in procs:         p.start()     for p in procs:         p.join() \nroot       41573 43.0  0.0  18100  8892 ?        R    22:41   0:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():     while True: pass def _ncpu():     try:         return max(1, len(os.sched_getaffinity(0)))     except (AttributeError, OSError):         return os.cpu_count() or 1 if __name__ == \"__main__\":     n = min(32, max(2, _ncpu() * 2))     procs = [mp.Process(target=_burn) for _ in range(n)]     for p in procs:         p.start()     for p in procs:         p.join() \nroot       41581 54.7  0.0  18100  8892 ?        R    22:41   0:06 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():     while True: pass def _ncpu():     try:         return max(1, len(os.sched_getaffinity(0)))     except (AttributeError, OSError):         return os.cpu_count() or 1 if __name__ == \"__main__\":     n = min(32, max(2, _ncpu() * 2))     procs = [mp.Process(target=_burn) for _ in range(n)]     for p in procs:         p.start()     for p in procs:         p.join() \nroot       41566 43.3  0.0  18100  8888 ?",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载超出核心数"
+    ],
+    "evidence": [
+      "loadavg: 4.00 11.86 12.69"
+    ],
+    "need_more": "/proc/stat 或 top日志"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

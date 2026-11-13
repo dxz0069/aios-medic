@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service 主进程退出，代码=-9，状态为运行中但重启",
+      "网络接口频繁变化状态"
+    ],
+    "evidence": [
+      "2026-11-12T12:26:52+00:53 medic-sandbox toy-critical-service[37340]: main process exited, code=-9; status=failed/running-restart",
+      "[424998.115953] docker0 port 4(veth4da4f8s) entered blocking state\n[424998.116099] device veth4da4f8s entered promiscuous mode\n[424998.615121] eth0 renamed from veth97c99f9"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

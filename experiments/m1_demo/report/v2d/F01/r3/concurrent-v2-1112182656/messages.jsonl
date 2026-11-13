@@ -1,0 +1,20 @@
+{"msg_id": "ca016782025b", "ts": "2026-11-12T10:26:56.220Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "concurrent"}}
+{"msg_id": "addcfdeef0eb", "ts": "2026-11-12T10:27:04.143Z", "from": "commander", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T0", "dur_s": 7.71, "ok": true}}
+{"msg_id": "5d7483cf9a5e", "ts": "2026-11-12T10:27:04.145Z", "from": "SCHEDULER", "to": "log_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T1", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "cdbd29cc533d", "ts": "2026-11-12T10:27:04.145Z", "from": "SCHEDULER", "to": "metric_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T2", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "503de6e754d7", "ts": "2026-11-12T10:27:04.146Z", "from": "SCHEDULER", "to": "proc_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T3", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "a6e289bdc3cc", "ts": "2026-11-12T10:27:04.146Z", "from": "SCHEDULER", "to": "net_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T4", "deps": ["T0"], "mode": "concurrent"}}
+{"msg_id": "d6ae3867e4a1", "ts": "2026-11-12T10:27:14.463Z", "from": "metric_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T2", "dur_s": 10.31, "ok": true}}
+{"msg_id": "a019d4ccfbf9", "ts": "2026-11-12T10:27:14.464Z", "from": "log_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T1", "dur_s": 10.32, "ok": true}}
+{"msg_id": "52ec6994f10b", "ts": "2026-11-12T10:27:14.465Z", "from": "proc_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T3", "dur_s": 10.31, "ok": true}}
+{"msg_id": "8bd7e6a7944b", "ts": "2026-11-12T10:27:19.892Z", "from": "net_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T4", "dur_s": 15.74, "ok": true}}
+{"msg_id": "7f583692414a", "ts": "2026-11-12T10:27:19.894Z", "from": "SCHEDULER", "to": "diagnostician", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T5", "deps": ["T1", "T2", "T3", "T4"], "mode": "concurrent"}}
+{"msg_id": "af2f84bc47cf", "ts": "2026-11-12T10:27:26.046Z", "from": "diagnostician", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T5", "dur_s": 6.15, "ok": true}}
+{"msg_id": "4af7e5baf4c8", "ts": "2026-11-12T10:27:26.082Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_1", "deps": [], "mode": "concurrent"}}
+{"msg_id": "4186b6252a59", "ts": "2026-11-12T10:27:28.893Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_1", "dur_s": 2.81, "ok": true}}
+{"msg_id": "47cdb03c0515", "ts": "2026-11-12T10:27:28.950Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 1, "payload": {"action": "clear_scratch", "target": "/var/scratch", "ts": "2026-11-12T18:27:28Z", "rc": 0, "detail": "removed 0 chunks", "refused": false}}
+{"msg_id": "1f6cba241622", "ts": "2026-11-12T10:27:29.070Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_1", "deps": [], "mode": "concurrent"}}
+{"msg_id": "716a62114ef6", "ts": "2026-11-12T10:27:32.383Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_1", "dur_s": 3.31, "ok": true}}
+{"msg_id": "5d72d006cde1", "ts": "2026-11-12T10:27:32.391Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 1, "payload": {"round": 1, "recovered": true}}
+{"msg_id": "a42d1a916513", "ts": "2026-11-12T10:27:32.392Z", "from": "SCHEDULER", "to": "reporter", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T8", "deps": [], "mode": "concurrent"}}
+{"msg_id": "fc5925b868d3", "ts": "2026-11-12T10:27:49.122Z", "from": "reporter", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T8", "dur_s": 16.73, "ok": true}}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "虽然有多项异常，但‘toy-critical-service’的主进程已经退出且状态为失败/重启中，这是最直接的服务故障指示。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[38711]: main process exited, code=-9; status=failed/running-restart",
+      "load1: 16.66 (表明系统负载较高)",
+      "CPU负载远超实际核心数 (A2提供的证据)"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu状态未恢复正常"
+    ],
+    "comment": "cpu负载依然较高"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

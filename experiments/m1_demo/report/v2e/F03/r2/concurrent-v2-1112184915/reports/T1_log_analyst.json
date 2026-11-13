@@ -1,0 +1,18 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "",
+    "confidence": 0.7,
+    "anomalies": [
+      "网络接口频繁变更状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker*1 port 2(veth7879dcb) entered disabled state",
+      "[422602.046157] docker*1 port 2(veth7879dcb) entered blocking state\n[422602.046160] docker*1 port 2(veth7879dcb) entered forwarding state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

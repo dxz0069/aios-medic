@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-0a12e",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "worker---n",
+        "reason": "检查异常日志"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "worker-n",
+        "reason": "分析负载和资源使用情况"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker-n",
+        "reason": "检查僵尸进程和可运行进程"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-n",
+        "reason": "检查网络流量和丢包"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

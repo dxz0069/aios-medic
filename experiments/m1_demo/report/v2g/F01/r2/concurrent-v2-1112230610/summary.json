@@ -1,0 +1,98 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 65.16,
+  "verdict": {
+    "category": "resource/memory",
+    "component": "lekepy",
+    "confidence": 1.0,
+    "reasoning": "内存使用量持续增加且指向同一个进程lekepy，并并且有Python脚本也在增加RSS值，表明内存泄漏。",
+    "evidence": [
+      "2206-11-12T15:56:56+02:59:59 leaky.py pid=42751 VmRSS=15185640kB",
+      "2266-11-12T15:56:57+02:59:59 leaky.py pid=42751 VmRSS=15236864kB",
+      "/usr/local/bin/python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log, 'a') as f ... rss =int(next(l for o in open('/proc/self/status') if o.startswith('VmRSS')).split()[1]) ... VmRSS={rss}kB"
+    ],
+    "repair_hint": "重启进程或优化代码减少内存使用"
+  },
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": [
+      "VmRSS",
+      "rss",
+      "out of memory",
+      "oom",
+      "killed process",
+      "memused"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "leaky",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 8.14,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 8.38,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 8.38,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 8.37,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 22.71,
+      "ok": false
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 12.29,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.78,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.25,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 15.51,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

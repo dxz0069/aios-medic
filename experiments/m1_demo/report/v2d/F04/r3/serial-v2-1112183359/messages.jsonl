@@ -1,0 +1,20 @@
+{"msg_id": "1e0abf3ec487", "ts": "2026-11-12T10:33:59.348Z", "from": "SCHEDULER", "to": "commander", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T0", "deps": [], "mode": "serial"}}
+{"msg_id": "35cc38ce8b21", "ts": "2026-11-12T10:34:09.237Z", "from": "commander", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T0", "dur_s": 9.67, "ok": true}}
+{"msg_id": "371155a91335", "ts": "2026-11-12T10:34:09.239Z", "from": "SCHEDULER", "to": "log_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T1", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "b7890d442a96", "ts": "2026-11-12T10:34:15.186Z", "from": "log_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T1", "dur_s": 5.95, "ok": true}}
+{"msg_id": "9938881f2e1e", "ts": "2026-11-12T10:34:15.188Z", "from": "SCHEDULER", "to": "metric_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T2", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "0e11ef97a4fa", "ts": "2026-11-12T10:34:19.933Z", "from": "metric_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T2", "dur_s": 4.74, "ok": true}}
+{"msg_id": "e53a5288b6c9", "ts": "2026-11-12T10:34:19.935Z", "from": "SCHEDULER", "to": "proc_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T3", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "0234fe2b1101", "ts": "2026-11-12T10:34:29.646Z", "from": "proc_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T3", "dur_s": 9.71, "ok": true}}
+{"msg_id": "2226f629363e", "ts": "2026-11-12T10:34:29.648Z", "from": "SCHEDULER", "to": "net_analyst", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T4", "deps": ["T0"], "mode": "serial"}}
+{"msg_id": "b8d66dc2df2b", "ts": "2026-11-12T10:34:35.101Z", "from": "net_analyst", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T4", "dur_s": 5.45, "ok": true}}
+{"msg_id": "72ccd672b97c", "ts": "2026-11-12T10:34:35.103Z", "from": "SCHEDULER", "to": "diagnostician", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T5", "deps": ["T1", "T2", "T3", "T4"], "mode": "serial"}}
+{"msg_id": "57352b5a83f0", "ts": "2026-11-12T10:34:42.837Z", "from": "diagnostician", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T5", "dur_s": 7.73, "ok": true}}
+{"msg_id": "c4f123404bc2", "ts": "2026-11-12T10:34:42.872Z", "from": "SCHEDULER", "to": "repairer", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T6_1", "deps": [], "mode": "serial"}}
+{"msg_id": "94b21e25c526", "ts": "2026-11-12T10:34:45.485Z", "from": "repairer", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T6_1", "dur_s": 2.61, "ok": true}}
+{"msg_id": "6c971e017f70", "ts": "2026-11-12T10:34:47.557Z", "from": "REPAIRER", "to": "VERIFIER", "type": "REPAIR_EXEC", "round": 1, "payload": {"action": "restart_service", "target": "", "ts": "2026-11-12T18:34:45Z", "rc": 0, "detail": "health={\"service\": \"toy-critical-service\", \"status\": \"ok\", \"pid\": 30104, \"uptime_s\": 0.", "refused": false}}
+{"msg_id": "e6ed3b233443", "ts": "2026-11-12T10:34:47.680Z", "from": "SCHEDULER", "to": "verifier", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T7_1", "deps": [], "mode": "serial"}}
+{"msg_id": "42239843b4a6", "ts": "2026-11-12T10:34:50.974Z", "from": "verifier", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T7_1", "dur_s": 3.29, "ok": true}}
+{"msg_id": "5050ed7cba80", "ts": "2026-11-12T10:34:50.981Z", "from": "VERIFIER", "to": "REPAIRER", "type": "VERIFY_RESULT", "round": 1, "payload": {"round": 1, "recovered": true}}
+{"msg_id": "6d131b6af582", "ts": "2026-11-12T10:34:50.982Z", "from": "SCHEDULER", "to": "reporter", "type": "TASK_DISPATCH", "round": 0, "payload": {"task_id": "T8", "deps": [], "mode": "serial"}}
+{"msg_id": "8d66f199ced1", "ts": "2026-11-12T10:35:08.616Z", "from": "reporter", "to": "SCHEDULER", "type": "TASK_DONE", "round": 0, "payload": {"task_id": "T8", "dur_s": 17.63, "ok": true}}

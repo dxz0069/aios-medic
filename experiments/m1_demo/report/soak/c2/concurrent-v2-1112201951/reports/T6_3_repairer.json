@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "确认是leeeaky.py进程导致内存使用增加，需终止该进程"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

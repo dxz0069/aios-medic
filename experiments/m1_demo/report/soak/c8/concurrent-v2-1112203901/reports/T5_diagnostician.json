@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeeaky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用量持续增加，并有具体进程leeeaky.py的VmRSS值连续增长，证据充分且一致，排除了其他来源如网络异常和CPU负载问题。",
+    "evidence": [
+      "212611-12T12:38:58+00:55 leaky.py pid=37947 VmRSS=15345012kB",
+      "2122611-12T12:38:59+00:55 leaky.py pid=37947 VmRSS=15476110kB",
+      "2122611-12T12:39:58+00:55 leaky.py pid=37947 VmRSS=15567308kB",
+      "root   37947 1.6 1.4 15613628 15617318 ? Ss 21:37 1:22 /usr/local/bin/python3 -c  import os, time buf = [] with open"
+    ],
+    "repair_hint": "kill或重启进程37947"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os..._burn()'",
+    "confidence": 0.9,
+    "anomalies": [
+      "存在多个内存占用低但CPU占用异常高的Python进程",
+      "疑似存在无限循环的脚本，导致高CPU使用率"
+    ],
+    "evidence": [
+      "root       41572 45.0  0.0  18112  8892 ?        R    22:41   0:04 /usr/local/bin/python3 -c ..._burn()",
+      "root       41573 43.0  0.0  18112  8892 ?        R    22:41   0:4 /usr/local/bin/python3 -c ..._burn()",
+      "root       41581 54.7  0.0  18112  8892 ?        R    22:41   0:6 /usr/local/bin/python3 -c ..._burn()"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

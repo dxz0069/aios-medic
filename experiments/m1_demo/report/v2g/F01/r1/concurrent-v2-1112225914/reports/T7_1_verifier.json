@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu告警位没有变为false，load1从3.35增加到4.17"
+    ],
+    "comment": "负载有所增加"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

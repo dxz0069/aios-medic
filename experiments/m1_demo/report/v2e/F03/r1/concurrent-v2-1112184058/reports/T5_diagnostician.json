@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 1.0,
+    "reasoning": "CPU负载高且存在频繁的网络接口状态变化和无法执行相关网络命令，优先考虑资源限制问题，尤其是CPU问题。",
+    "evidence": [
+      "25.61 15.98 10.66",
+      "ncpu=16",
+      "docker应用噠录位2(veth7879dcb) entered blocking state",
+      "docker应用兦夺2(veth7879dcb) entered blocking state",
+      "ping命令未响应",
+      "无法执行tc命令查询队列 Disciplines",
+      "无法执行ss 命令获取套接字统计"
+    ],
+    "repair_hint": "重启受影响的服务或检查CPU资源使用情况并优化"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

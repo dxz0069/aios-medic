@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续占用高CPU资源",
+      "存在多个相同命令行进程"
+    ],
+    "evidence": [
+      "root       34398  0.4  0.0  18100 12656 ?        S    19:34   1:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... def _ncpu(): ",
+      "root       34391 51.3  0.0  18100  8912 ?        R    19:34   1:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... def _ncpu(): ",
+      "root       34392 47.3  0.0  18100  8912 ?        R    19:34   1:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... def _ncpu(): :"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

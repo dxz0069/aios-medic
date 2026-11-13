@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n) for p in proct] p.start() forp in proct] p.join()'",
+    "confidence": 0.97,
+    "reasoning": "日志和指标显示CPU使用率异常高，并且进程监控发现存在大量相同命令的进程。",
+    "evidence": [
+      "9.29 5.23 4.53",
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) proct = [mp.Process(target=_burn) for _ in range(n) for p in proct] p.start() forp in proct] p.join() 52.1 % CPU",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) proct = [mp.Process(target=_burn) for _ in range(n) for p in proct] p.start() for p in proct] p.join() 49.1 % CPU",
+      "9.29 5.23 4.53",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill 进程并检查配置是否正确"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

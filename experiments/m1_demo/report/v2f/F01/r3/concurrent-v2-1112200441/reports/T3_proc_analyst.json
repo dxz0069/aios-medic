@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c import...",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续大量写入日志，每秒增加128MB",
+      "内存使用量异常高"
+    ],
+    "evidence": [
+      "python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log', 'a') as f: ...  # 每秒 +128MB",
+      "VmRSS=15613628kB"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

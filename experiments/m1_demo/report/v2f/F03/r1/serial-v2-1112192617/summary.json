@@ -1,0 +1,138 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 157.35,
+  "verdict": {
+    "category": "resource/cpu|resource/disk",
+    "component": "/",
+    "confidence": 0.9,
+    "reasoning": "虽然存在网络异常和tc/ss命令丢失，但磁盘使用率高和CPU负载过高的证据更直接支持资源类别的根因，且进程占用大量CPU进一步确认了资源问题。",
+    "evidence": [
+      "8.82 5.51 6.84 35/3971 33827",
+      "overlay     437G  316G   99G  77% /",
+      "[422651.538281] docker0 port 2(veth7879dcb) entered blocking state",
+      "[422651.538285] docker: port 2(veth7879dcb) entered disabled state",
+      "[422652.034037] ethh renamed from vethbfbb11c",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "优化磁盘使用和减少CPU密集型进程数量"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 14.47,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 14.56,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 9.3,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 12.99,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 10.08,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 41.78,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 5.05,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.74,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 4.31,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 3.97,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.61,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 4.62,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 26.84,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

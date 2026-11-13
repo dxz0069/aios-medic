@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "持续高内存占用，证据确凿"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

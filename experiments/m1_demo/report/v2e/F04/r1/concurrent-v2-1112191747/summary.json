@@ -1,0 +1,98 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 73.15,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "多个智能体均指向服务故障，其中 A1 提供了进程异常退出的确凿证据，且 A2、A3、A4 的高负载和网络异常均在一定程度上影响了此服务的稳定运行。",
+    "evidence": [
+      "toy-critical-service 进程退出且重启",
+      "高负载(3.9)远超CPU核数(16)",
+      "内存占用异常大，持续增长",
+      "网络工具未安装或不可用，网络状态检查失败"
+    ],
+    "repair_hint": "重启并检查 toy-critical-service 并确保网络工具安装正确"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.05,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 17.77,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 17.76,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 17.76,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 36.48,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 8.55,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.0,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.81,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 12.76,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu告警位仍为true",
+      "load1从8.82增加到36.02，超出正常范围"
+    ],
+    "comment": "cpu和load1未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

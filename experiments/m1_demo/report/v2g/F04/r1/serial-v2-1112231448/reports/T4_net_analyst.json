@@ -1,0 +1,20 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "ping命令无法执行",
+      "tc qdisc命令找不到",
+      "ss -s命令找不到"
+    ],
+    "evidence": [
+      "/bin/sh: line 1: tc qdisc command not found",
+      "/bin/sh: line 1: ss command not found"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

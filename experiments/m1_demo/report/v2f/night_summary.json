@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F01": {
+      "serial_wall_mean_s": 99.77,
+      "concurrent_wall_mean_s": 71.92,
+      "speedup_pct": 27.9,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "1/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/memory",
+        "verdict_comp": "lekcy.py",
+        "confidence": 0.95
+      }
+    },
+    "F03": {
+      "serial_wall_mean_s": 185.07,
+      "concurrent_wall_mean_s": 139.76,
+      "speedup_pct": 24.5,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "5/6",
+      "recovery_ok_rate": "5/6",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3 -c 'import multiprocessing as mp, os; def _burn(): while True: pass; ...'",
+        "confidence": 1.0
+      }
+    },
+    "F04": {
+      "serial_wall_mean_s": 78.32,
+      "concurrent_wall_mean_s": 63.78,
+      "speedup_pct": 18.6,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "6/6",
+      "component_ok_rate": "6/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 1.0
+      }
+    }
+  }
+}

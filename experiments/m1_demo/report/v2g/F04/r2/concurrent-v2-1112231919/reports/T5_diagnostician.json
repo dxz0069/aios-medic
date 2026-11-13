@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "A1指出了toy-critical-service的核心问题，即main process exited且状态为failed/running-restart，A3虽然指出了内存占用异常大但未具体指出哪个进程导致，A4提到网络命令不可用但并未直接关联具体的服务崩溃。",
+    "evidence": [
+      "226-11-12T15:19:h3+05:5 medic-sandbox toy-critical-service[43575]: main process exited, code=-9; status=failed/running-restart",
+      "root   43658  0.3  0.0  28041 19128 ?        S    23:19   0:a service.py"
+    ],
+    "repair_hint": "kill toy-critical-service并 restart it"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

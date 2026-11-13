@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 主进程已退出且有高负载异常，虽然网络和进程细节显示问题复杂但无直接冲突证据",
+    "evidence": [
+      "medic-sandbox toy-critical-service[43282]: main process exited, code=-9; status=failed/running-restart",
+      "4.04 4.04 7.39 2/3989 43355",
+      "root   43355  0.0  0.0  19752 13288 ?        S    23:16   0:"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu|resource/disk",
+    "component": "/",
+    "confidence": 0.9,
+    "reasoning": "虽然存在网络异常和tc/ss命令丢失，但磁盘使用率高和CPU负载过高的证据更直接支持资源类别的根因，且进程占用大量CPU进一步确认了资源问题。",
+    "evidence": [
+      "8.82 5.51 6.84 35/3971 33827",
+      "overlay     437G  316G   99G  77% /",
+      "[422651.538281] docker0 port 2(veth7879dcb) entered blocking state",
+      "[422651.538285] docker: port 2(veth7879dcb) entered disabled state",
+      "[422652.034037] ethh renamed from vethbfbb11c",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "优化磁盘使用和减少CPU密集型进程数量"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

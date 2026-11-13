@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用显著增加且有多个诊断支持，无网络丢包证据。",
+    "evidence": [
+      "226-11-12T11:4619+0056 leaky.py pid=34884 VmRSS=15345008kB",
+      "226-11-12T11:4619+0056 leaky.py pid=34884 VmRSS=15476152kB",
+      "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f  ..."
+    ],
+    "repair_hint": "kill leaky.py 进程并重启相关服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

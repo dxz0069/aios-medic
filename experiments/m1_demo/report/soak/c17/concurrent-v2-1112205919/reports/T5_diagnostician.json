@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeaky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用持续增加且内存占用异常大，两个诊断都指向内存问题，其中A3的诊断更具体，故提升置信度。",
+    "evidence": [
+      "21-11-12T12:59:15+00:t: leaky.py pid=39124 VmRSS=15213972kB",
+      "21-11-12T12:59:18+00:t: leaky.py pid=39124 VmRSS=15571152kB",
+      "root 39124 1.7 1.4 15613628 15517152 ? S 20-57 1t2 /usr/local/bin/python3 -c  import os, time buf = [] with open(/var/log/medic/leaky.log, \"a\") as f ..."
+    ],
+    "repair_hint": "重启leeaky.py进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

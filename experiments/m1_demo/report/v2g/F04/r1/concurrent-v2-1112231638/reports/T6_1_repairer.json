@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "重启故障的服务以恢复正常运行"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有cpu/memory/disk/network/service告警位均为false",
+      "alert_after的load1值从26.67上升至33.66，表明系统正在恢复正常工作状态"
+    ],
+    "comment": "所有条件满足恢复定义"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

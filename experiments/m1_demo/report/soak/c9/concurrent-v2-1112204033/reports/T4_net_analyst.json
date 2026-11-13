@@ -1,0 +1,19 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "ping 未发现默认路由",
+      "无法执行 tc 命令查询队列 Disciplinary"
+    ],
+    "evidence": [
+      "[no-default-route]",
+      "tc qdisc: /bin/sh: line 1: tc: command not found"
+    ],
+    "need_more": "ss -s 命令用于检查socket统计信息，需确认其是否安装"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

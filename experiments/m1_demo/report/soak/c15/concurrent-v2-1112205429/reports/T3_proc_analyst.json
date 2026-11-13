@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... (38913, 38914, 38915)",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续高CPU占用",
+      "存在大量相同命令行的进程"
+    ],
+    "evidence": [
+      "/root/.local/bin/python3 -c ... (PID: 38913, CPU: 53.6%)",
+      "/root/.local/bin/python3 -c ... (PID: 38914, CPU: 53.9%)",
+      "/root/.local/bin/python3 -c ... (PID: 38915, CPU: 51.4%)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

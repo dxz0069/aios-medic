@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位从true变为false",
+      "load1数值从22.35增加到33.89，但仍处于高位，可能需要进一步观察"
+    ],
+    "comment": "系统 recovery confirmed based on alert states"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

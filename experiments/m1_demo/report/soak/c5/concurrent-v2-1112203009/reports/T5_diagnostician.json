@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3",
+    "confidence": 1.0,
+    "reasoning": "内存使用持续增长和异常多的同名进程指向了相同的进程python3，并进一步排除了网络问题",
+    "evidence": [
+      "2112T1230:56 leaky.py pid=37501 VmRSS=14951176kB",
+      "root       37516  0.0  0.0   9784  1424 ?        S    2030  0 ps aux --sort=-rss",
+      "root       37517  0.0  0.0   9784  1424 ?        S    2031  0 python3"
+    ],
+    "repair_hint": "kill 或者重启异常进程 python3"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

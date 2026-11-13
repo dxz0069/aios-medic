@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "anomalies": [
+      "存在多个持续高 CPU 占用的进程",
+      "进程占用的内存相对较低，但数量多"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...for _ in range(n)] ) for p in procs ... p.start() ... p.join() CPU 占用高达 52.0%、55.1%、49.6%、51.2%",
+      "存在 5 个相同的高 CPU 进程：/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...for _ in range(n)] ] for p in procs ...p.join()"
+    ],
+    "need_more": "log/net"
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

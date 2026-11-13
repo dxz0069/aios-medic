@@ -1,0 +1,21 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py, /root/proj4-devforge/.venv/bin/python runtime/launch.py, python3 /opt/medic/service/supervisor.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "长时间高CPU占用",
+      "存在多个疑似异常进程",
+      "存在僵尸进程"
+    ],
+    "evidence": [
+      "python3 tools/infer_server_stdlib.py --model /public/home/acotx... 39.1  0.5 36161196 6697972",
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py  0.2  0.0 11882528 1021420",
+      "python3 /opt/medic/service/su... 0.0  0.0  19752 13304"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

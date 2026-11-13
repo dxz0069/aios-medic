@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "目标进程名为leaky.py，符合白名单中的特征串"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

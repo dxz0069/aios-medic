@@ -1,0 +1,18 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "docker网络接口频繁状态变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker及存2(veth7879dcb)皸弃状况过耵",
+      "[422602.034037] 路字veth7879dcb加立独1拿杯"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

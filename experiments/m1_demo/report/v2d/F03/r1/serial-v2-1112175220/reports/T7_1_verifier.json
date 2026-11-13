@@ -1,0 +1,20 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警已恢复为false",
+      "load1从9.29降至33.66",
+      "runnable从33降至5",
+      "ncpu保持不变",
+      "内存和磁盘状况保持良好",
+      "网络无丢包",
+      "服务状态良好"
+    ],
+    "comment": "系统 has fully recovered"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

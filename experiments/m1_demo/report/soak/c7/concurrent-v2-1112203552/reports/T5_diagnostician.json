@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "服务toy-critical-service出现异常并正在重启，同时负载很高，表明系统资源被该服务占用，网络命令未找到的问题也进一步表明了系统可能处于不稳定的环境中。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[37456]: main process exited, code=-9; status=failed/running-restart",
+      "18.38 19.35 14.79 2/3786 37776 (负载过高)",
+      "/bin/sh line 1 tc command not found (网络命令未找到)"
+    ],
+    "repair_hint": "kill或重启toy-critical-service"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "anomalies": [
+      "toy-critical-service进程意外退出并重启"
+    ],
+    "evidence": [
+      "2026-11-12T12:16:37+00:f0 medic-sandbox toy-critical-service[36559]: main process exited, code=-9; status=failed/running-restart"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

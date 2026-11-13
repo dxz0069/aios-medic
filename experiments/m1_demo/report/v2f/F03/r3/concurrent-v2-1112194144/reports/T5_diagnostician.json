@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os; def _burn(): while True: pass; ...'",
+    "confidence": 1.0,
+    "reasoning": "A2和A3诊断出高负载问题，且具体到了python进程。A1和A4尽管也提示了网络问题，但无具体组件信息，与CPU高负载关系不大。",
+    "evidence": [
+      "27.25 29.94 22.54",
+      "root       34737 49.2  1.0  18112  8872 ?        R    19:41   0:44 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn()",
+      "root       34738 49.2  1.0  18112  8872 ?        R    19:41   0:44 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn()",
+      "root       34739 44.7  1.0  18112  8872 ?        R    11:41   0:44 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn()"
+    ],
+    "repair_hint": "kill或重启占用过高CPU的python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

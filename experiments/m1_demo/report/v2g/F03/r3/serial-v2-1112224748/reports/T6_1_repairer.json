@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "匹配到指定的Python脚本特征串，且CPU负载过高需要立即终止相关进程以降低负载"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

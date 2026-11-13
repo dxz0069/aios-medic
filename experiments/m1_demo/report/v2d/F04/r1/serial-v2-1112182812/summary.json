@@ -1,0 +1,100 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 85.84,
+  "verdict": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 1.0,
+    "reasoning": "根分区使用率过高，且内存占用和CPU占用异常高，这可能导致系统资源耗尽，进而导致服务崩溃和网络检查工具缺失，因此根分区是主要问题。",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  317G   98G  77% /",
+      "root 26619 34.2  0.5 36177700 6125784 ? S S  17:48  13:39 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "USER root PID 26219 %CPU 34.2",
+      "== ping  ==\n[no-default-route]",
+      "== tc qdisc ==\n/bin/sh line 1: tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "清理根分区，释放磁盘空间"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "clear_scratch",
+      "target": "/var/scratch",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 8.46,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 5.56,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 9.96,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 11.6,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 6.18,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 14.14,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.9,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.29,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 23.27,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

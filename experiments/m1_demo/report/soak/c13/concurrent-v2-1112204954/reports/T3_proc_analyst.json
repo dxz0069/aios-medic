@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/cpu",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "CPU 占用异常高",
+      "内存占用较大"
+    ],
+    "evidence": [
+      "root       26219 39.2  0.5 38121252 6127772 ?    Ssl  17:48  71:20 python3 tools/infer_server_stdlib.py ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

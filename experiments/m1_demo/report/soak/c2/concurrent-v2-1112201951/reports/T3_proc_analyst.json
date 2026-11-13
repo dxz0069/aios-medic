@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续增长的内存占用"
+    ],
+    "evidence": [
+      "USER root         36991  1.6  1.4 15613628 15617318 ?   Ss   20:17   0:t2 /usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f:"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

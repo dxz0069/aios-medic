@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "Python进程持续占用CPU资源且反复出现，是导致系统高负载的主要原因，网络状态频繁变化和丢失的迹象并非直接导致CPU负载高的原因。",
+    "evidence": [
+      "root       31124 44.2  0.0  18100  8828 ?        r    18:53   0:t /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       31125 47.2  0.0  18100  8828 ?        r    18:53   0t /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       31131 45.2  0.0  18100  8828 ?        R    18:53   0t /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():..."
+    ],
+    "repair_hint": "kill进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1=3.6, ncpu=16",
+        "reason": "高负载和CPU数量不符"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "proc",
+        "reason": "检查运行中的进程状态"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "ping_loss_pct=0.0",
+        "reason": "无网络丢包情况"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "log",
+        "reason": "检查系统日志寻找异常"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

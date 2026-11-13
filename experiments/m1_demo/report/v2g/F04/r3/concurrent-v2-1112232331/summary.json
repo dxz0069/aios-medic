@@ -1,0 +1,97 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 48.1,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 主进程退出且存在僵尸进程表明系统存在服务级问题，高CPU负载进一步支持了这一判断。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[44063]: main process exited, code=-9; status=failed/running-restart",
+      "root       26366  0.0  0.0      0     0 ?        Z    18:07   0:40 [python] <defunct>",
+      "4.04 3.96 6.13"
+    ],
+    "repair_hint": "重启玩具关键服务"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 9.29,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 6.53,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 6.53,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 6.53,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 6.52,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 9.25,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.29,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.52,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 13.69,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "重启关键服务以检查并优化高CPU占用任务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

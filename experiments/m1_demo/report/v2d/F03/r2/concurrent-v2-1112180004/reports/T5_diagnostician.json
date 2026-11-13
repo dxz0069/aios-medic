@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "A3给出了具体的高CPU占用原因，且其证据详实，A2虽然也指出CPU高负载但没有具体说明是哪个组件引起的，A4虽然提到了网络问题但与当前主要关注的CPU高负载无关。",
+    "evidence": [
+      "root       28149 45.4  0.0  18100  8872 ?        r    17:59   0\\:a4 /usr/local/bin/python3 -c import multiprocessing as mp, os def _burn():",
+      "24.85 24.06 14.58 37/4133 28156",
+      "ncpu=16"
+    ],
+    "repair_hint": "kill python3 -c _burn 进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

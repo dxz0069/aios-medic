@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "log",
+        "reason": "检查最近的日志以寻找错误和警告"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "metrics",
+        "reason": "分析指标load1和runnable的波动情况"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "processes",
+        "reason": "检查运行中的进程状态"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "检查网络连接状态和丢包情况"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "告警信息中显示vm rss使用量在增加，且目标特征串中含有'leaky'"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

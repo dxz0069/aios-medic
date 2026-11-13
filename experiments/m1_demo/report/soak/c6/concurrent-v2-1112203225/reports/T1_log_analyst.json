@@ -1,0 +1,20 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "多次docker网络接口状态变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker名2(veth7879dcb) 绕存状光 state",
+      "[422601.538285] docker名2(veth7879dcb) 绕存郭叫 state",
+      "[424998.115953] docker名4(veth4da4f8s) 绕存重7 state",
+      "[424998.115953] docker名4(veth4da4f8s) 绕存釭叫 state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

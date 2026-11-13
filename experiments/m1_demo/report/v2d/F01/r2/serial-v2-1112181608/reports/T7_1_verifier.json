@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "修复后所有告警位均为 false",
+      "values 中 load1 和 mem_avail_pct 回到了正常水平"
+    ],
+    "comment": "系统 has fully recovered."
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

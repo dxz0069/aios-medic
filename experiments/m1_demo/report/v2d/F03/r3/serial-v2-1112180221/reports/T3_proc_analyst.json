@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+    "confidence": 1.0,
+    "anomalies": [
+      "存在多个持续高CPU占用的进程",
+      "疑似恶意循环进程"
+    ],
+    "evidence": [
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+      "python3 -c 'import multiprocessing as mp, os def _burn():...' (重复出现)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

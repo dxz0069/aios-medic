@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "load1增加至3.56",
+      "runnable减少至1"
+    ],
+    "comment": "负载和可运行进程数没有恢复到正常水平"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

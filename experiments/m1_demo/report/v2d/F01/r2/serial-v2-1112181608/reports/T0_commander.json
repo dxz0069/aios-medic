@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1",
+        "reason": "检测系统负载异常"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "runnable, ncpu",
+        "reason": "检测运行中的进程数量和CPU核心数匹配情况"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "ping_loss_pct",
+        "reason": "检测网络丢包率"
+      },
+      {
+        "id": "A4",
+        "agent": "metric_analyst",
+        "source": "mem_avail_pct, disk_pct",
+        "reason": "检测内存可用百分比和磁盘使用情况"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

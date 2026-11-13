@@ -1,0 +1,135 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 90.96,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "toy-critical-service 已明确显示为主进程退出，并虽然有高CPU和内存问题的诊断，但其优先级最高。",
+    "evidence": [
+      "toy-critical-service 主进程退出，状态为失败/重启中",
+      "medic-sandbox toy-critical-service[33380]: main process exited, code=-9; status=failed/running-restart",
+      "高CPU负载超出预期",
+      "内存占用异常高",
+      "tc qdisc 和 ss -s 命令不存在"
+    ],
+    "repair_hint": "重启toy-critical-service 服务"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 9.87,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.98,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 5.1,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 10.06,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.27,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 7.94,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.91,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.35,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.16,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.16,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 2.88,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.44,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 18.9,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

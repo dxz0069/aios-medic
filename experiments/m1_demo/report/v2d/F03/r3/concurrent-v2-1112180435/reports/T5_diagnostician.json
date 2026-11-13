@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 0.95,
+    "reasoning": "虽然网络相关的诊断有较高的信心，但具体进程的高CPU使用率是更直接的原因。且网络异常的证据不一致。",
+    "evidence": [
+      "频繁的网络端口状态变化",
+      "docker 网络接口频繁进入阻塞和禁用状态",
+      "负载远超CPU数量",
+      "持续CPU占用过高"
+    ],
+    "repair_hint": "kill 进程 python3 -c _burn"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

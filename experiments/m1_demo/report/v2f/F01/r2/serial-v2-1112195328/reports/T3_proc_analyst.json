@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log, 'a') as f: ...",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常大",
+      "持续增长"
+    ],
+    "evidence": [
+      "USER root         PID 35169 %CPU 1.6 %MEM 1.4 VSZ 15613628 RSS 15617288 ?   Ss   19:51   10:22 /usr/local/bin/python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log, 'a') as f: ...",
+      "USER root         PID 35169 %MEM 1.4 VSZ 15613628 RSS 15617288 ?   Ss   19:51   10:22 /usr/local/bin/python3 -c  import os, time buf = [] withopen('/var/log/medic/leaky.log, 'a') as f: ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

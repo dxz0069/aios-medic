@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率已经达到77%，是最高置信度的异常，且无其他高置信度的资源或服务异常，网络命令缺失可能是环境配置问题而非直接原因。",
+    "evidence": [
+      "devtmpfs  437G  314G   99G  77% /",
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs      437G  314G   99G  77% /"
+    ],
+    "repair_hint": "清理磁盘空间或增加存储容量"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

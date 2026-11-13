@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "疑似与关键服务崩溃相关"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F01": {
+      "serial_wall_mean_s": 82.51,
+      "concurrent_wall_mean_s": 73.18,
+      "speedup_pct": 11.3,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "6/6",
+      "component_ok_rate": "0/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/memory",
+        "verdict_comp": "leee.py",
+        "confidence": 1.0
+      }
+    },
+    "F03": {
+      "serial_wall_mean_s": 140.55,
+      "concurrent_wall_mean_s": 167.73,
+      "speedup_pct": -19.3,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "5/6",
+      "recovery_ok_rate": "5/6",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3 -c _burn",
+        "confidence": 1.0
+      }
+    },
+    "F04": {
+      "serial_wall_mean_s": 66.73,
+      "concurrent_wall_mean_s": 58.2,
+      "speedup_pct": 12.8,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "5/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 1.0
+      }
+    }
+  }
+}

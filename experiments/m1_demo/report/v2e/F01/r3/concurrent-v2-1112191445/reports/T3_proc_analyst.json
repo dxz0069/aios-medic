@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log', 'a') as f",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续增长的内存占用"
+    ],
+    "evidence": [
+      "USER root         PID 32472 %MEM 1.6 VSZ 15613628 RSS 15617156"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

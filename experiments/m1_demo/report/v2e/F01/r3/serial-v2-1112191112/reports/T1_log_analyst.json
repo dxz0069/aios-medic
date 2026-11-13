@@ -1,0 +1,19 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "leeeaky.py",
+    "confidence": 0.95,
+    "anomalies": [
+      "内存使用呈上升趋势"
+    ],
+    "evidence": [
+      "2026-11-12T11:11:59+00:51 leaky.py pid=32335 VmRSS=14134316kB",
+      "2026-11-12T11:11:54+00:51 leaky.py pid=32335 VmRSS=14689528kB",
+      "2026-11-12T11:11:58+00:51 leaky.py pid=32335 VmRSS=15345004kB"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

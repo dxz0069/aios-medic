@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续占用CPU资源",
+      "进程反复出现"
+    ],
+    "evidence": [
+      "root       31124 44.2  0.0  18100  8828 ?        r    18:53   0:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       31125 47.2  0.0  18100  8828 ?        R    18:53   0:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       31131 45.2  0.0  18100  8828 ?        R    18:53   0:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

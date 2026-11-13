@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "目标服务出现异常且占用系统资源，按命令行特征终止相关进程可快速解决问题。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

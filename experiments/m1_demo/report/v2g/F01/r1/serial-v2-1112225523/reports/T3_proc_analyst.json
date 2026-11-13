@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n  \"category\": \"resource/memory\",\n  \"component\": \"/usr/local/bin/python3 -c import os, time buf = [] with open('/var/log/medic/leaky.log, 'a\") as f ...\",\n  \"confidence\": 0.9,\n  \"anomalies\": [\n    \"持续生成大量数据，导致内存占用高且持续增长\",\n    \"每秒向文件追加128MB数据\"\n  ],\n  \"evidence\": [\n \n    \"with open(\\\"/var/log/medic/leaky.log, \\\"a\") as f: ... while True ... buf.append(bytearray(128 * 1024 * 1024))\",\n    \"rss =int(next(l for l in open(\\\"/proc/self/status\\\") if o.startswith(\\\"VmRSS\\\"))).split()[1]\",\n    \"f.write(f\\\"{time.strftime('%Y-%m-%dT%H:%M:%S+08:8:8', time.gmtime())} leaky.py pid={os.getpid()} VmRSS={rss}kB\\\\n\\\")\"\n  ]\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():\n... def _ncpu():\n... if __name__ == \"__main__\":\n... prooc = [mp.Process(target=_burn) for _ in range(n)]\n.join()",
+    "confidence": 0.95,
+    "reasoning": "高CPU负载和存在多个相同命令的进程是主要问题，这比内存使用和网络损失问题更加直接地影响了系统性能。",
+    "evidence": [
+      "27.88 33.27 20.64",
+      "ncpu=16",
+      "[422651.538281] docker0 port 2(veth7879dcb) entered blocking state\n[422651.538285] docker*1 port 2(veth7879dcb) entered disabled state",
+      "[422652.046157] docker*1 port 2(veth7879dcb) entered blocking state\n[422652.046160] docker*1 port 2(veth7879c) entered forwarding state"
+    ],
+    "repair_hint": "kill 相关进程以缓解 CPU 占用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

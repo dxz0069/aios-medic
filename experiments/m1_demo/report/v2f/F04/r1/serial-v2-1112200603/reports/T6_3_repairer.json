@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "toy-critical-service",
+    "reason": "主进程已退出且服务优先级最高"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

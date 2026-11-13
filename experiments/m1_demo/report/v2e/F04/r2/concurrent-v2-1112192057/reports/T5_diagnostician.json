@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "toy-critical-service 已经明确报错且退出，其它诊断项虽有异常但没有直接关联到该服务，且网络诊断信息不完整导致无法确认网络问题.",
+    "evidence": [
+      "medic-sandbox toy-critical-service[32925]: main process exited, code=-9; status=failed/running-restart",
+      "4.33 4.16 7.59",
+      "ncpu=16",
+      "root 26619 37.9  0.5 36179748 6126666 ?    Ssl 17:48 35:11 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 51 --max-batch 8",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查 toy-critical-service 的配置和服务依赖，确保其运行环境和资源充足."
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

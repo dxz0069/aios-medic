@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu, memory, disk, network 和 service 的告警位在修复后都为 false",
+      "values 中 runnable 的数量减少，load1 稍有上升，但其他指标保持不变"
+    ],
+    "comment": "系统 has fully recovered"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

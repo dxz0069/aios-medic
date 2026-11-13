@@ -1,0 +1,22 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "多次docker网络接口状态变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker...entered disabled state",
+      "[422602.046157] docker...entered blocking state",
+      "[422602.046160] docker...entered forwarding state",
+      "[424998.115953] docker...entered disabled state",
+      "[424998.629129] docker...entered blocking state",
+      "[424998.629131] docker...entered forwarding state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

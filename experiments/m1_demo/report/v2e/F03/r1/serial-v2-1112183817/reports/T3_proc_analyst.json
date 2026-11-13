@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "anomalies": [
+      "存在多个运行相同的内存消耗密集型脚本",
+      "CPU 使用率异常高"
+    ],
+    "evidence": [
+      "root       30673 45.2  0.0  18112  8912 ?        R    18:38   0:04 /usr/local/bin/python3 -c ...",
+      "root       30674 45.8  0.0  18112  8912 ?        R    18:38   0:55 /usr/local/bin/python3 -c ...",
+      "root       30675 42.0  0.0  18112  8912 ?        R    18:38   0:54 /usr/local/bin/python3 -c ..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

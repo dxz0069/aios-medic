@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "存在高CPU负载，匹配到 python 脚本相关特征"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

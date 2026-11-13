@@ -1,0 +1,18 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "/ 路径使用率达到 77%"
+    ],
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs      437G  314G   99G  77% /",
+      "devtmpfs      437G  314G   99G  77% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

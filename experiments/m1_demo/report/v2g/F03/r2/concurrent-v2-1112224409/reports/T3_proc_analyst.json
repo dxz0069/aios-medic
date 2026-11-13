@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n    \"category\": \"resource/cpu\",\n    \"component\": \"python3 -c 'import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == \\\"__main__\\\": n = min(32, max(2, _ncpu() * 2)) proproc = [mp.Process(target=_burn) for _ in range(n)] for p in proproc: p.start() for p in proproc: p.join()'\",\n    \"confidence\": 1.0,\n    \"anomalies\": [\"持续高CPU占用\"],\n    \"evidence\": [\"root       41738 49.1  0.0  18102  8912 ?        R    22:43   1:05 /usr/local/bin/python3 -c ..._burn()\", \"root       41740 45.4  0.0  18101  8912 ?        R    22:43   1:5 /usr/local/bin/python3 -c ..._burn()\", \"root       41722 44.0  0.0  18100  8912 ?        R    22:43   1:5 /usr/local/bin/python3 -c ..._burn()\"],\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中cpu告警仍然为true",
+      "alert_after中的load1数值异常升高至32.1"
+    ],
+    "comment": "系统 not recovered due to high load and cpu alert"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

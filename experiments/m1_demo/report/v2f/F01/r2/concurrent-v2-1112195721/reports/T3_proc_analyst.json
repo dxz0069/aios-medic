@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c import os, time ...",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续增长的内存占用"
+    ],
+    "evidence": [
+      "root   35312  0.0  0.0  19664 13256 ?        S    19:57   0:1 python3 test test/collect/collect.py --out /public/home/acotxxttog/m1ws/v2f/F01/r2/fault_concurrent.json"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

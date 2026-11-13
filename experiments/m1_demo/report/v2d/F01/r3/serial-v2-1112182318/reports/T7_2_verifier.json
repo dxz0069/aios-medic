@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_before和alert_after中的所有布尔告警位均为false",
+      "values中除了load1略有增加外，其余指标都保持不变或改善，表明系统已恢复至正常状态"
+    ],
+    "comment": "系统恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

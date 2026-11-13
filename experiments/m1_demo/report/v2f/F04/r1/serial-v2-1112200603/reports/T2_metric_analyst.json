@@ -1,0 +1,18 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu|resource/disk",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载超出预期"
+    ],
+    "evidence": [
+      "3.31 3.91 8.52",
+      "Overlay文件系统使用率为77%"
+    ],
+    "need_more": "/proc/vmstat以评估内存压力，log以查看潜在错误"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

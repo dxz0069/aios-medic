@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/cpu|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "CPU 占用异常高",
+      "内存占用异常大"
+    ],
+    "evidence": [
+      "root 26619 38.7  0.5 36179748 6127244 ?    Ssl  17:48  55:54 python3 tools/infer_server_stdlib.py --model /public/home/acotx..."
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

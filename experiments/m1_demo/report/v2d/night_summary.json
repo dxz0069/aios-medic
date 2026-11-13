@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F01": {
+      "serial_wall_mean_s": 100.69,
+      "concurrent_wall_mean_s": 62.18,
+      "speedup_pct": 38.2,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "4/6",
+      "component_ok_rate": "0/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/disk",
+        "verdict_comp": "/dev/sda1",
+        "confidence": 1.0
+      }
+    },
+    "F03": {
+      "serial_wall_mean_s": 121.54,
+      "concurrent_wall_mean_s": 138.43,
+      "speedup_pct": -13.9,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "6/6",
+      "component_ok_rate": "6/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3 -c _burn",
+        "confidence": 0.95
+      }
+    },
+    "F04": {
+      "serial_wall_mean_s": 74.57,
+      "concurrent_wall_mean_s": 50.73,
+      "speedup_pct": 32.0,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "1/6",
+      "component_ok_rate": "2/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+        "confidence": 1.0
+      }
+    }
+  }
+}

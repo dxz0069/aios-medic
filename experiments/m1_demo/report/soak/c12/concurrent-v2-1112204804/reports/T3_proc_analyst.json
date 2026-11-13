@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... ",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续高CPU占用率"
+    ],
+    "evidence": [
+      "python3 -c  import multiprocessing as mp, os def _burn():... ",
+      "python3 -c  import multiprocessing as mp, os def _burn():... ",
+      "python3 -c  import multiprocessing as mp, os def _burn():... "
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

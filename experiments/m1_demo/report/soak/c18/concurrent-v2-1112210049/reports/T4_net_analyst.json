@@ -1,0 +1,21 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "ping 命令未定义目标路径",
+      "tc qdisc 命令不可用",
+      "ss -s 命令不可用"
+    ],
+    "evidence": [
+      "[no-default-route]",
+      "/bin/sh line 1: tc command not found",
+      "/bin/sh line 1: ss command not found"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

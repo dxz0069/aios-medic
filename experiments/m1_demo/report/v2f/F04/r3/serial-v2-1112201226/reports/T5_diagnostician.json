@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "主进程退出且服务不可用，远超负载和资源使用问题直接由服务崩溃引起",
+    "evidence": [
+      "medic-sandbox toy-critical-service[36291]: main process exited, code=-9; status=failed/running-restart",
+      "load1=3.88, runnable=2, ncpu=16",
+      "root 26619 38.7  0.5 36179748 6127244 ? Ssl 17:48  55%54 python3 tools/infer_server_stdlib.py --model /public/home/acotx...",
+      "[no-default-route], /bin/sh line 1 tc command not found"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

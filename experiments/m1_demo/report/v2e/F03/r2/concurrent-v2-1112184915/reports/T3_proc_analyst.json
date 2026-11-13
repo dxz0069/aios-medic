@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():\n... def _ncpu(): : return os.cpu_count() or 1 if __name__ == \"__main__\": ... prooc = [mp.Process(target=_burn) for _ in range(n)]\n... .join()",
+    "confidence": 0.9,
+    "anomalies": [
+      "CPU占用异常高",
+      "存在多个相同命令的进程"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():\n... def _ncpu():\n... if __name__ == \"__main__\":\n... prooc = [mp.Process(target=_burn) for _ in range(n)]\n",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():\n... def _ncpu():\n... if __name__ == \"__main__\":\n... prooc = [mp.Process(target=_burn) for _ in range(n)]\n",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():\n... def _ncpu():\n... if __name__ == \"__main__\":\n... prooc = [mp.Process(target=_burn) for _ in range(n)]\n"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

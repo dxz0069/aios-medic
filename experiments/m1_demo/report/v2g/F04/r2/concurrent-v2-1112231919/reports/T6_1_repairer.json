@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "根据告警证据，main process exited且状态为failed/running-restart，推测可能是service/service.py引起的"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

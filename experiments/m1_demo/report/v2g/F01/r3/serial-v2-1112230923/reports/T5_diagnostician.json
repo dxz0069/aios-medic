@@ -1,0 +1,16 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 1.0,
+    "reasoning": "磁盘使用率达到79%，且无其他资源类别的异常支持，故确定为磁盘问题。",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs        1.7G  348K  1.7G   2% /dev\ntmpfs           1.8G  768K  1.8G   1% /dev/shm\noverlay         437G  327G   88G  79% /\noverlay         437G  327G   88G  79% /"
+    ],
+    "repair_hint": "清理根分区上的非必要文件或考虑增加存储空间"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

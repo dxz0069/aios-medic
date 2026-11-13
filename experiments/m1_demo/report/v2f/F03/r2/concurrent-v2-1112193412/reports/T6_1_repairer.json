@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "匹配到的进程特征串"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

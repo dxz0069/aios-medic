@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/disk",
+    "component": "/",
+    "confidence": 0.98,
+    "reasoning": "磁盘使用率已经达到了77%，并且内存使用出现了异常升高趋势，但是内存异常主要集中在`leeaky.py`和类似脚本上，磁盘满并不是直接原因，但是它可能是导致系统整体负载增加的一个因素。",
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\noverlay         437G  317G   98G  77% /",
+      "2026-11-12T11:12:43+01:59 leaky.py pid=28785 VmRSS=14689644kB",
+      "2126-1112T11:12:47+01:59 leaky.py pid=28785 VmRSS=15213972kB",
+      "2126-1112T11:1251+11:59 leaky.py pid=28785 VmRSS=15617152kB"
+    ],
+    "repair_hint": "清理磁盘空间或优化磁盘使用，同时检查并调整脚本`leeaky.py`以减少内存使用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

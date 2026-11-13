@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.98,
+    "anomalies": [
+      "高负载(3.9)远超CPU核数(16)"
+    ],
+    "evidence": [
+      "3.90 4.15 8.38 3/3922 32785"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

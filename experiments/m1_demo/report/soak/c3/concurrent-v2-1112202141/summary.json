@@ -1,0 +1,130 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 303.64,
+  "verdict": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.95,
+    "reasoning": "确定性加权投票兜底",
+    "evidence": [],
+    "repair_hint": ""
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "none",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 14.29,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 43.19,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 43.19,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 159.65,
+      "ok": false
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 43.18,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 76.67,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 4.42,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 4.31,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.66,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 6.15,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.89,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 4.57,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.56,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

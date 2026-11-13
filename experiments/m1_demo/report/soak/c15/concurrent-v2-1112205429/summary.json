@@ -1,0 +1,99 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 85.75,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... (38913, 38914, 38915)",
+    "confidence": 1.0,
+    "reasoning": "多个诊断都指向了资源竞争问题，特别是Python脚本进程占用了大量CPU，这是核心问题，而频繁的网络接口状态变化可能是由于资源争用导致的副作用。",
+    "evidence": [
+      "/root/.local/bin/python3 -c ... (PID 38913, CPU 53.6%)",
+      "/root/.local/bin/python3 -c ... (PID 38914, CPU 53.9%)",
+      "/root/.local/bin/python3 -c ... (PID 38915, CPU 51.4%)",
+      "Docker network interface state changes frequently."
+    ],
+    "repair_hint": "kill相关进程并清理"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 16.25,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 18.03,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 18.01,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 17.99,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 17.99,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 22.2,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 4.75,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.12,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 20.54,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

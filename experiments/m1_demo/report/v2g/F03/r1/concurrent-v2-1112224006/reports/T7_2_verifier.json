@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有布尔告警位均为false",
+      "values中的load1略有增加，但仍处于较高水平，但不属于异常变化"
+    ],
+    "comment": "系统 has recovered from the CPU issue."
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

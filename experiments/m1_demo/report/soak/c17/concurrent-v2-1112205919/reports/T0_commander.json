@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-0226",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1",
+        "reason": "load1过高"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "runnable, ncpu",
+        "reason": "运行中的进程数量和CPU核心数不平衡"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "ping_loss_pct",
+        "reason": "网络包丢失率正常"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "log",
+        "reason": "检查应用日志以获取更多信息"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

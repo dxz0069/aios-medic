@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "根据告警信息和根因分析，toy-critical-service频繁启动且CPU使用率过高，重启该服务可以解决问题。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

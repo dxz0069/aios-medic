@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有布尔告警位为false",
+      "alert_after的数值在合理范围内且与alert_before相近"
+    ],
+    "comment": "恢复条件满足"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

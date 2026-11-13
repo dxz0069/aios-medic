@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 主进程退出是主要原因，且该异常的置信度最高。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[29911]: main process exited, code=-9; status=failed/running-restart",
+      "无法获取 ping 结果, tc qdisc 命令未找到, ss -s 命令未找到",
+      "高负载超过CPU核心数"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

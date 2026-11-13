@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk|resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "高CPU负载超出预期CPU数量",
+      "磁盘使用率过高"
+    ],
+    "evidence": [
+      "3.41 4.82 9.8",
+      "/ 77% /"
+    ],
+    "need_more": "/proc/vmstat以确认runnable队列长度"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

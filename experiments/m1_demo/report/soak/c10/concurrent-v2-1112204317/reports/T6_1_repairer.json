@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "主进程已退出且存在高CPU占用，推测是该脚本出现问题导致。"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

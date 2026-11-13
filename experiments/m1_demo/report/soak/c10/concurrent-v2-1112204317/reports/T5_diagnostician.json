@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service 主进程退出，并且存在高CPU占用和内存占用异常，这些情况通常由业务服务崩溃导致。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[37919]: main process exited, code=-9; status=failed/running-restart",
+      "16.13 16.61 14.43 2/3797 38208",
+      "ncpu=16",
+      "root 26619 39.3  0.5 38121152 6127772 ? Ssl 17:48 68.49 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 50 --max-batch 8",
+      "== tc qdisc ==\n/bin/sh line 1: tc command not found",
+      "== ss -s ==\n/bin/sh line 1: ss command not found"
+    ],
+    "repair_hint": "kill/toy-critical-service并检查其配置及依赖项以防止再次崩溃"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

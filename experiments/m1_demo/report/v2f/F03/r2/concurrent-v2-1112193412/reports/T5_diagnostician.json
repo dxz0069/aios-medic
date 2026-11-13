@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():... def _ncpu():'",
+    "confidence": 0.95,
+    "reasoning": "根据日志中的显示，高负载和持续占用高CPU资源的现象更为明显且直接，而且有一个具体的进程在持续使用大量CPU资源，而网络相关的告警并没有实际发生，只是存在配置问题。",
+    "evidence": [
+      "25.37 25.61 16.92 34/3932 34398",
+      "root 34398 0.4 0.0 18100 12656 ? S 19:34 1::14 /usr/local/bin/python3 -c 'import multiprocessing as mp, os def _burn():... def _ncpu(): '",
+      "root 34391 51.3 0.0 18100 8912 ?R 19:34 1::15 /usr/local/bin/python3 -c 'import multiprocessing as mp, os def _burn():... def _ncpu(): '",
+      "root 34392 47.3 0.0 18100 8912 ?R 19:34 1::14 /usr/local/bin/python3 -c 'import multiprocessing as mp, os def _burn():...def _ncpu(): ':"
+    ],
+    "repair_hint": "kill 或者 kill -9 进程34398及其衍生进程来停止CPU使用异常的脚本运行"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

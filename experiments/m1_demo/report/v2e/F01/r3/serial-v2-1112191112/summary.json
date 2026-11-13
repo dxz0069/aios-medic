@@ -1,0 +1,98 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 85.29,
+  "verdict": {
+    "category": "resource/memory",
+    "component": "leeeaky.py",
+    "confidence": 1.0,
+    "reasoning": "内存使用量呈上升趋势，并三个诊断结果均指向内存问题，其中A1给出了明确的内存泄漏证据，因此最终认定为内存相关的问题。",
+    "evidence": [
+      "2026-11-12T11:11:59+00:51 leaky.py pid=32335 VmRSS=14134316kB",
+      "2026-11-12T11:11:54+00:51 leaky.py pid=32335 VmRSS=14689528kB",
+      "2120262-1111-1158+00:51 leaky.py pid=32335 VmRSS=15345004kB"
+    ],
+    "repair_hint": "kill leaky.py进程并找出代码中的内存泄漏问题"
+  },
+  "gold": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "evidence_keywords": [
+      "VmRSS",
+      "rss",
+      "out of memory",
+      "oom",
+      "killed process",
+      "memused"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "leaky",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.63,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.45,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.38,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 25.92,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 4.9,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 11.67,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.62,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.74,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 12.47,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

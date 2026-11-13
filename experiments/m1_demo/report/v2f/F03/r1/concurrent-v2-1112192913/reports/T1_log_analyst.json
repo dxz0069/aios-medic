@@ -1,0 +1,18 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "多个docker网络接口频繁状态变化"
+    ],
+    "evidence": [
+      "[422652.046160] docker4: port 2(veth7879dcb) entered forwarding state",
+      "[424998.629091] docker4: port 4(veth4da4f8s) entered forwarding state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

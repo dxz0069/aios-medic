@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "证据指向 python3 -c _burn 进程导致高 CPU 占用，其他网络问题并未影响主要指标且未见明确证据。",
+    "evidence": [
+      "8.77 11.79 12.2",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try { return max(1, len(os.sched_getaffinity(0))) } except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs p.start() for p in prooc p.join()",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try { return max(1, len(os.sched_getaffinity(0))) } except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__':': n = min(32, max(2, _ncpu() * 2)) prooc = [mp.Process(target=_burn) for _ in range(n)] for p in prooc p.start() for p in prooc p.join()"
+    ],
+    "repair_hint": "kill python3 -c _burn 进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

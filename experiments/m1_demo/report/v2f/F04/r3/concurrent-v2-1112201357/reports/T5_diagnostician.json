@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service 主进程已明确退出且状态为失败/重启中，且其高负载可能是由于自身异常导致，内存和CPU使用情况异常可能是该服务的影响。",
+    "evidence": [
+      "toy-critical-service 主进程退出且状态为失败/重启中",
+      "3.81 3.81 6.61 1/3815 36496",
+      "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 51 --max-batch 8 38.9 1.5 36179748 6127244 ? Ssl 17:48 56.47",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service 服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

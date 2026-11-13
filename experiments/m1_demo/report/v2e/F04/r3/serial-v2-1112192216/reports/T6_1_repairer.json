@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "根据告警证据，toy-critical-service 进程异常退出且系统 load1 达到 3.81，超过了 nCPU 核心数 16，重启服务可能解决问题。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process|service/crash",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常大",
+      "持续时间长"
+    ],
+    "evidence": [
+      "root   43658  0.3  0.0  28041 19028 ?        S    23:19   0:a service.py"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有布尔告警位均为false",
+      "alert_after的数值均与alert_before相同，未提供恢复情况"
+    ],
+    "comment": "CPU告警已恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

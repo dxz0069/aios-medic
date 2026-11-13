@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "metrics",
+        "reason": "检查系统 load1 是否过高"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "processes",
+        "reason": "检查可运行进程数是否异常"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "检查网络丢包率"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "检查系统 日志是否有异常"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

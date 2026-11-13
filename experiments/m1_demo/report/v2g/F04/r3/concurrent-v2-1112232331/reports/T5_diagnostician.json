@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 主进程退出且存在僵尸进程表明系统存在服务级问题，高CPU负载进一步支持了这一判断。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[44063]: main process exited, code=-9; status=failed/running-restart",
+      "root       26366  0.0  0.0      0     0 ?        Z    18:07   0:40 [python] <defunct>",
+      "4.04 3.96 6.13"
+    ],
+    "repair_hint": "重启玩具关键服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

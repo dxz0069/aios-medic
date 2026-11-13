@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f: ...",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续增长的内存占用",
+      "异常高的CPU占用"
+    ],
+    "evidence": [
+      "root 31763 1.6 1.4 15613628 15617256 ? Ss 18:55 1:02 /usr/local/bin/python3 -c  ... (VmRSS=15617256 kB)",
+      "root 26219 38.2 0.5 36179748 6126616 ? Ssl 17:48 26:19 python3 tools/infer_server_stdlib.py --model ... (RSS=6121616 kB)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

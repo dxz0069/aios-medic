@@ -1,0 +1,23 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "网络命令未找到",
+      "无法进行ping测试"
+    ],
+    "evidence": [
+      "== ping ",
+      "[no-default-route]",
+      "== tc qdisc ",
+      "/bin/sh: line 1: tc",
+      "== ss -s ",
+      "/bin/sh: line 1: ss"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

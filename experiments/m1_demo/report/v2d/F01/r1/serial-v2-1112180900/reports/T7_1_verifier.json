@@ -1,0 +1,19 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu",
+      "memory",
+      "disk",
+      "network",
+      "service 告警位均为 false",
+      "values 中 load1 从 6.49 下降到 5.6, mem_avail_pct 仅轻微下降"
+    ],
+    "comment": "所有指标均恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

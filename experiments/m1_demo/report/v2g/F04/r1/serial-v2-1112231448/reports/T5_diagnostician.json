@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "虽然有CPU和内存问题，但主要异常是服务故障，且证据链指向此服务异常退出并重启中，其余资源使用量虽高但也可能因该服务崩溃引起",
+    "evidence": [
+      "medic-sandbox toy-critical-service[41842]: main process exited, code=-9; status=failed/running-restart",
+      "3.97 4.06 7.82",
+      "ncpu=16",
+      "root       43222  3.0  0.0  19664 13256 ?        S    23:14   0:m python3 test/collect/collect.py --out /public/home/acotxxttog/m1ws/v2g/F4/r1/fault_serial.json",
+      "root       41842 37.6  0.5 3616392 6694604 ?    Ssl  22:36  14:15 toy-critical-service",
+      "/bin/sh line 1 tc qdisc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

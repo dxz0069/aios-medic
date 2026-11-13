@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn(): while True pass ...ncpu():",
+    "confidence": 1.0,
+    "reasoning": "虽然网络丢包的告警存在，但是没有直接的网络丢包现象，且 CPU 负载异常明显，且有具体代码片段表明存在高 CPU 占用，因此以 CPU 负载问题为主。",
+    "evidence": [
+      "高CPU负载",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == \"__main__\": n = min(32, max(2, _ncpu() * 2)) prooc = [mp.Process(target=_burn) for _ in range(n)] for p in prooc: p.start() for p in prooc: p.join"
+    ],
+    "repair_hint": "终止或调整该 python 脚本的进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

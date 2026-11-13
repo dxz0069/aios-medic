@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after中所有告警位均为false",
+      "values中的load1和runnable指标有变化，但都在正常范围内"
+    ],
+    "comment": "系统 has recovered as all alerts are false after the fix"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

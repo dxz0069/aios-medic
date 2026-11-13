@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "负载过高"
+    ],
+    "evidence": [
+      "9.29 5.23 4.53"
+    ],
+    "need_more": "/proc/stat, cpu 使用率"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,136 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 85.51,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service 主进程退出，并且存在高CPU占用和内存占用异常，这些情况通常由业务服务崩溃导致。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[37919]: main process exited, code=-9; status=failed/running-restart",
+      "16.13 16.61 14.43 2/3797 38208",
+      "ncpu=16",
+      "root 26619 39.3  0.5 38121152 6127772 ? Ssl 17:48 68.49 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 50 --max-batch 8",
+      "== tc qdisc ==\n/bin/sh line 1: tc command not found",
+      "== ss -s ==\n/bin/sh line 1: ss command not found"
+    ],
+    "repair_hint": "kill/toy-critical-service并检查其配置及依赖项以防止再次崩溃"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "service/service.py",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "service/service.py",
+      "exec_rc": -15,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "signal.SIGKILL",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 16.59,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 10.56,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 10.56,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 10.56,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 10.56,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 14.35,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 6.49,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.01,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 6.58,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.5,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 6.82,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 3.41,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 14.34,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

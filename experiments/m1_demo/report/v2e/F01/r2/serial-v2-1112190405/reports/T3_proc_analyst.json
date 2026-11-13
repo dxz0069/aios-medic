@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "/usr/local/bin/python3 -c  import os, time buf = [] with open(\"/var/log/medic/leaky.log\", \"a\") as f...",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续增长的RSS值"
+    ],
+    "evidence": [
+      "rss =int(next(l for k in open(\"/proc/self/status\") if k.startswith(\"VmRSS\")).split()[1])",
+      "VmRSS=15613628kB\n",
+      "VmRSS=15620440kB\n"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

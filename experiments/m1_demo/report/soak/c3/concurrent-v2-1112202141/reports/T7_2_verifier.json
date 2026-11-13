@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "cpu状态在修复后仍然为true",
+      "load1数值从8.82上升到36.11，表明负载增加"
+    ],
+    "comment": "系统 负载增加且CPU告警仍未解除"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

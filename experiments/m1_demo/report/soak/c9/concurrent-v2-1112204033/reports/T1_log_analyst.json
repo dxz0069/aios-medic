@@ -1,0 +1,20 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "网络接口状态频繁变化"
+    ],
+    "evidence": [
+      "docker0: port 2(veth7879dcb) entered blocking state",
+      "dockerif port 2(veth7879dcb) entered disabled state",
+      "dockerif port 4(veth4da4f8s) entered blocking state",
+      "dockerif port 4(veth4da4f8s) entered disabled state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

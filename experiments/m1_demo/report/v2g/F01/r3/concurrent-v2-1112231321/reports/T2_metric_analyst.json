@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "根文件系统使用率高"
+    ],
+    "evidence": [
+      "overlay         437G  327G   88G  79% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

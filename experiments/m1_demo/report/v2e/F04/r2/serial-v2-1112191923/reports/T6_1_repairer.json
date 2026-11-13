@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "clear_scratch",
+    "target": "/var/scratch",
+    "reason": "清空临时目录以释放磁盘空间"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

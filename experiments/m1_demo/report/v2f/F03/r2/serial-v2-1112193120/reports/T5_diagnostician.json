@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "CPU 负载过高，且存在多个高 CPU 占用的 python3 -c _burn 进程。",
+    "evidence": [
+      "27.25 22.44 14.18 35/3944 34222",
+      "ncpu=16",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...for _ in range(n)] ] for p in procs ...p.join()",
+      "存在 5 个相同的高 CPU 进程：/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...for _ in range(n)] ] for p in procs ...p.join()"
+    ],
+    "repair_hint": "kill 进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

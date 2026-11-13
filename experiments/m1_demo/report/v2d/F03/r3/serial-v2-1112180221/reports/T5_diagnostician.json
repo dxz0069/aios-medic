@@ -1,0 +1,23 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+    "confidence": 1.0,
+    "reasoning": "A3诊断出的高CPU占用进程存在多个实例，并且A1和A4虽然指出了网络问题，但其证据不足以支持网络丢失，且与主要高CPU占用原因不一致。",
+    "evidence": [
+      "28.68 26.82 16.95",
+      "ncpu=16",
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py",
+      "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+      "python3 -c 'import multiprocessing as mp, os def _burn():...' (重复出现)",
+      "== ping \n[no-default-route]\n",
+      "== tc qdisc \n/bin/shline 1 tc command not found\n",
+      "== ss -s \n/bin/sh line 1 ss command not found\n"
+    ],
+    "repair_hint": "监控并 python脚本，检查是否存在无限制的CPU占用进程"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

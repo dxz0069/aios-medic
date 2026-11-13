@@ -1,0 +1,28 @@
+{
+  "ts": "2026-11-12T12:05:19Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-12T12:05:19Z",
+    "host": "worker-0",
+    "cpu": false,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": false,
+    "values": {
+      "load1": 3.87,
+      "runnable": 4,
+      "ncpu": 16,
+      "mem_avail_pct": 93.4,
+      "disk_pct": 77,
+      "ping_loss_pct": 0.0,
+      "service_ok": true
+    }
+  },
+  "sources": {
+    "log": "== leaky.log (tail) ==\n1-12T12:05:06+00:00 leaky.py pid=35604 VmRSS=19015020kB\n2026-11-12T12:05:07+00:00 leaky.py pid=35604 VmRSS=19146168kB\n2026-11-12T12:05:08+00:00 leaky.py pid=35604 VmRSS=19277316kB\n2026-11-12T12:05:09+00:00 leaky.py pid=35604 VmRSS=19408464kB\n2026-11-12T12:05:10+00:00 leaky.py pid=35604 VmRSS=19539348kB\n2026-11-12T12:05:11+00:00 leaky.py pid=35604 VmRSS=19670496kB\n2026-11-12T12:05:12+00:00 leaky.py pid=35604 VmRSS=19801644kB\n2026-11-12T12:05:13+00:00 leaky.py pid=35604 VmRSS=19932792kB\n2026-11-12T12:05:14+00:00 leaky.py pid=35604 VmRSS=20063676kB\n2026-11-12T12:05:15+00:00 leaky.py pid=35604 VmRSS=20194824kB\n2026-11-12T12:05:16+00:00 leaky.py pid=35604 VmRSS=20325972kB\n2026-11-12T12:05:17+00:00 leaky.py pid=35604 VmRSS=20456856kB\n2026-11-12T12:05:19+00:00 leaky.py pid=35604 VmRSS=20588004kB\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n3.87 4.06 8.77 4/3799 35669\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=986903252kB used_pct=6.6%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  316G   99G  77% /\noverlay         437G  316G   99G  77% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       26219 37.9  0.5 36179748 6127240 ?    Ssl  17:48  51:59 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       26275  0.3  0.0 10882528 1021340 ?    Ssl  17:49   0:28 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       35631  0.7  0.0 344536 41368 ?        S    20:04   0:00 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2f/F01/r3/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2f/F01/r3 --gold F01\nroot       33380  0.0  0.0  28040 19136 ?        S    19:24   0:00 /usr/local/bin/python3 /opt/medic/service/service.py\nroot       35669  0.0  0.0  19664 13260 ?        S    20:05   0:00 python3 /public/home/acotxxttog/aios-medic/testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2f/F01/r3/concurrent-v2-1112200441/verify_collect_1.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   08:28   0:00 python3 /opt/medic/service/supervisor.py\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       35624  0.0  0.0   7368  3600 ?        Ss   20:04   0:00 bash -c cd /public/home/acotxxttog/aios-medic && timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2f/F01/r3/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2f/F01/r3 --gold F01 > /public/home/acotxxttog/m1ws/v2f/F01/r3/concurrent.log 2>&1\nroot       35679  0.0  0.0   7368  3496 ?        S    20:05   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       35680  0.0  0.0  10116  1572 ?        R    20:05   0:00 ps aux --sort=-rss\nroot       35630  0.0  0.0   5780  1032 ?        S    20:04   0:00 timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v2f/F01/r3/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v2f/F01/r3 --gold F01\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n"
+  }
+}

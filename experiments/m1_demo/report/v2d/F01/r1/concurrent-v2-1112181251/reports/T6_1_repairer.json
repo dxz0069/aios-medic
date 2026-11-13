@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "因为内存异常集中在'leeaky.py'上，清理相关的进程可以缓解当前的资源压力。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

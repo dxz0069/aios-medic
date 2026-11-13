@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位从true变为false",
+      "内存、磁盘、网络和服务告警位均为false",
+      "CPU负载和就绪进程恢复正常水平"
+    ],
+    "comment": "所有关键指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

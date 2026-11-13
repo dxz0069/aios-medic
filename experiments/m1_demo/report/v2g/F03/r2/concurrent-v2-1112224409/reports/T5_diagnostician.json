@@ -1,0 +1,27 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "reasoning": "高负载主要由CPU使用率过高引起，并且有持续高CPU占用的证据，尽管网络状态频繁变化，但缺少直接影响网络的服务异常证据，因此将网络问题的置信度降低。",
+    "evidence": [
+      "22.95 22.66 11.79 39/4163 41742",
+      "ncpu=16",
+      "[422651.538281] docker...entered disabled state",
+      "[422652.046157] docker...entered blocking state",
+      "[422652.046165] docker...entered forwarding state",
+      "[422651.538285] docker...entered disabled state",
+      "[425038.116199] docker...entered blocking state",
+      "[425138.116201] docker...entered forwarding state",
+      "[425138.116201] docker...entered disabled state",
+      "root       41738 49.1  0.0  18102  8912 ?        r    22:43   1:5 /usr/local/bin/python3 -c ..._burn()",
+      "root       41740 45.4  0.0  18101  8912 ?        r    22:43   1:5 /usr/local/bin/python3 -c ..._burn()",
+      "root       41722 44.0  0.0  18100  8912 ?        r    22:43   1:5 /usr/local/bin/python3 -c ..._burn()"
+    ],
+    "repair_hint": "检查并优化高CPU占用任务，考虑调整进程优先级或限制并发数。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

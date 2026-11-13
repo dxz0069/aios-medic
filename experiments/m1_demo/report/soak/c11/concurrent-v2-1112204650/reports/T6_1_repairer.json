@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "根因涉及内存泄露，且提供了具体的进程特征串"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

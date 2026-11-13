@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/process",
+    "component": "[python]",
+    "confidence": 0.95,
+    "anomalies": [
+      "存在僵尸进程"
+    ],
+    "evidence": [
+      "root       26366  0.0  0.0      0     0 ?        Z    17:49   0:40 [python] <defunct>"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

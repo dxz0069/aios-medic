@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "进程le35459占用大量内存，按特征串终止该进程以释放资源"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

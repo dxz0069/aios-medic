@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 1.0,
+    "anomalies": [
+      "内存占用异常大",
+      "进程持续运行"
+    ],
+    "evidence": [
+      "root       43222  3.0  0.0  19664 13256 ?        S    23:14   0:m python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v2g/F04/r1/fault_serial.json",
+      "root       40232 37.6  0.5 36161196 6697964 ?    Ssl  22:36  14:15 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8091 --attn eager --batch-window-ms 50 --max-batch 8"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

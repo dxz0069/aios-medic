@@ -1,0 +1,138 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 283.34,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 1.0,
+    "reasoning": "CPU负载高且存在频繁的网络接口状态变化和无法执行相关网络命令，优先考虑资源限制问题，尤其是CPU问题。",
+    "evidence": [
+      "25.61 15.98 10.66",
+      "ncpu=16",
+      "docker应用噠录位2(veth7879dcb) entered blocking state",
+      "docker应用兦夺2(veth7879dcb) entered blocking state",
+      "ping命令未响应",
+      "无法执行tc命令查询队列 Disciplines",
+      "无法执行ss 命令获取套接字统计"
+    ],
+    "repair_hint": "重启受影响的服务或检查CPU资源使用情况并优化"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    },
+    {
+      "action": "restart_service",
+      "target": "",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 13.01,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 58.77,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 58.78,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 58.75,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 165.62,
+      "ok": false
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 37.58,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.94,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 6.13,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.5,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 3.55,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.8,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 7.31,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 30.36,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

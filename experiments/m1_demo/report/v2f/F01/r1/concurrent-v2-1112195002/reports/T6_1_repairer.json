@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "none",
+    "target": "",
+    "reason": "当前告警信息不足以确定具体的网络问题原因"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "根分区使用率达到79%"
+    ],
+    "evidence": [
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs        1.7G  348K  1.7G   2% /dev\ntmpfs           1.8G  768K  1.8G   1% /dev/shm\noverlay         437G  327G   88G  79% /\noverlay         437G  327G   88G  79% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

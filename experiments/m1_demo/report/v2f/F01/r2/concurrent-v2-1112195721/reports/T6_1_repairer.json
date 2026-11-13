@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "类目回退：终止泄漏进程"
+  },
+  "rounds": 2,
+  "fallback_used": true,
+  "repair_ok": true
+}

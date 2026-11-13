@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1 提供了进程意外退出的直接证据，且A2、A3和A4均未提供直接支持A1的证据，但都指出了系统资源紧张的问题，这可能导致A1所述的服务崩溃，进一步确认了根因为服务崩溃而非单纯的资源紧张问题。",
+    "evidence": [
+      "toy-critical-service 进程意外退出",
+      "3.88 4.05 7.0",
+      "/ 77%",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

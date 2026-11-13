@@ -1,0 +1,98 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 67.96,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "主进程退出且服务不可用，远超负载和资源使用问题直接由服务崩溃引起",
+    "evidence": [
+      "medic-sandbox toy-critical-service[36291]: main process exited, code=-9; status=failed/running-restart",
+      "load1=3.88, runnable=2, ncpu=16",
+      "root 26619 38.7  0.5 36179748 6127244 ? Ssl 17:48  55%54 python3 tools/infer_server_stdlib.py --model /public/home/acotx...",
+      "[no-default-route], /bin/sh line 1 tc command not found"
+    ],
+    "repair_hint": "重启 toy-critical-service 服务"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.21,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 5.37,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 5.06,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 7.25,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 5.13,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 10.59,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.76,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.42,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.66,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

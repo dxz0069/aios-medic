@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "",
+    "reason": "高CPU占用需要重启相关服务以检查和优化，考虑调整进程优先级或限制并发数。"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

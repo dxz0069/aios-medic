@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中network的值为false，而alert_before中network的值为false",
+      "但是load1和runnable有变化，不符合恢复定义"
+    ],
+    "comment": "网络状态未恢复且其他指标变化"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

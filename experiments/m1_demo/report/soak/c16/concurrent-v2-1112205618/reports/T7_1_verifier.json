@@ -1,0 +1,19 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu",
+      "memory",
+      "disk",
+      "network",
+      "service 告警位均为 false",
+      "load1, mem_avail_pct 恢复到正常水位"
+    ],
+    "comment": "所有指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

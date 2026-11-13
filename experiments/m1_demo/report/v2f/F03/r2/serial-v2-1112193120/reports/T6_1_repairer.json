@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "匹配到告警中的高CPU占用进程特征"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

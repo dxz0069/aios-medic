@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn(): pass ...",
+    "confidence": 1.0,
+    "anomalies": [
+      "异常多的同名进程",
+      "CPU 占用异常高"
+    ],
+    "evidence": [
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (55.1%)",
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (52.4%)",
+      "/root/. . . /python3 -c  import multiprocessing as mp, os def _burn(): while True pass ... (48.1%)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

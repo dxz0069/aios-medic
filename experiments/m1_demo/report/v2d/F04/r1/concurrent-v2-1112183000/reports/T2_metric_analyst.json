@@ -1,0 +1,18 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/disk",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "根分区使用率为77%",
+      "系统存在高负载"
+    ],
+    "evidence": [
+      "77%\n317G"
+    ],
+    "need_more": "/proc/loadavg"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

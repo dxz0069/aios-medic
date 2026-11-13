@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F01": {
+      "serial_wall_mean_s": 99.16,
+      "concurrent_wall_mean_s": 68.15,
+      "speedup_pct": 31.3,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "0/6",
+      "recovery_ok_rate": "5/6",
+      "last_verdict": {
+        "verdict_cat": "resource/memory",
+        "verdict_comp": "leee.py",
+        "confidence": 1.0
+      }
+    },
+    "F03": {
+      "serial_wall_mean_s": 123.57,
+      "concurrent_wall_mean_s": 152.64,
+      "speedup_pct": -23.5,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "6/6",
+      "component_ok_rate": "5/6",
+      "recovery_ok_rate": "6/6",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == \"__main__\": n = min(32, max(2, _ncpu() * 2)) prooces = [mp.Process(target=_burn) for _ in range(n)] for p in prooces: p.start() for p in prooces: p.join()",
+        "confidence": 0.95
+      }
+    },
+    "F04": {
+      "serial_wall_mean_s": 93.57,
+      "concurrent_wall_mean_s": 58.53,
+      "speedup_pct": 37.4,
+      "rounds": 3,
+      "rounds_conc": 3,
+      "category_ok_rate": "5/6",
+      "component_ok_rate": "6/6",
+      "recovery_ok_rate": "5/6",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 0.95
+      }
+    }
+  }
+}

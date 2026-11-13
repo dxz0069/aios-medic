@@ -1,0 +1,21 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "ping 命令未定义路径",
+      "tc 命令未找到",
+      "ss 命令未找到"
+    ],
+    "evidence": [
+      "[no-default-route]",
+      "tc: command not found",
+      "ss: command not found"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

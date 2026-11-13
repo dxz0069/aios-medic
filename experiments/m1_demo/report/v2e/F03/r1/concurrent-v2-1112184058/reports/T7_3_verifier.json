@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "alert_after中cpu为true"
+    ],
+    "comment": "CPU告警仍未解决"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

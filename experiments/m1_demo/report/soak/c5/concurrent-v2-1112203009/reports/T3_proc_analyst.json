@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\n  \"category\": \"resource/memory\",\n  \"component\": \"python3\",\n  \"confidence\": 0.9,\n  \"anomalies\": [\n    \"异常多的同名进程\",\n    \"持续运行的python3进程\"\n  ],\n  \"evidence\": [\n    \"root       37516  0.0  0.0   9784  1424 ?        S    20:30  0\\000: ps aux --sort=-rss\",\n    \"root       37517  0.0  0.0   9784  1424 ?        S    20:31  0\\000: python3\",\n    \"root       37518  0.0  0.0   9784  1424 ?        S    20:31  0\\000: python3\",\n    \"root       37519  0.0  0.0   9784  1424 ?        S    20:31  0\\000: python3\"\n  ],\n  \"need_more\": \"\"\n}\n",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

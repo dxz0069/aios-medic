@@ -1,0 +1,19 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu|resource/disk",
+    "component": "",
+    "confidence": 0.98,
+    "anomalies": [
+      "高CPU负载",
+      "高磁盘使用率"
+    ],
+    "evidence": [
+      "5.17 9.94 11.91 2/3846 38761",
+      "Filesystem      Size  Used Avail Use% Mounted on\ndevtmpfs     195M  1.8M  194M  1% /dev\noverlay     437G  316G   99G  77% /"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

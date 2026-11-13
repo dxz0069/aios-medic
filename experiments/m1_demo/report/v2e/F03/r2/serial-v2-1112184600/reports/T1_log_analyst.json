@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "docker网络接口频繁状态变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker...entered blocking state\n[422601.538285] ...entered disabled state\n[422601.538435] ...entered promiscuous mode\n[422602.034037] ...renamed from vethbfbb11c\n[422602.046157] docker...entered blocking state\n[422602.046160] ...entered forwarding state\n[424998.115953] docker...entered disabled state\n[424998.116110] ...entered promiscuous mode\n[424998.615121] ...renamed from veth97c99f9\n[424998.629089] docker...entered blocking state\n[424998.629091] ...entered forwarding state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

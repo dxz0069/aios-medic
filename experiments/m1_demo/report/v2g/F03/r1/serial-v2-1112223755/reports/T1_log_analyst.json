@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "veth接口状态频繁变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker* entered blocking state\n[422601.538285] docker* entered disabled state\n[422602.034037] eth* renamed from veth*\n[422602.046157] docker* entered blocking state\n[422602.046160] docker* entered forwarding state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

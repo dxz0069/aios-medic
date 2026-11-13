@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "alert_after 中所有告警位均为 false",
+      "values 中的数值与 alert_before 相比没有异常变化"
+    ],
+    "comment": "系统 has fully recovered"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

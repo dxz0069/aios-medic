@@ -1,0 +1,16 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn",
+    "confidence": 1.0,
+    "reasoning": "A3给出了最高的置信度，并且其提供的CPU占用异常高的直接证据比其他类别更为具体和强烈。",
+    "evidence": [
+      "root       41375 48.0  0.0  18112  8912 ?        r    22:39   0::04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():..."
+    ],
+    "repair_hint": "杀掉该 Python 进程 kill -9 41375"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

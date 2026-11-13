@@ -1,0 +1,28 @@
+{
+  "ts": "2026-11-12T12:35:51Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-12T12:35:51Z",
+    "host": "worker-0",
+    "cpu": false,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": false,
+    "values": {
+      "load1": 18.38,
+      "runnable": 2,
+      "ncpu": 16,
+      "mem_avail_pct": 94.2,
+      "disk_pct": 77,
+      "ping_loss_pct": 0.0,
+      "service_ok": true
+    }
+  },
+  "sources": {
+    "log": "== service.log (tail) ==\n2026-11-12T12:35:36+00:00 medic-sandbox toy-critical-service[37456]: main process exited, code=-9; status=failed/running-restart\n2026-11-12T12:35:37+00:00 medic-sandbox toy-critical-service[37775]: service started\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n18.38 19.35 14.79 2/3786 37776\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=994831316kB used_pct=5.8%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  316G   99G  77% /\noverlay         437G  316G   99G  77% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       26219 39.2  0.5 38121252 6127772 ?    Ssl  17:48  65:46 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       26275  0.3  0.0 10882528 1021372 ?    Ssl  17:49   0:31 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       37775  0.3  0.0  28040 19028 ?        S    20:35   0:00 /usr/local/bin/python3 /opt/medic/service/service.py\nroot       37776  0.0  0.0  19664 13256 ?        S    20:35   0:00 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/soak/c7/fault.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   08:28   0:00 python3 /opt/medic/service/supervisor.py\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       37764  0.0  0.0   7368  3572 ?        Ss   20:35   0:00 bash -c cd /public/home/acotxxttog/aios-medic && : > /var/log/medic/service.log 2>/dev/null; rm -f /var/log/medic/leaky.log; python3 testbed/injector/inject.py F04 --action inject && sleep 15 && python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/soak/c7/fault.json >/dev/null\nroot       37786  0.0  0.0   7368  3572 ?        S    20:35   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       37787  0.0  0.0  10116  1580 ?        R    20:35   0:00 ps aux --sort=-rss\nroot       37788  0.0  0.0   5784  1032 ?        S    20:35   0:00 head -12\nroot       26366  0.0  0.0      0     0 ?        Z    17:49   0:00 [python] <defunct>\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n"
+  }
+}

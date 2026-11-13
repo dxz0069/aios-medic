@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "Docker network interface state changes frequently."
+    ],
+    "evidence": [
+      "docker0: port 2(veth7879dcb) entered blocking state\ndocker0: port 2(veth7879dcb) entered disabled state\ndevice veth7879dcb entered promiscuous mode\ndocker0: port 2(veth7879dcb) entered blocking state\ndocker0:1 2(veth7879dcb) entered forwarding state"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

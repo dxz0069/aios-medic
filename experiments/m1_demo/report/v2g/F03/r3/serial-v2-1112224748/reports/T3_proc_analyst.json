@@ -1,0 +1,21 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn():... (重复多次)",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续高CPU占用率",
+      "存在大量相同的Python脚本进程"
+    ],
+    "evidence": [
+      "/root/.../python3 -c  import multiprocessing as mp, os def _burn():... (重复多次)",
+      "root       41974 44.1  0.0  18112  8912 ?        R    22:47   0:04 ..._burn())",
+      "root       41975 44.9  0.0  18112  8912 ?        R    22:47   0:04 ..._burn())",
+      "root       41976 44.5  0.0  18112  8912 ?        R    22:47   0:04 ..._burn())"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

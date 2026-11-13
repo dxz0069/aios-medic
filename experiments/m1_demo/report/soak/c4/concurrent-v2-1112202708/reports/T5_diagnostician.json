@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service进程异常退出且存在网络接口频繁变化状态的现象，虽然有其他资源紧张的情况，但最直接的原因是服务本身的异常退出。",
+    "evidence": [
+      "toy-critical-service主进程退出，代码=-9，状态为运行中但重启",
+      "网络接口频繁变化状态"
+    ],
+    "repair_hint": "检查和修复toy-critical-service相关配置和依赖"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

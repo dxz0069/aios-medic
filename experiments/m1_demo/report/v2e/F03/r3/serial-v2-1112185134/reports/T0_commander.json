@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-01",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "cpu",
+        "reason": "CPU使用率过高"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "memory",
+        "reason": "内存状态未知"
+      },
+      {
+        "id": "A3",
+        "agent": "metric_analyst",
+        "source": "disk",
+        "reason": "磁盘使用率较高"
+      },
+      {
+        "id": "A4",
+        "agent": "metric_analyst",
+        "source": "network",
+        "reason": "网络状态未知"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

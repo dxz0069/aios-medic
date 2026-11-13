@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/process",
+    "component": "python3 tools/infer_server_stdlib.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "长时间高CPU占用"
+    ],
+    "evidence": [
+      "root   43355  0.0  0.0  19752 13288 ?        S    23:16   0:"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

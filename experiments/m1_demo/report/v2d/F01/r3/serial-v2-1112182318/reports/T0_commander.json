@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "worker-on",
+        "reason": "检查负载和CPU状态"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "worker-on",
+        "reason": "检查关键进程状态"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "worker-on",
+        "reason": "检查网络连接状态"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "worker-on",
+        "reason": "检查系统日志"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

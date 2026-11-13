@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash|resource/cpu|network/loss",
+    "component": "toy-critical-service|python3 tools/infer_server_stdlib.py",
+    "confidence": 0.93,
+    "reasoning": "toy-critical-service 出现主进程退出和运行中状态需要重启的情况，存在高负载，同时 infer_server_stdlib.py 进程 CPU 占用异常高且存在僵尸进程，这些都指向资源使用异常和服务崩溃。此外，网络命令缺失可能影响了网络状况监控。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[43852]: main process exited, code=-9; status=failed/running-restart",
+      "3.27 3.80 6.46",
+      "root 43922  0.0  0.0  7368  3520 ?        S    23:21   1\n /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12",
+      "root 43923  0.0  0.0  10116  1580 ?        R    23:21   1\n python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5\\7B\\Instruct --port 8111 --attn eager --batch-window-ms 50 --max-batch 8",
+      "== tc qdisc ==\n/bin/sh line 1 tc command not found",
+      "== ss -s ==\n/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启 toy-critical-service 和 infer_server_stdlib.py，检查并重新安装 tc 和 ss 命令"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

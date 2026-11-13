@@ -1,0 +1,97 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 184.4,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 -c  import multiprocessing as mp, os def _burn(): while True pass ...ncpu():",
+    "confidence": 1.0,
+    "reasoning": "虽然网络丢包的告警存在，但是没有直接的网络丢包现象，且 CPU 负载异常明显，且有具体代码片段表明存在高 CPU 占用，因此以 CPU 负载问题为主。",
+    "evidence": [
+      "高CPU负载",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == \"__main__\": n = min(32, max(2, _ncpu() * 2)) prooc = [mp.Process(target=_burn) for _ in range(n)] for p in prooc: p.start() for p in prooc: p.join"
+    ],
+    "repair_hint": "终止或调整该 python 脚本的进程"
+  },
+  "gold": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "component_note": "忙循环进程在 ps 中的 COMMAND 即 python3；模型给出完整命令行也算命中（词干匹配）",
+    "evidence_keywords": [
+      "loadavg",
+      "load average",
+      "%cpu",
+      "runnable",
+      "100.0"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "import multiprocessing as mp",
+      "exec_rc": -15,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 15.98,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 41.86,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 41.85,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 41.84,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 117.73,
+      "ok": false
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 23.87,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 4.69,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.44,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 17.83,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

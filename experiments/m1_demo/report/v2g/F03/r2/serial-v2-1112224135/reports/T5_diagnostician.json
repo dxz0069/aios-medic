@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os..._burn()'",
+    "confidence": 0.95,
+    "reasoning": "虽然有网络问题的诊断，但主要由是CPU和内存使用异常，且多条证据支持Python进程高CPU使用。",
+    "evidence": [
+      "22.35 15.95 8.77, ncpu=16",
+      "root       41572 45.0  0.0  18112  8892 ?        r    22:41   0::4 /usr/local/bin/python3 -c ..._burn()",
+      "root       41573 43.0  0.0  18112  8892 ?        r    22:41   0:4 /usr/local/bin/python3 -c ..._burn()",
+      "root       41581 54.7  0.0  18112  8892 ?        R    22:41   0:6 /usr/local/bin/python3 -c ..._burn()"
+    ],
+    "repair_hint": "kill/重启/清理这些高CPU使用的Python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

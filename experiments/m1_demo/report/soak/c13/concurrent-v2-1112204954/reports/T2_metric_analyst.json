@@ -1,0 +1,18 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.95,
+    "anomalies": [
+      "CPU负载过高"
+    ],
+    "evidence": [
+      "166.60 14.09 13.39 3/3823 38653",
+      "MemAvailable=994831952kB used_pct=5.8%"
+    ],
+    "need_more": "/proc/stat以验证系统和idle时间"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,21 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警位从true变false",
+      "load1从9.23降为30.24",
+      "runnable从36降为4",
+      "ncpu未变化",
+      "mem_avail_pct未变化",
+      "disk_pct未变化",
+      "ping_loss_pct未变化",
+      "service_ok保持true"
+    ],
+    "comment": "所有关键指标均已恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

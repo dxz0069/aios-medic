@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "进程特征匹配root_cause中的leee.py，且内存占用持续增加。"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "repair_ok": true
+}

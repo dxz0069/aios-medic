@@ -1,0 +1,17 @@
+{
+  "agent_name": "metric_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 0.9,
+    "anomalies": [
+      "高CPU负载"
+    ],
+    "evidence": [
+      "3.11 7.58 14.64"
+    ],
+    "need_more": "/proc/vmstat以确认runnable队列长度"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

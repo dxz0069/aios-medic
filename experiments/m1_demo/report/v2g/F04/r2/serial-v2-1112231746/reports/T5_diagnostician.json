@@ -1,0 +1,23 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "主要诊断是服务崩溃，并并且有高负载和疑似异常进程作为支持，尽管网络问题也存在但置信度较低。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[43423]: main process exited, code=-9; status=failed/running-restart",
+      "3.93 4.04 7.14 2/3967 43511",
+      "python3 tools/infer_server_stdlib.py --model /public/home/acotx... 39.1  0.5 3616196 6697972",
+      "/root/proj4-devforge/.venv/bin/python runtime/launch.py  0.2  0.0 11882528 1021420",
+      "python3 /opt/medic/service/su...  0.0  0.0 19752 13304",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启toy-critical-service并检查相关日志"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

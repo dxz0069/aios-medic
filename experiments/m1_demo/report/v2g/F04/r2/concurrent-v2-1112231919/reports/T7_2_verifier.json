@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "service_ok依然是false"
+    ],
+    "comment": "服务尚未恢复正常"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

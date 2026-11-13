@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory",
+    "component": "python3 -c  import os, time buf = [...]",
+    "confidence": 1.0,
+    "anomalies": [
+      "持续增长的内存占用"
+    ],
+    "evidence": [
+      "root       38393  1.6  1.4 15613628 15617152 ?   Ss   20:44   1:t1"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu从true变为false",
+      "load1从27.25增加到35.35，未超出正常范围",
+      "runnable从39减少到2，在正常范围内",
+      "内存和磁盘使用情况保持不变，ping_loss_pct和service状态也无变化"
+    ],
+    "comment": "所有CPU相关告警已清除，系统负载恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

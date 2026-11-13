@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "docker网络接口状态频繁变化"
+    ],
+    "evidence": [
+      "[422601.538281] docker应用噠录位2(veth7879dcb) entered blocking state\n[422601.538285] docker应用噥夺2(veth7879dcb) entered disabled state\n[422602.046157] docker应用兦夺2(veth7879dcb) entered blocking state\n[422602.046160] docker应用儦夺2(veth7879dcb) entered forwarding state"
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

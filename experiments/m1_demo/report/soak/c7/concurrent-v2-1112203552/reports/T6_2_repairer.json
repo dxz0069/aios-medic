@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "service/service.py",
+    "reason": "服务异常重启且负载高，可能是由toy-critical-service引起"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

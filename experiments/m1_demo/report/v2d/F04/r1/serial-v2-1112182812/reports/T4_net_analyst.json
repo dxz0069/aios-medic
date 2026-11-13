@@ -1,0 +1,20 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss",
+    "component": "",
+    "confidence": 1.0,
+    "anomalies": [
+      "ping 命令未定义丢包问题",
+      "缺少 tc 和 ss 工具导致无法检查网络队列和统计信息"
+    ],
+    "evidence": [
+      "== ping  ==\n[no-default-route]",
+      "== tc qdisc ==\n/bin/sh line 1: tc command not found",
+      "== ss -s ==\n/bin/sh line 1: ss command not found"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "toy-critical-service 进程频繁重启，导致整体服务异常，其他诊断虽然提供了证据但与服务核心运行状况不符。",
+    "evidence": [
+      "21626-11-12T12:16:37+00:f0 medic-sandbox toy-critical-service[36559]: main process exited, code=-9; status=failed/running-restart",
+      "无法获取ping结果, tc命令不存在, ss命令不存在"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

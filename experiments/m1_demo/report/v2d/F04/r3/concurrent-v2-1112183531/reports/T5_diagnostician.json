@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+    "confidence": 1.0,
+    "reasoning": "高负载与CPU占用异常高是主要问题，内存问题与当前分析智能体证据无关，网络问题命令未找到不影响当前运行的组件",
+    "evidence": [
+      "loadavg 4.3 4.38 6.78",
+      "ncpu=16",
+      "root 26219 37.8  0.5 36179748 6125828 ?  Ssl  17:48  17:53 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 51 --max-batch 8"
+    ],
+    "repair_hint": "优化或减少该脚本的资源使用，考虑限制其CPU和内存占用"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}
