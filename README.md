@@ -57,19 +57,21 @@ python3 testbed/injector/inject.py F01 --action clear    # 清除
 
 ## 当前状态
 
-- [x] 调研与选题决策（2026-11-11 锁定 Medic 场景，见 `note/research/`）
-- [ ] **M0（进行中）**：环境搭建 + 三个 Spike（①7B 诊断单可靠性 ②AIOS 示例与 SDK 能力摸底 ③故障注入器）
-- [ ] M1：协作中间件 + 核心链路（单故障闭环）
-- [ ] M2：全系统 + 20 用例正确性实验
-- [ ] M3：串行/并发性能对比（目标 ≥20% 提速）+ AIOS 调度策略对比
-- [ ] M4：文档、演示与提交
+- [x] 调研与选题决策（2026-11-11 锁定 Medic，见 `note/research/`）
+- [x] M0 三个 Spike 全部 PASS（7B 诊断单可靠性 kill-switch 失败率 5%）
+- [x] M1 全系统：9 类智能体 + 协作中间件 + 全闭环流水线（诊断→修复→验证→报告）
+- [x] M2 实验床：**8 类可注入故障**（F01-F06/F10/F18）+ 健康探针 + 确定性签名库 + 单元测试 10 项全绿（CI 覆盖）
+- [x] M3 性能与正确性实验：多轮套件 + 18 轮稳定性浸泡 + 单智能体对照（数据见 `experiments/m1_demo/report/`，v2f 最佳配置整体提速 24.1%，恢复率 17/18）
+- [ ] M4 文档最终化与提交材料（进行中）
 
-## 文档
+**实验结论速览**（详见 `docs/设计实现文档.md`）：五类故障中四类并发提速显著（F01 27.9%、F04 18.6-37.4%、F02 47.3%、F05 25.1%）；F03（CPU 饱和）在"故障存续期间在线诊断"时因算力争用出现负优化——已定位为系统在极端资源剥夺下的真实行为并以快照模式对照验证。
 
-- [AIOS 调研笔记](note/research/aios-调研.md)
-- [赛题深度分析与选题决策](note/research/赛题深度分析与选题决策.md)
-- [系统设计方案 v0.2](note/design/系统设计方案.md)
-- [比赛总体计划](note/plan/比赛总体计划.md)
+## 文档与测试
+
+- [设计实现文档](docs/设计实现文档.md)（提交版主体）
+- [AIOS 调研笔记](note/research/aios-调研.md) · [赛题深度分析与选题决策](note/research/赛题深度分析与选题决策.md) · [系统设计方案](note/design/系统设计方案.md) · [比赛总体计划](note/plan/比赛总体计划.md) · [Spike① 报告](note/report/spike1-首轮.md)
+- 实验数据归档：`experiments/m1_demo/report/`（v2-v2g 六代套件 + soak + 对照）
+- 单元测试：`python -m pytest tests/ -q`（10 项，纯本地）；CI：GitHub Actions（Python 3.10/3.11）
 
 ## 参考与致谢
 
