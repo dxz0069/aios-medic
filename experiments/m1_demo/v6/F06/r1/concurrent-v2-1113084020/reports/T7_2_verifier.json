@@ -1,0 +1,15 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "process告警位在修复前后均为true",
+      "load1从3.09增加到3.47"
+    ],
+    "comment": "进程问题未解决，且负载略有上升"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

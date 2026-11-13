@@ -1,0 +1,14 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu, memory, disk, network, service, process, logs, port 告警位均为 false，values 中的 load1 回落至正常水平"
+    ],
+    "comment": "所有指标均恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

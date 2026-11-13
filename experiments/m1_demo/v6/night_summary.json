@@ -1,0 +1,49 @@
+{
+  "faults": {
+    "F06": {
+      "serial_wall_mean_s": 90.62,
+      "concurrent_wall_mean_s": 93.62,
+      "speedup_pct": -3.3,
+      "rounds": 2,
+      "rounds_conc": 2,
+      "category_ok_rate": "2/4",
+      "component_ok_rate": "0/4",
+      "recovery_ok_rate": "0/4",
+      "last_verdict": {
+        "verdict_cat": "resource/cpu",
+        "verdict_comp": "python3",
+        "confidence": 0.9
+      }
+    },
+    "F10": {
+      "serial_wall_mean_s": 95.44,
+      "concurrent_wall_mean_s": 79.47,
+      "speedup_pct": 16.7,
+      "rounds": 2,
+      "rounds_conc": 2,
+      "category_ok_rate": "3/4",
+      "component_ok_rate": "1/4",
+      "recovery_ok_rate": "0/4",
+      "last_verdict": {
+        "verdict_cat": "network/loss",
+        "verdict_comp": "",
+        "confidence": 0.5
+      }
+    },
+    "F18": {
+      "serial_wall_mean_s": 108.35,
+      "concurrent_wall_mean_s": 100.35,
+      "speedup_pct": 7.4,
+      "rounds": 2,
+      "rounds_conc": 2,
+      "category_ok_rate": "0/4",
+      "component_ok_rate": "0/4",
+      "recovery_ok_rate": "0/4",
+      "last_verdict": {
+        "verdict_cat": "service/crash",
+        "verdict_comp": "toy-critical-service",
+        "confidence": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "zombie_maker",
+    "reason": "匹配到僵尸进程生成的 python3 脚本"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,22 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu",
+      "memory",
+      "disk",
+      "network",
+      "service",
+      "process",
+      "logs",
+      "port 告警位均为 false",
+      "load1从2.79升至3.16，内存可用百分比从92.8%升至94.2%，其他数值无显著变化"
+    ],
+    "comment": "系统 has fully recovered with all alerts off and key metrics returned to normal."
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

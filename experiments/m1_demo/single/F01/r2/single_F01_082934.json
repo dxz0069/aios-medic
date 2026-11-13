@@ -1,0 +1,13 @@
+{
+  "experiment": "single_agent_baseline",
+  "fault": "F01",
+  "parse_ok": false,
+  "category_ok": false,
+  "component_ok": false,
+  "verdict": {
+    "raw": "```json\n{\n{\n{\n\"category\": \"resource/memory\",\n\"component\": \"/usr/local/bin/python3 -c  import os, time buf = [] with open('/var/log/medic/leaky.log', 'a') as f: ...\",\n\"confidence\": 0.9,\n\"reasoning\": \"根据leaky.log内容显示VmRSS逐渐增加，且每秒增长128MB，表明该进程正在不断消耗内存。同时，/proc/meminfo也显示已使用内存接近总内存的10%。\",\n\"evidence\": [\""
+  },
+  "input_chars": 4494,
+  "attempts": 2,
+  "wall_s": 19.19
+}

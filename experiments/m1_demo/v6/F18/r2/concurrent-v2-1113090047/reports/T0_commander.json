@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "metrics",
+        "reason": "检查系统 load1 是否过高"
+      },
+      {
+        "id": "A2",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "查找僵尸进程和运行状态异常的进程"
+      },
+      {
+        "id": "A3",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "检测网络丢包情况"
+      },
+      {
+        "id": "A4",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "检查系统 日志寻找服务异常原因"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

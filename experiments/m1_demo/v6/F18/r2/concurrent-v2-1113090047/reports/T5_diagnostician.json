@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "服务频繁启动和重启是主要原因，其他异常如高CPU、内存使用和网络命令不可用等虽存在但不能直接导致服务无法运行且不具主导性。",
+    "evidence": [
+      "toy-critical-service[5*256265]: main process exited, code=1; status=failed/running-restart",
+      "3.85 3.49 3.51 2/3744 55266",
+      "root   42332  6.3  0.5 44767148 6138008 ?    Ssl Nov12  39:54 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "== tc qdisc == /bin/sh line 1 tc command not found",
+      "== ss -s == /bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "检查并修复toy-critical-service服务配置，确保其稳定运行"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

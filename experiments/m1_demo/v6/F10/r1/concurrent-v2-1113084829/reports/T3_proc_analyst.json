@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\n  \"category\": \"resource/process\",\n  \"component\": \"python3 /opt/medic/service/supervisor.py, /usr/local/bin/python3 -c ...f.log\",a...,\n  \"confidence\": 0.9,\n  \"anomalies\": [\"僵尸进程数为3\"],\n  \"evidence\": [\"== 僵尸进程数 ==\\n3\"],\n  \"need_more\": \"\"\n}\n",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "worker-0 metrics",
+        "reason": "High load1 and zombie processes indicate potential performance issues."
+      },
+      {
+        "id": "A2",
+        "agent": "log_analyst",
+        "source": "worker-0 logs",
+        "reason": "Check flood_log_mb to identify any potential logging flood issues."
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "worker--o processes",
+        "reason": "Identify if there are too many runnable processes or zombie processes."
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "worker-0 network",
+        "reason": "Check ping_loss_pct to ensure no network connectivity issues."
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

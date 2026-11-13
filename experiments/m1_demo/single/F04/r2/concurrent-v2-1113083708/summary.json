@@ -1,0 +1,100 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 63.86,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "A1给出了明确的服务崩溃信息，并且高CPU负载和进程占用异常也间接反映了系统资源紧张，进一步了对服务状态的判断。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[46122]:service starteded",
+      "medic-sandbox toy-critical-service[4654]: main process exited, code=-9; status=failed/running-restart",
+      "3.54 4.29 3.73",
+      "root       42332  4.4  05.5 38141612 6138008 ?    Ssl  Nov12  26:35 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.57B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "root       44652  0.0  0.0      0     0 ?        Z    Nov12   1:50 (python) <defunct>",
+      "== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n== ss -s ==\n/bin/sh line 1: ss: command not found"
+    ],
+    "repair_hint": "重启toy-critical-service并检查依赖服务和环境配置"
+  },
+  "gold": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "evidence_keywords": [
+      "exited, code=-9",
+      "status=failed",
+      "running-restart",
+      "connection refused",
+      "restart"
+    ],
+    "category_ok": true,
+    "component_ok": true
+  },
+  "recovery_ok": true,
+  "repair_rounds": 1,
+  "repair_actions": [
+    {
+      "action": "restart_service",
+      "target": "toy-critical-service",
+      "exec_rc": 0,
+      "refused": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.75,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 11.29,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 11.28,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 11.29,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 11.29,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 16.14,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.11,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 3.23,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.82,
+      "ok": true
+    }
+  ],
+  "messages": 20
+}

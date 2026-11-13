@@ -1,0 +1,34 @@
+{
+  "ts": "2026-11-13T01:02:06Z",
+  "host": "worker-0",
+  "alert": {
+    "ts": "2026-11-13T01:02:06Z",
+    "host": "worker-0",
+    "cpu": false,
+    "memory": false,
+    "disk": false,
+    "network": false,
+    "service": true,
+    "process": false,
+    "logs": false,
+    "port": false,
+    "values": {
+      "load1": 5.9,
+      "runnable": 2,
+      "ncpu": 16,
+      "zombies": 3,
+      "flood_log_mb": 0.0,
+      "port_hogged": false,
+      "mem_avail_pct": 94.0,
+      "disk_pct": 71,
+      "ping_loss_pct": 0.0,
+      "service_ok": false
+    }
+  },
+  "sources": {
+    "log": "== service.log (tail) ==\nritical-service[50479]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:01:55+00:00 medic-sandbox toy-critical-service[50483]: service started\n2026-11-13T01:01:55+00:00 medic-sandbox toy-critical-service[50483]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:01:56+00:00 medic-sandbox toy-critical-service[50486]: service started\n2026-11-13T01:01:56+00:00 medic-sandbox toy-critical-service[50486]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:01:57+00:00 medic-sandbox toy-critical-service[50490]: service started\n2026-11-13T01:01:57+00:00 medic-sandbox toy-critical-service[50490]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:01:58+00:00 medic-sandbox toy-critical-service[50491]: service started\n2026-11-13T01:01:59+00:00 medic-sandbox toy-critical-service[50491]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:02:00+00:00 medic-sandbox toy-critical-service[50494]: service started\n2026-11-13T01:02:00+00:00 medic-sandbox toy-critical-service[50494]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:02:01+00:00 medic-sandbox toy-critical-service[50495]: service started\n2026-11-13T01:02:01+00:00 medic-sandbox toy-critical-service[50495]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:02:02+00:00 medic-sandbox toy-critical-service[50497]: service started\n2026-11-13T01:02:02+00:00 medic-sandbox toy-critical-service[50497]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:02:03+00:00 medic-sandbox toy-critical-service[50498]: service started\n2026-11-13T01:02:03+00:00 medic-sandbox toy-critical-service[50498]: main process exited, code=1; status=failed/running-restart\n2026-11-13T01:02:04+00:00 medic-sandbox toy-critical-service[50499]: service started\n2026-11-13T01:02:04+00:00 medic-sandbox toy-critical-service[50499]: main process exited, code=1; status=failed/running-restart\n\n== dmesg (head) ==\n[422601.538281] docker0: port 2(veth7879dcb) entered blocking state\n[422601.538285] docker0: port 2(veth7879dcb) entered disabled state\n[422601.538435] device veth7879dcb entered promiscuous mode\n[422602.034037] eth0: renamed from vethbfbb11c\n[422602.046010] IPv6: ADDRCONF(NETDEV_CHANGE): veth7879dcb: link becomes ready\n[422602.046157] docker0: port 2(veth7879dcb) entered blocking state\n[422602.046160] docker0: port 2(veth7879dcb) entered forwarding state\n[424998.115950] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.115953] docker0: port 4(veth4da4f8d) entered disabled state\n[424998.116099] device veth4da4f8d entered promiscuous mode\n[424998.615121] eth0: renamed from veth97c99f9\n[424998.628971] IPv6: ADDRCONF(NETDEV_CHANGE): veth4da4f8d: link becomes ready\n[424998.629089] docker0: port 4(veth4da4f8d) entered blocking state\n[424998.629091] docker0: port 4(veth4da4f8d) entered forwarding state\n[426347.354700] loop: module loaded\n",
+    "metric": "== /proc/loadavg ==\n5.90 4.11 3.72 2/3943 50500\nncpu=16\n\n== /proc/meminfo (摘要) ==\nMemTotal=1056110208kB MemAvailable=992653264kB used_pct=6.0%\n\n== df ==\nFilesystem      Size  Used Avail Use% Mounted on\noverlay         437G  293G  122G  71% /\noverlay         437G  293G  122G  71% /\n",
+    "proc": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot       40232  6.4  0.5 40767148 6138272 ?    Ssl  Nov12  40:36 python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8091 --attn eager --batch-window-ms 500 --max-batch 8\nroot       44563  0.1  0.1 10686036 1304208 ?    Ssl  Nov12   0:49 /root/proj4-devforge/.venv/bin/python runtime/launch.py\nroot       50303  0.3  0.0 344664 41388 ?        S    09:00   0:00 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v6/F18/r2/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v6/F18/r2 --gold F18\nroot       50500  0.0  0.0  19712 13280 ?        S    09:02   0:00 python3 /public/home/acotxxttog/aios-medic/testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6/F18/r2/concurrent-v2-1113090047/verify_collect_3.json\nroot       11454  0.0  0.0  17508 10908 ?        Ss   Nov12   0:00 python3 /opt/medic/service/supervisor.py\nroot       50253  0.0  0.0  16204  9860 ?        Ss   09:00   0:00 /usr/local/bin/python3 -c  import socket, time s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) s.bind((\"0.0.0.0\", 8080)) s.listen(5) while True:     time.sleep(3600) \nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\nroot       50296  0.0  0.0   7368  3576 ?        Ss   09:00   0:00 bash -c cd /public/home/acotxxttog/aios-medic && timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v6/F18/r2/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v6/F18/r2 --gold F18 > /public/home/acotxxttog/m1ws/v6/F18/r2/concurrent.log 2>&1\nroot       50513  0.0  0.0   7368  3536 ?        S    09:02   0:00 /bin/sh -c ps aux --sort=-rss 2>/dev/null | head -12\nroot       50514  0.0  0.0  10116  1580 ?        R    09:02   0:00 ps aux --sort=-rss\nroot       50302  0.0  0.0   5780  1032 ?        S    09:00   0:00 timeout 450 /root/proj4-devforge/.venv/bin/python -u experiments/m1_demo/run_pipeline_v2.py --collection /public/home/acotxxttog/m1ws/v6/F18/r2/fault_concurrent.json --mode concurrent --out /public/home/acotxxttog/m1ws/v6/F18/r2 --gold F18\n\n\n== 僵尸进程数 ==\n3\n",
+    "net": "== ping  ==\n[no-default-route]\n\n== tc qdisc ==\n/bin/sh: line 1: tc: command not found\n\n\n== ss -s ==\n/bin/sh: line 1: ss: command not found\n\n\n== 监听端口(ss -tlnp) ==\n"
+  }
+}

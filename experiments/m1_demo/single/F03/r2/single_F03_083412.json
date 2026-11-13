@@ -1,0 +1,22 @@
+{
+  "experiment": "single_agent_baseline",
+  "fault": "F03",
+  "parse_ok": true,
+  "category_ok": true,
+  "component_ok": false,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "Python 脚本",
+    "confidence": 0.9,
+    "reasoning": "从进程和指标数据中可以看出多个 Python 脚本在占用大量 CPU 资源。，特别是 pid 为 45814、45819 和 45820 的 Python 脚本，CPU 使用率分别达到了 43.5%、44.8% 和 46.0%，且这些脚本在持续运行，未显示结束迹象。",
+    "evidence": [
+      "root       45814 43.5  0.0  18100  8832 ?        r    08:33   0:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: p.start() for p in procs: p.join()",
+      "root       45819 44.8  0.0  18100  8832 ?        R    08:33   0:04 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: p.start() for p in procs: p.join()",
+      "root       45820 46.0  0.0  18101  8832 ?        R    08:33   0:05 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn(): while True pass def _ncpu(): try return max(1, len(os.sched_getaffinity(0))) except (AttributeError, OSError): return os.cpu_count() or 1 if __name__ == '__main__': n = min(32, max(2, _ncpu() * 2)) procs = [mp.Process(target=_burn) for _ in range(n)] for p in procs: : p.start() for p in procs: : p.join()"
+    ],
+    "repair_hint": "停止或优化这些持续高 CPU 使用率的 Python 脚本"
+  },
+  "input_chars": 4502,
+  "attempts": 1,
+  "wall_s": 27.58
+}

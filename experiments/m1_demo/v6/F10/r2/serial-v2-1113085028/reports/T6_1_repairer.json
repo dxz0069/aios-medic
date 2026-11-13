@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "clear_scratch",
+    "target": "/var/scratch",
+    "reason": "日志风暴导致日志文件占用大量磁盘空间"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

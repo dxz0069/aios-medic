@@ -75,20 +75,26 @@ def collect() -> dict:
         log_parts.append("== service.log (tail) ==\n" + service_log)
     if leaky_log:
         log_parts.append("== leaky.log (tail) ==\n" + leaky_log)
+    flood_tail = tail_file("/var/log/medic/flood.log", 800)
+    if flood_tail:
+        log_parts.append("== flood.log (tail) ==\n" + flood_tail)
     if dmesg_out and "collect-error" not in dmesg_out:
         log_parts.append("== dmesg (head) ==\n" + dmesg_out)
     if not log_parts:
         log_parts.append("[no-log-source]")
 
+    ss_ports = sh("ss -tlnp 2>/dev/null | head -8")
     sources = {
         "log": "\n".join(log_parts),
         "metric": (f"== /proc/loadavg ==\n{' '.join(loadavg_parts)}\n"
                    f"ncpu={ncpu}\n\n== /proc/meminfo (摘要) ==\n"
                    f"MemTotal={total}kB MemAvailable={avail}kB "
                    f"used_pct={round((total - avail) / total * 100, 1)}%\n\n== df ==\n{df_out}"),
-        "proc": sh("ps aux --sort=-rss 2>/dev/null | head -12"),
+        "proc": sh("ps aux --sort=-rss 2>/dev/null | head -12")
+        + "\n\n== 僵尸进程数 ==\n" + sh("ps aux 2>/dev/null | grep -c defunct"),
         "net": (f"== ping {gw} ==\n{ping_out}\n\n== tc qdisc ==\n"
-                f"{sh('tc qdisc show 2>&1 | head -6')}\n\n== ss -s ==\n{sh('ss -s 2>&1')}"),
+                f"{sh('tc qdisc show 2>&1 | head -6')}\n\n== ss -s ==\n{sh('ss -s 2>&1')}"
+                f"\n\n== 监听端口(ss -tlnp) ==\n{ss_ports}"),
     }
 
     service_ok = False
@@ -101,6 +107,19 @@ def collect() -> dict:
     except OSError:
         pass
 
+    # 新增告警位：僵尸进程堆积 / 日志风暴 / 端口被占（F06/F10/F18）
+    zombies_out = sh("ps aux 2>/dev/null | grep -c defunct").strip()
+    try:
+        zombies = int(zombies_out.splitlines()[-1]) if zombies_out else 0
+    except (ValueError, IndexError):
+        zombies = 0
+    flood_mb = 0.0
+    try:
+        flood_mb = round(os.path.getsize("/var/log/medic/flood.log") / 2**20, 1)
+    except OSError:
+        pass
+    port_hogged = (not service_ok) and (":8080" in ss_ports) and ("service.py" not in ss_ports)
+
     alert = {
         "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "host": os.uname().nodename,
@@ -108,8 +127,13 @@ def collect() -> dict:
         "memory": avail < total * 0.10,
         "disk": disk_pct > 90,
         "network": loss > 10,
-        "service": not service_ok,
+        "service": not service_ok and not port_hogged,
+        "process": zombies > 50,
+        "logs": flood_mb > 20,
+        "port": port_hogged,
         "values": {"load1": load1, "runnable": runnable, "ncpu": ncpu,
+                   "zombies": zombies, "flood_log_mb": flood_mb,
+                   "port_hogged": port_hogged,
                    "mem_avail_pct": round(avail / total * 100, 1),
                    "disk_pct": disk_pct, "ping_loss_pct": loss,
                    "service_ok": service_ok},

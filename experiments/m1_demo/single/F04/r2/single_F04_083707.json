@@ -1,0 +1,20 @@
+{
+  "experiment": "single_agent_baseline",
+  "fault": "F04",
+  "parse_ok": true,
+  "category_ok": true,
+  "component_ok": true,
+  "verdict": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.95,
+    "reasoning": "从日志中可以看到，toy-critical-service 的主进程已经退出，状态为失败/重启中。这表明该服务出现了问题。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[46054]: main process exited, code=-9; status=failed/running-restart"
+    ],
+    "repair_hint": "检查 toy-critical-service 的配置和依赖项，确保其正常运行。"
+  },
+  "input_chars": 3469,
+  "attempts": 2,
+  "wall_s": 12.82
+}

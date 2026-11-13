@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 0.9,
+    "reasoning": "虽然A2和A3指出了系统问题，但A1直接指出toy-critical-service出现故障，且A3发现的僵尸进程也可能是服务失败的结果，故优先级更高。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[44212]: main process exited, code=-9; status=failed/running-restart",
+      "root       44650  0.0  0.0      0     0 ?        Z    Nov12   0::00 (python) <defunct>"
+    ],
+    "repair_hint": "重启玩具关键服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

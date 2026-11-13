@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "服务频繁启动和退出，并且ping命令不可用，表明可能存在服务层的问题而非网络问题。",
+    "evidence": [
+      "toy-critical-service[49927]: main process exited, code=1; status=failed/running-restart",
+      "== ping =="
+    ],
+    "repair_hint": "检查toy-critical-service的服务配置和依赖"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "toy-critical-service频繁重启，并且存在高负载和异常高的CPU使用率，虽然内存占用也是高的但没有直接指向具体的服务。综合来看，最关键问题是服务频繁崩溃。",
+    "evidence": [
+      "2026-11-13T11:56:12+1:10 medic-sandbox toy-critical-service[49583]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t11:56:13+1:10 medic-sandbox toy-critical-service[49584]: main process exited, code=1; status=failed/running-restart",
+      "2026-11-13t11:56:17+1:10 medic-sandbox toy-critical-service[49587]: main process exited, code=1; status=failed/running-restart"
+    ],
+    "repair_hint": "重启toy-critical-service服务"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

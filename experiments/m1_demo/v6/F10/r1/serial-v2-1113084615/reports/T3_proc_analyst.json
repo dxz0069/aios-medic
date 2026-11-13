@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process",
+    "component": "",
+    "confidence": 0.8,
+    "anomalies": [
+      "内存占用异常大",
+      "存在多个异常同名进程"
+    ],
+    "evidence": [
+      "python3 tools/infer_server_stdlib.py --model /public/home/acotxxttog/models/Qwen2.5-7B-Instruct --port 8191 --attn eager --batch-window-ms 50 --max-batch 8",
+      "存在多个 'python3' 进程，如 /opt/medic/service/service.py 和 /public/home/acotxxttog/ios-medic/inject.py F10 --action inject"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

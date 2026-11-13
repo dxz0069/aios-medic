@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "service/crash",
+    "component": "toy-critical-service",
+    "confidence": 1.0,
+    "reasoning": "频繁的重启行为和高CPU负载同时出现，但没有直接表明是由资源竞争引起的，更倾向于服务本身的问题。",
+    "evidence": [
+      "medic-sandbox toy-critical-service[49241]: main process exited, code=1; status=failed/running-restart",
+      "medic-sandbox toy-critical-service[49242]: main process exited, code=1; status=failed/running-restart",
+      "medic-sandbox toy-critical-service[49243]: main process exited, code=1; status=failed/running-restart",
+      "3.1 3.41 3.53"
+    ],
+    "repair_hint": "检查并修复 toy-critical-service 的配置或代码错误"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

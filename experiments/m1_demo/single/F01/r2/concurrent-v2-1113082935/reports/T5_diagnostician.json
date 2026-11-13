@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/memory|resource/cpu|resource/process",
+    "component": "leee.py",
+    "confidence": 0.95,
+    "reasoning": "内存使用急剧增加导致CPU和进程负载上升",
+    "evidence": [
+      "21261113T0:29:11+12:0 leaky.py pid=45351 VmRSS=15345120kB",
+      "21261113T29:12+12: leaky.py pid=45351 VmRSS=15476004kB",
+      "21261113T29:13+12: leaky.py pid=45351 VmRSS=15607152kB",
+      "2.94 3.04 3.00",
+      "ncpu=16",
+      "root   45351  1.6  1.4 15613628 15617152 ?   Ss   08:27   1t1 /usr/local/bin/python3 -c"
+    ],
+    "repair_hint": "检查并优化leee.py，考虑增加垃圾回收机制"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

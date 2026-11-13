@@ -1,0 +1,21 @@
+{
+  "experiment": "single_agent_baseline",
+  "fault": "F01",
+  "parse_ok": true,
+  "category_ok": true,
+  "component_ok": true,
+  "verdict": {
+    "category": "resource/memory",
+    "component": "leaky.py",
+    "confidence": 0.95,
+    "reasoning": "根据log文件显示，有一个名为leaky.py的脚本不断向内存中写入大量数据，其内存使用量每秒增加128MB，导致内存使用逐渐上升。",
+    "evidence": [
+      "1-13T00:25:36+00:00 leaky.py pid=45193 VmRSS=14165472kB",
+      "113T00:25:48+00:00 leaky.py pid=45113 VmRSS=15607308kB"
+    ],
+    "repair_hint": "停止或修改leaky.py脚本以减少内存消耗"
+  },
+  "input_chars": 4494,
+  "attempts": 2,
+  "wall_s": 20.9
+}

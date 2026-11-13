@@ -1,0 +1,18 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log/network/port",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "频繁切换到blocking状态"
+    ],
+    "evidence": [
+      "[422602.046160] docker0 port 2(veth7879dcb) entered blocking state",
+      "[424998.115953] docker0 port 4(veth4da4f8s) entered blocking state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,22 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": false,
+    "evidence": [
+      "服务状态 service 依然为 true",
+      "运行中的进程数 runnable 从 2 变为 3",
+      "cpu 负载 load1 从 3.1 变为 3.16",
+      "ncpu 从 16 变为 16, 没有变化",
+      "僵尸进程数量 zombies 保持不变",
+      "带宽占用 flood_log_mb 保持不变",
+      "内存可用百分比 mem_avail_pct 和磁盘使用率 disk_pct 未变",
+      "丢包百分比 ping_loss_pct 保持不变",
+      "服务状况 service_ok 依然为 false"
+    ],
+    "comment": "服务尚未恢复"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": false,
+  "verify_ok": true
+}

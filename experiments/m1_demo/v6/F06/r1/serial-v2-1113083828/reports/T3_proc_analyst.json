@@ -1,0 +1,20 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process|service/crash",
+    "component": "python3 /opt/medic/service/supervisor.py",
+    "confidence": 0.9,
+    "anomalies": [
+      "僵尸进程数高",
+      "持续高CPU占用"
+    ],
+    "evidence": [
+      "root       46573  0.5  0.0  15772  9568 ?        Ss   08:38   0:00 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6/F06/r1/fault_serial.json",
+      "303",
+      "root       46271  0.5  0.0  15772  9568 ?        Ss   08:38   0:h0 /usr/local/bin/python3 -c  import os import signalal import sys imporrt time   def _reap_and_exit(_sig, _frm):     try...子进程成为僵尸 while True:     time.sleep(3600)"
+    ],
+    "need_more": "log/metric"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

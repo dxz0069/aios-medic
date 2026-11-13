@@ -1,0 +1,22 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu|resource/process|service/crash",
+    "component": "python3 -c _burn",
+    "confidence": 0.95,
+    "anomalies": [
+      "CPU占用异常高",
+      "同名进程异常多"
+    ],
+    "evidence": [
+      "'root       45594  0.3  0.0  18100 12636 ?        Ss   08:31   1:04 /usr/local/bin/python3 -c  ...'",
+      "'root       45618 44.2  1.0  18112  8912 ?        r    08:31   1:14 /usr/local/bin/python3 -c  ...'",
+      "'root       45619 51.4  1.0  18112  8912 ?        R    08:31   1:15 /usr/local/bin/python3 -c  ...'",
+      "'root       45620 62.7  1.0  18112  8912 ?        R    08-31   1:15 /usr/local/bin/python3 -c  ...'",
+      "'root       45624 48.4  1.0  18112  8912 ?        R    08-31   1:14 /usr/local/bin/python3 -c  ...'"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

@@ -1,0 +1,22 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn(): while True pass ...'",
+    "confidence": 0.95,
+    "reasoning": "多路分析智能体均指向了异常进程为 python 脚本，且 CPU 占用异常高，表明这是主要问题。虽然网络状态有变化，但无直接影响，且网络相关问题的置信度相对较低。",
+    "evidence": [
+      "[42261.538281] docker* port 2(veth7879dcb) entered blocking state",
+      "9.23 5.15 3.81 34/3693 45825",
+      "ncpu=16",
+      "root 45814 43.5 0.0 18112 8832 ? R 08:33 1.04 /usr/local/bin/python3 -c import multiprocessing as mp, os def _burn(): while True pass ... def _ncpu(): ",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill 异常进程并检查其运行逻辑"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

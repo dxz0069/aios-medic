@@ -1,0 +1,129 @@
+{
+  "mode": "serial",
+  "pipeline": "v2",
+  "wall_s": 90.73,
+  "verdict": {
+    "category": "resource/process",
+    "component": "python3 -c",
+    "confidence": 1.0,
+    "reasoning": "多个诊断智能体均未提及与网络端口、CPU或磁盘直接相关的问题，且进程智能体给出了僵尸进程生成的明确证据，其置信度为1.0，为最高。",
+    "evidence": [
+      "异常生成大量僵尸进程: root       47312  0.5  0.0  15772  9564 ?        Ss   08:41   1\\'11 for _ in range(300): ... os.fork()..."
+    ],
+    "repair_hint": "kill僵尸进程并优化for循环以减少子进程生成"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 7.18,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 8.47,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 4.17,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 19.59,
+      "ok": false
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 3.89,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 8.53,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.73,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.61,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 2.69,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 5.39,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 2.77,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.65,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 19.05,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

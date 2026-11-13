@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "confidence": 0.95,
+    "anomalies": [
+      "存在大量僵尸进程"
+    ],
+    "evidence": [
+      "root       47829  0.4  0.0  15772  9580 ?        Ss   08:43   0 python3 -c  import os import signalial import sys import time ... def _reap_and_exit(_sig, _frm): ... while True ... os.waitpid(-1, os.WNOHANG) ... except ChildProcessError: ... pass ... sys.exit(0) ... signal信号.signal(signal.SIGTERM, _reap_and_exit) ... os.fork() ... os._exit(0) ... time.sleep(3600)\nroot           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0 脚本启动 sshd: /usr/sbin/sshd -D (listener] 0 of 10-100 startups\nroot       48131  0.0  0.0  19752 13304 ?        S    08:43   0 python3testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6/F06/r2/fault_concurrent.json\n== 僵尸进程数: 303"
+    ],
+    "need_more": ""
+  },
+  "rounds": 3,
+  "diagnosis_ok": true
+}

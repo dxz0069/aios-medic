@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "zombie_maker",
+    "reason": "存在大量僵尸进程需要清理"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "leaky",
+    "reason": "进程泄露导致内存使用急剧增加，需立即终止"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

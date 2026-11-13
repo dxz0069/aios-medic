@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process",
+    "component": "/usr/local/bin/python3 -c",
+    "confidence": 0.9,
+    "anomalies": [
+      "持续增加的RSS值"
+    ],
+    "evidence": [
+      "root   45351  1.6  1.4 15613628 15617152 ?   Ss   08:27   0:t1 /usr/local/bin/python3 -c"
+    ],
+    "need_more": "log"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

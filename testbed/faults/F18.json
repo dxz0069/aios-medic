@@ -1,0 +1,22 @@
+{
+  "id": "F18",
+  "name": "port_conflict",
+  "category": "network/port",
+  "component": "port_hog",
+  "summary": "抢占玩具服务的8080端口，supervisor重启的服务无法绑定形成冲突循环",
+  "inject": "python3 /opt/medic/injector/inject.py F18 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F18 --action clear",
+  "gold": {
+    "category": "network/port",
+    "component": "port_hog",
+    "evidence_keywords": [
+      "8080",
+      "address already in use",
+      "port_hog"
+    ]
+  },
+  "recovery": {
+    "probe": "port",
+    "expect": "normal"
+  }
+}

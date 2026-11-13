@@ -1,0 +1,27 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "",
+    "confidence": 1.0,
+    "reasoning": "A1和A2都指出了高负载问题，而A3进一步指明了高CPU占用和异常多的同名进程，这更直接反映了资源CPU被占用过高，因此优先认定为CPU相关问题。",
+    "evidence": [
+      "[422611.538281] docker... entered disabled state",
+      "[422612.046157] docker... entered blocking state",
+      "7.99 4.19 3.39 36/3683 45628",
+      "ncpu=16",
+      "'root       45594  0.3  0.0  18100 12636 ?        Ss   08:31  1:h4 /usr/local/bin/python3 -c  ...'",
+      "'root       45618 44.2  1.0  18112  8912 ?        r      08:31  1'14 /usr/local/bin/python3 -c  ...'",
+      "'root       45619 51.4  1.0  18112  8912 ?       1   08'31  1'15 /usr/local/bin/python3 -c  ...'",
+      "'root       45620 62.7  1.0  18112  8912 ?        R   08'31  1'15 /usr/local/bin/python3 -c  ...'",
+      "'root       45624 48.4  1.0  18112  8912 ?        R    8'31  1'14 /usr/local/bin/python3 -c  ...'",
+      "== ping  ==\n[no-default-route]",
+      "/bin/sh: line 1: tc command not found",
+      "/bin/sh: line 1: ss command not found"
+    ],
+    "repair_hint": "kill 或者优化运行中的 python3 -c _burn 进程"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

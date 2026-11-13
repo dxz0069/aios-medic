@@ -1,0 +1,16 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/process",
+    "component": "python3 -c",
+    "confidence": 1.0,
+    "reasoning": "多个诊断智能体均未提及与网络端口、CPU或磁盘直接相关的问题，且进程智能体给出了僵尸进程生成的明确证据，其置信度为1.0，为最高。",
+    "evidence": [
+      "异常生成大量僵尸进程: root       47312  0.5  0.0  15772  9564 ?        Ss   08:41   1\\'11 for _ in range(300): ... os.fork()..."
+    ],
+    "repair_hint": "kill僵尸进程并优化for循环以减少子进程生成"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

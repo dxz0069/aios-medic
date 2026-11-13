@@ -1,0 +1,22 @@
+{
+  "experiment": "single_agent_baseline",
+  "fault": "F03",
+  "parse_ok": true,
+  "category_ok": true,
+  "component_ok": true,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3 -c _burn loop",
+    "confidence": 0.9,
+    "reasoning": "从进程列表可以看到，有多个进程在运行`python3 -c _burn`循环任务，且这些进程占用了大量的CPU资源，CPU使用率高达44.2%, 51.4%, 62.7%，表明存在CPU使用率过高的问题。",
+    "evidence": [
+      "root       45618 44.2  0.0  18100  8912 ?        r    08:31   0:04 /usr/local/bin/python3 -c _burn loop",
+      "root       45619 51.4  0.0  18102  8912 ?        R    08:31   0:05 /usr/local/bin/python3 -c _burn loop",
+      "root       45620 62.7  0.0  18102  8912 ?        R    08:31   0:06 /usr/local/bin/python3 -c _burn loop"
+    ],
+    "repair_hint": "停止不必要的CPU密集型任务或优化该脚本以减少CPU占用"
+  },
+  "input_chars": 4502,
+  "attempts": 1,
+  "wall_s": 14.25
+}

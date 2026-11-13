@@ -1,0 +1,17 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "log/service/crash",
+    "component": "log_flood",
+    "confidence": 0.9,
+    "anomalies": [
+      "频繁的上游连接池耗尽"
+    ],
+    "evidence": [
+      "2026-11-13T08:52:29+00:52 log_flood pid=49108 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T08:52:29+00:52 log_flood pid=49108 WARN connection pool exhausted, retrying upstream (attempt 1/3)\n2026-11-13T18:52:29+04:52 log_flood pid=49108 WARN connection pool exhausted, retrying upstream (attempt 1/3)"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

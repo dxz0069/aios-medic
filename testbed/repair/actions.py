@@ -19,6 +19,9 @@ APPROVED_PATTERNS = {
     "import multiprocessing as mp",  # F03 忙循环进程组特征
     "signal.SIGKILL",               # F04 崩溃循环制造者特征
     "service/service.py",           # 玩具服务（配合 supervisor 重启）
+    "zombie_maker",                 # F06 僵尸制造者（cmdline 含自标识注释）
+    "log_flood",                    # F10 日志风暴进程
+    "port_hog",                     # F18 端口占用进程
 }
 WHITELIST = ("kill_by_pattern", "tc_clear", "clear_scratch", "restart_service", "none")
 
@@ -43,7 +46,14 @@ def execute(action: str, target: str = "") -> dict:
             return res
         cnt = _run(["pgrep", "-fc", target])
         killed = _run(["pkill", "-f", target])
-        res.update(rc=killed["rc"], detail=f"matched={cnt['out']} pkill={killed['out'] or 'ok'}")
+        detail = f"matched={cnt['out']} pkill={killed['out'] or 'ok'}"
+        if target == "log_flood":  # 日志风暴：kill 后必须清文件，否则体积告警位不复位
+            try:
+                Path("/var/log/medic/flood.log").write_text("", encoding="utf-8")
+                detail += " flood.log truncated"
+            except OSError:
+                pass
+        res.update(rc=killed["rc"], detail=detail)
 
     elif action == "tc_clear":
         r = _run(["tc", "qdisc", "del", "dev", target or "eth0", "root"])

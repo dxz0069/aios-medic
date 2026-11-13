@@ -1,0 +1,21 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/port",
+    "component": "docker0",
+    "confidence": 0.9,
+    "anomalies": [
+      "频繁的网络端口状态变化"
+    ],
+    "evidence": [
+      "[42261.538281] docker0 port 2(veth7879dcb) entered blocking state",
+      "[42261.538285] docker* port 2(veth7879dcb) entered disabled state",
+      "[42261.538435] device veth7879dcb entered promiscuous mode",
+      "[42262.046157] docker* port 2(veth7879dcb) entered blocking state",
+      "[42262.046160] docker* port 2(veth7879kcb) entered forwarding state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

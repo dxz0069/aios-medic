@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "flood_log_mb过高"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "metrics",
+        "reason": "zombies数量异常"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "进程状态未知"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "无网络问题告警"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

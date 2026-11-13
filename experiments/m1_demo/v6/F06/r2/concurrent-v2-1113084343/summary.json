@@ -1,0 +1,133 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 117.4,
+  "verdict": {
+    "category": "resource/cpu",
+    "component": "python3",
+    "confidence": 0.9,
+    "reasoning": "CPU 负载高，同时有大量僵尸进程，且僵尸进程的数量由 python3 脚本产生。",
+    "evidence": [
+      "3.34 3.71 3.66",
+      "== 僵尸进程数 303",
+      "root       47829  0.4  0.0  15772  9580 ?        Ss   08:43   0 python3 -c  import os import signalial import sys import time ... def _reap_and_exit(_sig, _frm): ... while True ... os.waitpid(-1, os.WNOHANG) ... except ChildProcessError: ... pass ... sys.exit(0) ... signal信号.signal(signal.SIGTERM, _reap_and_exit) ... os.fork() ... os._exit(0) ... time.sleep(3610)",
+      "root           1  0.0  0.0  15488  8952 ?        Ss   Nov11   0 脚本启动 sshd: /usr/sbin/sshd -D (listener]  1 of 10-110 startups",
+      "root       48131  0.0  0.0  19752 13314 ?        S    08:43   1 python3 testbed/collect/collect.py --out /public/home/acotxxttog/m1ws/v6/F06/r2/fault_concurrent.json"
+    ],
+    "repair_hint": "杀死相关 python 进程并 kill the related python processes"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": false,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 6.84,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 17.14,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 17.15,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 48.17,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 17.14,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 28.33,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 3.2,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.66,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 3.24,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 2.82,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 3.03,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 2.58,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 15.52,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}

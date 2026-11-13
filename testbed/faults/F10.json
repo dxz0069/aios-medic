@@ -1,0 +1,22 @@
+{
+  "id": "F10",
+  "name": "log_flood",
+  "category": "log/storm",
+  "component": "log_flood",
+  "summary": "以~1.3MB/s向/var/log/medic/flood.log刷告警样式日志",
+  "inject": "python3 /opt/medic/injector/inject.py F10 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F10 --action clear",
+  "gold": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "evidence_keywords": [
+      "flood.log",
+      "log_flood",
+      "connection pool exhausted"
+    ]
+  },
+  "recovery": {
+    "probe": "logs",
+    "expect": "normal"
+  }
+}

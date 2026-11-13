@@ -1,0 +1,18 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "log/storm",
+    "component": "log_flood",
+    "confidence": 0.95,
+    "reasoning": "log_flood 组件频繁报告连接池耗尽，且同时存在高CPU负载，表明可能存在服务风暴导致资源争夺。",
+    "evidence": [
+      "2266-11-13T08:46:14+00:51log_flood pid=48358 WARN connection pool exhausted, retrying upstream (attempt 1/3)",
+      "3.31 3.57 3.61 3/3675 4836",
+      "ncpu=16"
+    ],
+    "repair_hint": "排查服务逻辑，减少连接池请求频率或优化处理逻辑"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

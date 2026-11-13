@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n{\n    \"category\": \"resource/process\",\n    \"component\": \"python3 -c\",\n    \"confidence\": 1.0,\n    \"anomalies\": [\"异常生成大量僵尸进程\"],\n    \"evidence\": [\"root       47312  0.5  0.0  15772  9564 ?        Ss   08:41   0\\`10 for _ in range(300): ... os.fork()...\"],\n    \"need_more\": \"\"\n}\n",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

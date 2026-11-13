@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "restart_service",
+    "target": "/opt/medic/service/supervisor.py",
+    "reason": "高CPU和僵尸进程问题需要重启服务恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

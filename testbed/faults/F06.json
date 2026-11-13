@@ -1,0 +1,22 @@
+{
+  "id": "F06",
+  "name": "zombie_process_pileup",
+  "category": "resource/process",
+  "component": "zombie_maker",
+  "summary": "父进程产生300个立即退出的子进程且不wait，形成僵尸堆积",
+  "inject": "python3 /opt/medic/injector/inject.py F06 --action inject",
+  "clear": "python3 /opt/medic/injector/inject.py F06 --action clear",
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ]
+  },
+  "recovery": {
+    "probe": "process",
+    "expect": "normal"
+  }
+}

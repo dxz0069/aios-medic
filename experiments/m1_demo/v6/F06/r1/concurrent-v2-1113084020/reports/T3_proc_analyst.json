@@ -1,0 +1,19 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process",
+    "component": "python3 -c",
+    "confidence": 1.0,
+    "anomalies": [
+      "创建大量僵尸进程",
+      "内存占用异常高"
+    ],
+    "evidence": [
+      "root       46792  0.5  0.0  15772  9568 ?        Ss   08:40   0:00 /usr/local/bin/python3 -c  import os import signal signal import sys import time ... def _reap_and_exit(_sig, _frm): ... try ... os.waitpid(-1, os.WNOHANG) ... except ChildProcessError: ... pass ... sys.exit(0) ... signal.signal(signal.SIGTERM, _reap_and_exit) for _ in range(300): ... pid = os.fork() ... if pid == 0: ... os._exit(0) ... # 父进程不 wait —— 子进程成为僵尸 ... while True ... time.sleep(3600) ",
+      "僵尸进程数 303"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

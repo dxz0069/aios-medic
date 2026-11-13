@@ -17,6 +17,9 @@ REGISTRY = {
     "F03": "cpu_starve",
     "F04": "svc_crash",
     "F05": "net_loss",
+    "F06": "zombie_pileup",
+    "F10": "log_flood",
+    "F18": "port_hog",
 }
 
 FAULTS_DIR = Path(__file__).parent / "faults"

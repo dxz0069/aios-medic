@@ -1,0 +1,38 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "cpu",
+        "reason": "高负载1分钟平均值"
+      },
+      {
+        "id": "A2",
+        "agent": "metric_analyst",
+        "source": "memory",
+        "reason": "内存使用率未报警"
+      },
+      {
+        "id": "A3",
+        "agent": "metric_analyst",
+        "source": "disk",
+        "reason": "磁盘使用率为71%",
+        "threshold": 80
+      },
+      {
+        "id": "A4",
+        "agent": "metric_analyst",
+        "source": "network",
+        "reason": "网络连接无丢包"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}

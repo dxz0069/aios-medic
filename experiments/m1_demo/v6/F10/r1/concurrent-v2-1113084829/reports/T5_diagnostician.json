@@ -1,0 +1,17 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "log/storm",
+    "component": "docker o",
+    "confidence": 0.9,
+    "reasoning": "频繁的日志条目表明网桥接口长时间处于阻塞状态，这可能是由于网络风暴造成的",
+    "evidence": [
+      "[422602.046161] docker0 进入了阻塞状态",
+      "[424998.115953] dockero 进入了阻塞状态"
+    ],
+    "repair_hint": "检查并限制容器间的流量，考虑降低 docker 容器网络配置的洪泛"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

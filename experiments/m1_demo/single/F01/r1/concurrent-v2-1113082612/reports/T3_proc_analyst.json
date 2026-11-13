@@ -1,0 +1,17 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/memory|resource/process",
+    "component": "/usr/local/bin/python3 -c  import os, time ...",
+    "confidence": 0.9,
+    "anomalies": [
+      "内存占用异常大"
+    ],
+    "evidence": [
+      "USER root PID 45193 %CPU 1.6 %MEM 1.4 VSZ 15613628 RSS 15617308"
+    ],
+    "need_more": "log/metric"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

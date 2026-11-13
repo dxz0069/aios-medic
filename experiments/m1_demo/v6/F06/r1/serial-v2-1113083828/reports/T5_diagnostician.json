@@ -1,0 +1,24 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/process|service/crash",
+    "component": "python3 /opt/medic/service/supervisor.py",
+    "confidence": 0.95,
+    "reasoning": "高CPU和僵尸进程问题更符合进程和服务崩溃的特征，且python脚本被多次提及作为异常源",
+    "evidence": [
+      "3.84 4.19 3.74",
+      "313",
+      "root       46573  0.5  0.0  15772  9568 ?        sss   08:38   0:t0 python3 testbed/collect/collect.py ... while True",
+      "[422612.046157] docker...entered forwarding state",
+      "[424998.115953] docker...entered disabled state",
+      "[424998.629089] docker...entered blocking state",
+      "[no-default-route]",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "重启受影响的服务进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

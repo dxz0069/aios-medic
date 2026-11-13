@@ -1,0 +1,130 @@
+{
+  "mode": "concurrent",
+  "pipeline": "v2",
+  "wall_s": 69.84,
+  "verdict": {
+    "category": "resource/process",
+    "component": "python3 -c",
+    "confidence": 1.0,
+    "reasoning": "证据显示有大量的僵尸进程被创建，同时也有异常高的内存占用情况。",
+    "evidence": [
+      "root       46792  0.5  0.0  15772  9568 ?        Ss   08:40   0:t0 /usr/local/bin/python3 -c  import os import signal signal import sys import time ... def _reap_and_exit(_sig, _frm): ... try ... os.waitpid(-1, os.WNOHANG) ... except ChildProcessError: ... pass ... sys.exit(0) ... signal signal.signal(signal.SIGTERM, _reap_and_exit) for _ in range(303): ... pid = os.fork() ... if pid == 0: ... os._exit(0) ... # 父进程不 wait —— 子进程成为僵尸 ... while True ... time.sleep(310) ",
+      "僵尸进程数 331"
+    ],
+    "repair_hint": "kill 过程 python3 -c 并清理僵尸进程"
+  },
+  "gold": {
+    "category": "resource/process",
+    "component": "zombie_maker",
+    "evidence_keywords": [
+      "defunct",
+      "zombie",
+      "<defunct>"
+    ],
+    "category_ok": true,
+    "component_ok": false
+  },
+  "recovery_ok": false,
+  "repair_rounds": 3,
+  "repair_actions": [
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    },
+    {
+      "action": "kill_by_pattern",
+      "target": "zombie_maker",
+      "exec_rc": 3,
+      "refused": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T0",
+      "agent": "commander",
+      "dur_s": 14.32,
+      "ok": true
+    },
+    {
+      "id": "T4",
+      "agent": "net_analyst",
+      "dur_s": 13.36,
+      "ok": true
+    },
+    {
+      "id": "T1",
+      "agent": "log_analyst",
+      "dur_s": 13.36,
+      "ok": true
+    },
+    {
+      "id": "T3",
+      "agent": "proc_analyst",
+      "dur_s": 13.36,
+      "ok": true
+    },
+    {
+      "id": "T2",
+      "agent": "metric_analyst",
+      "dur_s": 13.36,
+      "ok": true
+    },
+    {
+      "id": "T5",
+      "agent": "diagnostician",
+      "dur_s": 12.42,
+      "ok": true
+    },
+    {
+      "id": "T6_1",
+      "agent": "repairer",
+      "dur_s": 2.73,
+      "ok": true
+    },
+    {
+      "id": "T7_1",
+      "agent": "verifier",
+      "dur_s": 2.64,
+      "ok": true
+    },
+    {
+      "id": "T6_2",
+      "agent": "repairer",
+      "dur_s": 2.68,
+      "ok": true
+    },
+    {
+      "id": "T7_2",
+      "agent": "verifier",
+      "dur_s": 3.59,
+      "ok": true
+    },
+    {
+      "id": "T6_3",
+      "agent": "repairer",
+      "dur_s": 2.89,
+      "ok": true
+    },
+    {
+      "id": "T7_3",
+      "agent": "verifier",
+      "dur_s": 3.01,
+      "ok": true
+    },
+    {
+      "id": "T8",
+      "agent": "reporter",
+      "dur_s": 11.18,
+      "ok": true
+    }
+  ],
+  "messages": 32
+}
