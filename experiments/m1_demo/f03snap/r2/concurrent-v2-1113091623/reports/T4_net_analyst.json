@@ -1,0 +1,21 @@
+{
+  "agent_name": "net_analyst",
+  "result": {
+    "category": "network/loss|network/port|log/storm|none",
+    "component": "",
+    "confidence": 0.5,
+    "anomalies": [
+      "无法执行ping命令",
+      "无法执行tc命令查询队列规则",
+      "无法执行ss命令统计网络连接"
+    ],
+    "evidence": [
+      "== ping ",
+      "== tc qdisc ",
+      "== ss -s "
+    ],
+    "need_more": "log/metric/proc/net"
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

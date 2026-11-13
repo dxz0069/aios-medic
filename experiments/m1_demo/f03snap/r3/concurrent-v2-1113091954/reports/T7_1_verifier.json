@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu告警从true变为false",
+      "load1从22.04降低到18.74",
+      "runnable从37减少到6"
+    ],
+    "comment": "所有CPU相关问题均已解决并恢复正常"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

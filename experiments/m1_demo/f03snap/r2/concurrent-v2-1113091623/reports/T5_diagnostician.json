@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...'",
+    "confidence": 0.95,
+    "reasoning": "A1 提供的证据主要是网络接口状态频繁变化，并与CPU高负载无直接关联。A3 有明确的高CPU占用异常和多个相同命令的进程，A2 的高负载也支持这一结论，尽管 A4 没有具体证据指向 CPU，但结合所有信息，CPU 相关问题最有可能。",
+    "evidence": [
+      "11.25 11.10 9.32 35/3828 51536",
+      "ncpu=16",
+      "root       51522 53.1  0.0  18100  8908 ?        r    09:16   0::5 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       51527 55.6  0.0  18100  8908 ?        r    09:16   0::5 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():...",
+      "root       51528 44.9  0.0  18100  8908 ?        r    09:16   0::4 /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():..."
+    ],
+    "repair_hint": "终止异常Python进程并检查其运行脚本，优化代码或减少进程数量"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

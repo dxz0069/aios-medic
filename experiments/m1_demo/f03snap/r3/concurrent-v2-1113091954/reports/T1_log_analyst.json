@@ -1,0 +1,21 @@
+{
+  "agent_name": "log_analyst",
+  "result": {
+    "category": "network/port",
+    "component": "docker0, veth7879dcb, veth4da4f8s",
+    "confidence": 0.9,
+    "anomalies": [
+      "多个docker网络接口频繁状态变化",
+      "veth7879dcb和veth4da4f8s在短时间内多次进入blocking、disabled和promiscuous状态"
+    ],
+    "evidence": [
+      "[422601.538281] docker* entered blocking state\n[422601.538285] docker* entered disabled state",
+      "[422602.046157] docker* entered blocking state\n[422602.046160] docker* entered forwarding state",
+      "[424998.115953] docker* entered blocking state\n[424998.116099] docker* entered disabled state",
+      "[424998.629089] docker* entered blocking state\n[424998.629091] docker* entered forwarding state"
+    ],
+    "need_more": ""
+  },
+  "rounds": 1,
+  "diagnosis_ok": true
+}

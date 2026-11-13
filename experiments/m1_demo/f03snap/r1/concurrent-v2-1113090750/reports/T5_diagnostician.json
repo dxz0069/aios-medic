@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():... pass'",
+    "confidence": 0.95,
+    "reasoning": "多个进程占用大量CPU资源且端口频繁变化但未直接影响系统服务，主要问题是CPU使用率过高。",
+    "evidence": [
+      "/root/... /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... pass ...R    10:7   10:54",
+      "/root/... /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... pass ...R    10:7   10:54",
+      "/root/... /usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... pass ...R    10:7   10:55",
+      "docker0 port 2(veth7879dcb) entered blocking state",
+      "docker4 port 4(veth4da4f8s) entered blocking state"
+    ],
+    "repair_hint": "kill异常的python进程并 找出源头"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

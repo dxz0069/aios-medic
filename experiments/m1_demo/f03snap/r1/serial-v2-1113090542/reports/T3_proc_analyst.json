@@ -1,0 +1,6 @@
+{
+  "agent_name": "proc_analyst",
+  "result": "{\n  \"category\": \"resource/cpu\",\n  \"component\": \"python3 -c 'import multiprocessing as mp, os; ... def _burn():... while True; ... def _ncpu():... if __name__ == \"__main__\":... p.start();... p.join()'\",\n  \"confidence\": 0.9,\n  \"anomalies\": [\n    \"持续高CPU占用\",\n    \"多个相同进程同时运行\"\n  ],\n  \"evidence\": [\n    \"/usr/local/bin/python3 -c  import multiprocessing as mp, os ... def _burn():... while True; ... def _ncpu():... if __name__ == \"__main__\":... p.start();... p.join() ... CPU占用分别为47.4%, 57.2%, 50.1%, 51.9%\",\n    \"存在多个相同名称的进程: python3 -c 'import multiprocessing as mp, os; ... def _burn():... while True; ... def _ncpu():... if __name__ == \"__main__\":... p.start();... p.join()' CPU占用分别为47.4%, 57.2%, 50.1%, 51.9%\"\n  ],\n}",
+  "rounds": 3,
+  "diagnosis_ok": false
+}

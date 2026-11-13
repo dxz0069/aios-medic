@@ -1,0 +1,21 @@
+{
+  "agent_name": "proc_analyst",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1'",
+    "confidence": 0.95,
+    "anomalies": [
+      "CPU 占用异常高",
+      "进程持续运行且占用CPU资源"
+    ],
+    "evidence": [
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1  36.7  0.0  18100  8900 ?        r    09:09   1:04",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1  43.6  0.0  18100  8900 ?        r    09:09   1:04",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1  44.3  0.0  18100  8900 ?        r    09:09   1:05",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1  45.0  0.0  18100  8896 ?"
+    ],
+    "need_more": ""
+  },
+  "rounds": 2,
+  "diagnosis_ok": true
+}

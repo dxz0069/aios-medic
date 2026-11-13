@@ -1,0 +1,11 @@
+{
+  "agent_name": "repairer",
+  "result": {
+    "action": "kill_by_pattern",
+    "target": "import multiprocessing as mp",
+    "reason": "存在多个占用CPU资源相同的异常Python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "repair_ok": true
+}

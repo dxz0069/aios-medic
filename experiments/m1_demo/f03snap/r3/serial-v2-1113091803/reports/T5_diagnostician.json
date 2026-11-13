@@ -1,0 +1,19 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os ... _burn() ...'",
+    "confidence": 0.97,
+    "reasoning": "CPU 负载过高且有多个相同命令的进程存在，说明该进程可能是导致 CPU 占用高的直接原因。",
+    "evidence": [
+      "13.42 11.93 9.38",
+      "45.5  0.0  18100  8916 ?        r    09:17   0.05 /usr/local/bin/python3 -c ...",
+      "45.8  0.0  18100  8916 ?        r    09:17   0.05 /usr/local/bin/python3 -c ...",
+      "45.9  0.0  18101  8916 ?        r    09:17   0.05 /usr/local/bin/python3 -c ..."
+    ],
+    "repair_hint": "kill 或重启相关进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

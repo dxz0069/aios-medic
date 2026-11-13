@@ -1,0 +1,21 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1'",
+    "confidence": 0.97,
+    "reasoning": "进程持续占用大量CPU资源，且网络命令缺失导致无法判断网络问题，同时进程命令行直接指向了具体的异常进程。",
+    "evidence": [
+      "[422601.538281] docker* entered blocking state\n[422601.538285] docker* entered disabled state\n[422602.046160] docker* entered forwarding state\n[424998.115953] docker* entered blocking state\n[424998.116199] docker* entered forwarding state",
+      "19.67 14.30 8.67 39/4256 51344",
+      "ncpu=16",
+      "/usr/local/bin/python3 -c  import multiprocessing as mp, os def _burn():... prooc = [mp.Process(target=_burn) for _ in range(n)]...1  36.7  0.0  18100  8900 ?        r    09:09   1:14",
+      "/bin/sh line 1 tc command not found",
+      "/bin/sh line 1 ss command not found"
+    ],
+    "repair_hint": "kill异常进程或优化多进程代码"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

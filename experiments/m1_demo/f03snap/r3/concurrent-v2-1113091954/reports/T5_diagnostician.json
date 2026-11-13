@@ -1,0 +1,20 @@
+{
+  "agent_name": "diagnostician",
+  "result": {
+    "category": "resource/cpu",
+    "component": "python3 -c 'import multiprocessing as mp, os def _burn():...",
+    "confidence": 1.0,
+    "reasoning": "主要的异常在于高CPU使用率，并由大量运行的burn循环进程导致。",
+    "evidence": [
+      "/root/52117  0.0  0.0  19752 13328 ?        S    09:19   1:20 python3 test/collect/collect.py",
+      "/root/52109  51.8  0.0  18112  8912 ?        R    09:19   1:25 python3 -c 'import multiprocessing as mp, os ...'",
+      "/root/52109  55.0  0.0  18112  8912 ?        R    09:19   1:25 python3 -c 'import multiprocessing as mp, os ...'",
+      "22.04 14.39 10.78",
+      "ncpu=16"
+    ],
+    "repair_hint": "kill或重启高CPU占用的python进程"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "diagnosis_ok": true
+}

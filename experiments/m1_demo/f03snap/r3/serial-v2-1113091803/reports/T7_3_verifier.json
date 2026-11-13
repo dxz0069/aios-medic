@@ -1,0 +1,16 @@
+{
+  "agent_name": "verifier",
+  "result": {
+    "recovered": true,
+    "evidence": [
+      "cpu从true变为false",
+      "values中load1和runnable回到正常水位",
+      "mem_avail_pct提升到93.4%"
+    ],
+    "comment": "所有CPU/Memory/Disk告警均已消除，数值也恢复正常"
+  },
+  "rounds": 1,
+  "fallback_used": false,
+  "deterministic_recovered": true,
+  "verify_ok": true
+}

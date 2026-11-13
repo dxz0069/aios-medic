@@ -1,0 +1,37 @@
+{
+  "agent_name": "commander",
+  "result": {
+    "plan_id": "plan-12345",
+    "analysis_tasks": [
+      {
+        "id": "A1",
+        "agent": "metric_analyst",
+        "source": "load1",
+        "reason": "高负载"
+      },
+      {
+        "id": "A2",
+        "agent": "log_analyst",
+        "source": "logs",
+        "reason": "检查错误日志"
+      },
+      {
+        "id": "A3",
+        "agent": "proc_analyst",
+        "source": "process",
+        "reason": "检查僵尸进程"
+      },
+      {
+        "id": "A4",
+        "agent": "net_analyst",
+        "source": "network",
+        "reason": "检查网络状况"
+      }
+    ],
+    "aggregate_agent": "diagnostician"
+  },
+  "rounds": 2,
+  "fallback_used": false,
+  "plan_ok": true,
+  "raw": null
+}
